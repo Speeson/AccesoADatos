@@ -1,0 +1,58 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: inventario_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: inventario_db
+      MYSQL_USER: inventario_user
+      MYSQL_PASSWORD: inventario_pass
+    ports:
+      - "33061:3306"  # Puerto muy diferente
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./scripts:/docker-entrypoint-initdb.d
+    command: --default-authentication-plugin=mysql_native_password
+    networks:
+      - inventario_network
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: inventario_phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: inventario_user
+      PMA_PASSWORD: inventario_pass
+    ports:
+      - "9090:80"  # Puerto diferente para phpMyAdmin
+    depends_on:
+      - mysql
+    networks:
+      - inventario_network
+
+  app:
+    build: .
+    container_name: inventario_app
+    depends_on:
+      - mysql
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306  # Interno sigue siendo 3306
+      DB_NAME: inventario_db
+      DB_USER: inventario_user
+      DB_PASSWORD: inventario_pass
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    networks:
+      - inventario_network
+    stdin_open: true
+    tty: true
+
+volumes:
+  mysql_data:
+
+networks:
+  inventario_network:
+    driver: bridge

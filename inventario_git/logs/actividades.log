@@ -1,0 +1,66 @@
+[2025-09-29 01:42:06] ERROR - CREAR_MULTIPLES_CATEGORIAS - ERROR - CREAR_MULTIPLES_CATEGORIAS: Error al crear múltiples categorías - Duplicate entry 'Alimentacion' for key 'categorias.nombre'
+[2025-09-29 01:42:06] ERROR - CARGAR_CATEGORIAS_CSV - ERROR - CARGAR_CATEGORIAS_CSV: Error al cargar categorías - Duplicate entry 'Alimentacion' for key 'categorias.nombre'
+[2025-09-29 01:44:05] ERROR - CREAR_MULTIPLES_CATEGORIAS - ERROR - CREAR_MULTIPLES_CATEGORIAS: Error al crear múltiples categorías - Duplicate entry 'Alimentacion' for key 'categorias.nombre'
+[2025-09-29 01:44:05] ERROR - CARGAR_CATEGORIAS_CSV - ERROR - CARGAR_CATEGORIAS_CSV: Error al cargar categorías - Duplicate entry 'Alimentacion' for key 'categorias.nombre'
+[2025-09-29 01:50:48] ERROR - CREAR_MULTIPLES_CATEGORIAS - ERROR - CREAR_MULTIPLES_CATEGORIAS: Error al crear múltiples categorías - Duplicate entry 'Alimentacion' for key 'categorias.nombre'
+[2025-09-29 01:50:48] ERROR - CARGAR_CATEGORIAS_CSV - ERROR - CARGAR_CATEGORIAS_CSV: Error al cargar categorías - Duplicate entry 'Alimentacion' for key 'categorias.nombre'
+[2025-09-29 02:09:58] INFO - CARGAR_CATEGORIAS_CSV - OPERACIÓN EXITOSA - CARGAR_CATEGORIAS_CSV: Creadas 0 categorías nuevas de 5 leídas desde data/categorias.csv
+[2025-09-29 02:09:58] ERROR - CARGAR_PRODUCTOS_CSV - ERROR - CARGAR_PRODUCTOS_CSV: Error al cargar productos desde CSV - Estructura del archivo CSV inválida
+[2025-09-29 02:10:33] INFO - CARGAR_CATEGORIAS_CSV - OPERACIÓN EXITOSA - CARGAR_CATEGORIAS_CSV: Creadas 0 categorías nuevas de 5 leídas desde data/categorias.csv
+[2025-09-29 02:10:33] ERROR - CARGAR_PRODUCTOS_CSV - ERROR - CARGAR_PRODUCTOS_CSV: Error al cargar productos desde CSV - Estructura del archivo CSV inválida
+[2025-09-29 02:18:13] INFO - CARGAR_CATEGORIAS_CSV - OPERACIÓN EXITOSA - CARGAR_CATEGORIAS_CSV: Creadas 0 categorías nuevas de 5 leídas desde data/categorias.csv
+[2025-09-29 02:18:13] ERROR - CARGAR_PRODUCTOS_CSV - ERROR - CARGAR_PRODUCTOS_CSV: Error al cargar productos desde CSV - Estructura del archivo CSV inválida
+[2025-09-29 02:25:25] INFO - CARGAR_CATEGORIAS_CSV - OPERACIÓN EXITOSA - CARGAR_CATEGORIAS_CSV: Creadas 0 categorías nuevas de 5 leídas desde data/categorias.csv
+[2025-09-29 02:25:25] ERROR - CARGAR_PRODUCTOS_CSV - ERROR - CARGAR_PRODUCTOS_CSV: Error al cargar productos desde CSV - Estructura del archivo CSV inválida
+[2025-09-29 02:32:33] INFO - CARGAR_CATEGORIAS_CSV - OPERACIÓN EXITOSA - CARGAR_CATEGORIAS_CSV: Creadas 0 categorías nuevas de 5 leídas desde data/categorias.csv
+[2025-09-29 02:32:33] ERROR - CARGAR_PRODUCTOS_CSV - ERROR - CARGAR_PRODUCTOS_CSV: Error al cargar productos desde CSV - Estructura del archivo CSV inválida
+[2025-09-29 02:34:23] INFO - CARGAR_CATEGORIAS_CSV - OPERACIÓN EXITOSA - CARGAR_CATEGORIAS_CSV: Creadas 0 categorías nuevas de 5 leídas desde data/categorias.csv
+[2025-09-29 02:34:23] ERROR - CARGAR_PRODUCTOS_CSV - ERROR - CARGAR_PRODUCTOS_CSV: Error al cargar productos desde CSV - Estructura del archivo CSV inválida
+[2025-09-29 02:34:36] INFO - CARGAR_CATEGORIAS_CSV - OPERACIÓN EXITOSA - CARGAR_CATEGORIAS_CSV: Creadas 0 categorías nuevas de 5 leídas desde data/categorias.csv
+[2025-09-29 02:34:36] ERROR - CARGAR_PRODUCTOS_CSV - ERROR - CARGAR_PRODUCTOS_CSV: Error al cargar productos desde CSV - Estructura del archivo CSV inválida
+[2025-09-29 11:10:02] ERROR - CARGAR_CATEGORIAS_CSV - ERROR - CARGAR_CATEGORIAS_CSV: Error al cargar categorías desde CSV - Estructura del archivo CSV inválida
+[2025-09-29 11:10:24] ERROR - CARGAR_CATEGORIAS_CSV - ERROR - CARGAR_CATEGORIAS_CSV: Error al cargar categorías desde CSV - Estructura del archivo CSV inválida
+[2025-09-29 11:21:22] WARN - CARGAR_CATEGORIAS_CSV - ADVERTENCIA - CARGAR_CATEGORIAS_CSV: No se encontraron categorías válidas en el archivo
+[2025-09-29 11:21:22] INFO - CREAR_CATEGORIA - OPERACIÓN EXITOSA - CREAR_CATEGORIA: Categoría creada: Deportes (ID: 6)
+[2025-09-29 11:21:22] INFO - CREAR_CATEGORIA - OPERACIÓN EXITOSA - CREAR_CATEGORIA: Categoría creada: Juguetes (ID: 7)
+[2025-09-29 11:21:22] INFO - CREAR_CATEGORIA - OPERACIÓN EXITOSA - CREAR_CATEGORIA: Categoría creada: Libros (ID: 8)
+[2025-09-29 11:21:24] INFO - CREAR_MULTIPLES_PRODUCTOS - OPERACIÓN EXITOSA - CREAR_MULTIPLES_PRODUCTOS: Creados 1000 de 1000 productos
+[2025-09-29 11:21:24] INFO - CARGAR_PRODUCTOS_CSV - OPERACIÓN EXITOSA - CARGAR_PRODUCTOS_CSV: Cargados 1000 productos de 1000 leídos desde data/productos.csv
+[2025-09-29 11:44:00] WARN - CARGAR_CATEGORIAS_CSV - ADVERTENCIA - CARGAR_CATEGORIAS_CSV: No se encontraron categorías válidas en el archivo
+[2025-09-29 11:44:00] INFO - CREAR_CATEGORIA - OPERACIÓN EXITOSA - CREAR_CATEGORIA: Categoría creada: Deportes (ID: 6)
+[2025-09-29 11:44:00] INFO - CREAR_CATEGORIA - OPERACIÓN EXITOSA - CREAR_CATEGORIA: Categoría creada: Juguetes (ID: 7)
+[2025-09-29 11:44:00] INFO - CREAR_CATEGORIA - OPERACIÓN EXITOSA - CREAR_CATEGORIA: Categoría creada: Libros (ID: 8)
+[2025-09-29 11:44:03] INFO - CREAR_MULTIPLES_PRODUCTOS - OPERACIÓN EXITOSA - CREAR_MULTIPLES_PRODUCTOS: Creados 1000 de 1000 productos
+[2025-09-29 11:44:03] INFO - CARGAR_PRODUCTOS_CSV - OPERACIÓN EXITOSA - CARGAR_PRODUCTOS_CSV: Cargados 1000 productos de 1000 leídos desde data/productos.csv
+[2025-09-29 11:44:10] WARN - CARGAR_CATEGORIAS_CSV - ADVERTENCIA - CARGAR_CATEGORIAS_CSV: No se encontraron categorías válidas en el archivo
+[2025-09-29 11:44:14] INFO - CREAR_MULTIPLES_PRODUCTOS - OPERACIÓN EXITOSA - CREAR_MULTIPLES_PRODUCTOS: Creados 1000 de 1000 productos
+[2025-09-29 11:44:15] INFO - CARGAR_PRODUCTOS_CSV - OPERACIÓN EXITOSA - CARGAR_PRODUCTOS_CSV: Cargados 1000 productos de 1000 leídos desde data/productos.csv
+[2025-09-29 11:44:39] INFO - CREAR_CATEGORIA - OPERACIÓN EXITOSA - CREAR_CATEGORIA: Categoría creada: LALALAL (ID: 9)
+[2025-09-29 11:44:39] INFO - CREAR_CATEGORIA - OPERACIÓN EXITOSA - CREAR_CATEGORIA: Categoría creada: LALALAL (ID: 9)
+[2025-09-29 12:17:11] WARN - CARGAR_CATEGORIAS_CSV - ADVERTENCIA - CARGAR_CATEGORIAS_CSV: No se encontraron categorías válidas en el archivo
+[2025-09-29 12:17:15] INFO - CREAR_MULTIPLES_PRODUCTOS - OPERACIÓN EXITOSA - CREAR_MULTIPLES_PRODUCTOS: Creados 1000 de 1000 productos
+[2025-09-29 12:17:15] INFO - CARGAR_PRODUCTOS_CSV - OPERACIÓN EXITOSA - CARGAR_PRODUCTOS_CSV: Cargados 1000 productos de 1000 leídos desde data/productos.csv
+[2025-09-29 12:24:41] WARN - CARGAR_CATEGORIAS_CSV - ADVERTENCIA - CARGAR_CATEGORIAS_CSV: No se encontraron categorías válidas en el archivo
+[2025-09-29 12:24:48] INFO - CREAR_MULTIPLES_PRODUCTOS - OPERACIÓN EXITOSA - CREAR_MULTIPLES_PRODUCTOS: Creados 1000 de 1000 productos
+[2025-09-29 12:24:48] INFO - CARGAR_PRODUCTOS_CSV - OPERACIÓN EXITOSA - CARGAR_PRODUCTOS_CSV: Cargados 1000 productos de 1000 leídos desde data/productos.csv
+[2025-09-29 12:25:19] WARN - CARGAR_CATEGORIAS_CSV - ADVERTENCIA - CARGAR_CATEGORIAS_CSV: No se encontraron categorías válidas en el archivo
+[2025-09-29 12:25:24] INFO - CREAR_MULTIPLES_PRODUCTOS - OPERACIÓN EXITOSA - CREAR_MULTIPLES_PRODUCTOS: Creados 1000 de 1000 productos
+[2025-09-29 12:25:24] INFO - CARGAR_PRODUCTOS_CSV - OPERACIÓN EXITOSA - CARGAR_PRODUCTOS_CSV: Cargados 1000 productos de 1000 leídos desde data/productos.csv
+[2025-09-29 12:30:17] WARN - CARGAR_CATEGORIAS_CSV - ADVERTENCIA - CARGAR_CATEGORIAS_CSV: No se encontraron categorías válidas en el archivo
+[2025-09-29 12:30:22] INFO - CREAR_MULTIPLES_PRODUCTOS - OPERACIÓN EXITOSA - CREAR_MULTIPLES_PRODUCTOS: Creados 1000 de 1000 productos
+[2025-09-29 12:30:22] INFO - CARGAR_PRODUCTOS_CSV - OPERACIÓN EXITOSA - CARGAR_PRODUCTOS_CSV: Cargados 1000 productos de 1000 leídos desde data/productos.csv
+[2025-09-29 12:35:53] WARN - CARGAR_CATEGORIAS_CSV - ADVERTENCIA - CARGAR_CATEGORIAS_CSV: No se encontraron categorías válidas en el archivo
+[2025-09-29 12:36:01] INFO - CREAR_MULTIPLES_PRODUCTOS - OPERACIÓN EXITOSA - CREAR_MULTIPLES_PRODUCTOS: Creados 1000 de 1000 productos
+[2025-09-29 12:36:01] INFO - CARGAR_PRODUCTOS_CSV - OPERACIÓN EXITOSA - CARGAR_PRODUCTOS_CSV: Cargados 1000 productos de 1000 leídos desde data/productos.csv
+[2025-09-29 12:43:31] WARN - CARGAR_CATEGORIAS_CSV - ADVERTENCIA - CARGAR_CATEGORIAS_CSV: No se encontraron categorías válidas en el archivo
+[2025-09-29 12:43:37] INFO - CREAR_MULTIPLES_PRODUCTOS - OPERACIÓN EXITOSA - CREAR_MULTIPLES_PRODUCTOS: Creados 1000 de 1000 productos
+[2025-09-29 12:43:37] INFO - CARGAR_PRODUCTOS_CSV - OPERACIÓN EXITOSA - CARGAR_PRODUCTOS_CSV: Cargados 1000 productos de 1000 leídos desde data/productos.csv
+[2025-09-30 14:43:29] WARN - CARGAR_CATEGORIAS_CSV - ADVERTENCIA - CARGAR_CATEGORIAS_CSV: No se encontraron categorías válidas en el archivo
+[2025-09-30 14:43:32] INFO - CREAR_MULTIPLES_PRODUCTOS - OPERACIÓN EXITOSA - CREAR_MULTIPLES_PRODUCTOS: Creados 1000 de 1000 productos
+[2025-09-30 14:43:32] INFO - CARGAR_PRODUCTOS_CSV - OPERACIÓN EXITOSA - CARGAR_PRODUCTOS_CSV: Cargados 1000 productos de 1000 leídos desde data/productos.csv
+[2025-09-30 14:46:35] WARN - CARGAR_CATEGORIAS_CSV - ADVERTENCIA - CARGAR_CATEGORIAS_CSV: No se encontraron categorías válidas en el archivo
+[2025-09-30 14:46:35] INFO - CREAR_MULTIPLES_PRODUCTOS - OPERACIÓN EXITOSA - CREAR_MULTIPLES_PRODUCTOS: Creados 1000 de 1000 productos
+[2025-09-30 14:46:35] INFO - CARGAR_PRODUCTOS_CSV - OPERACIÓN EXITOSA - CARGAR_PRODUCTOS_CSV: Cargados 1000 productos
+[2025-09-30 15:02:41] WARN - CARGAR_CATEGORIAS_CSV - ADVERTENCIA - CARGAR_CATEGORIAS_CSV: No se encontraron categorías válidas en el archivo
+[2025-09-30 15:02:43] INFO - CREAR_MULTIPLES_PRODUCTOS - OPERACIÓN EXITOSA - CREAR_MULTIPLES_PRODUCTOS: Creados 1000 de 1000 productos
+[2025-09-30 15:02:43] INFO - CARGAR_PRODUCTOS_CSV - OPERACIÓN EXITOSA - CARGAR_PRODUCTOS_CSV: Cargados 1000 productos
