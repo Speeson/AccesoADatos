@@ -154,7 +154,7 @@ sistema-inventario/
 
 2. **Clonar o descargar el proyecto**
    ```bash
-   git clone [URL_DEL_REPOSITORIO]
+   git clone https://github.com/Speeson/AccesoADatos/tree/master/inventario_git
    cd sistema-inventario
    ```
 

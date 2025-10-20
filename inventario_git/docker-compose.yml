@@ -3,6 +3,7 @@ services:
     image: mysql:8.0
     container_name: inventario_mysql
     environment:
+      TZ: Europe/Madrid
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: inventario_db
       MYSQL_USER: inventario_user
@@ -37,6 +38,7 @@ services:
     depends_on:
       - mysql
     environment:
+      TZ: Europe/Madrid
       DB_HOST: mysql
       DB_PORT: 3306  # Interno sigue siendo 3306
       DB_NAME: inventario_db

@@ -1,0 +1,19 @@
+[2025-10-02 18:57:39] INFO  com.inventario.Main - Iniciando Sistema de Inventario
+[2025-10-02 18:57:39] INFO  com.inventario.Main - Inicializando servicios...
+[2025-10-02 18:57:39] INFO  com.inventario.util.DatabaseConfig - Configuración de base de datos inicializada: mysql:3306/inventario_db
+[2025-10-02 18:57:39] INFO  com.inventario.Main - Servicios inicializados correctamente
+[2025-10-02 18:57:39] INFO  com.inventario.Main - Verificando conexión a la base de datos...
+[2025-10-02 18:57:40] INFO  com.inventario.Main - Conexión a la base de datos establecida correctamente
+[2025-10-02 18:57:40] INFO  com.inventario.Main - Verificando si es necesario cargar datos iniciales...
+[2025-10-02 18:57:40] INFO  com.inventario.Main - Los datos ya existen. Productos en BD: 999. Saltando carga de CSV.
+[2025-10-02 19:09:34] INFO  com.inventario.Main - Iniciando Sistema de Inventario
+[2025-10-02 19:09:34] INFO  com.inventario.Main - Inicializando servicios...
+[2025-10-02 19:09:34] INFO  com.inventario.util.DatabaseConfig - Configuración de base de datos inicializada: mysql:3306/inventario_db
+[2025-10-02 19:09:34] INFO  com.inventario.Main - Servicios inicializados correctamente
+[2025-10-02 19:09:34] INFO  com.inventario.Main - Verificando conexión a la base de datos...
+[2025-10-02 19:09:34] INFO  com.inventario.Main - Conexión a la base de datos establecida correctamente
+[2025-10-02 19:09:34] INFO  com.inventario.Main - Verificando si es necesario cargar datos iniciales...
+[2025-10-02 19:09:35] INFO  com.inventario.Main - Los datos ya existen. Productos en BD: 999. Saltando carga de CSV.
+[2025-10-02 19:10:39] INFO  com.inventario.util.LogUtil - OPERACIÓN EXITOSA - ACTUALIZAR_CATEGORIA: Categoría actualizada: Deportes (ID: 6)
+[2025-10-02 19:10:39] INFO  com.inventario.util.LogUtil - OPERACIÓN EXITOSA - ACTUALIZAR_CATEGORIA: Categoría actualizada: Deportes (ID: 6)
+[2025-10-02 19:10:50] INFO  com.inventario.Main - Sistema de Inventario finalizado

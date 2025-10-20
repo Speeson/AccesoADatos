@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    
+    <!-- Propiedades para rutas y formatos -->
+    <property name="LOG_PATH" value="logs" />
+    <property name="LOG_PATTERN" value="[%d{yyyy-MM-dd HH:mm:ss, Europe/Madrid}] %-5level %logger{36} - %msg%n" />
+    <property name="LOG_PATTERN_ERROR" value="[%d{yyyy-MM-dd HH:mm:ss, Europe/Madrid}] %-5level %logger{36} - %msg%n%ex{full}" />
+    
+    <!-- Appender para consola -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS, Europe/Madrid} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <!-- Appender para log general (inventario.log) -->
+    <appender name="FILE_GENERAL" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/inventario.log</file>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        
+        <!-- Política de rotación -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- Rotación diaria -->
+            <fileNamePattern>${LOG_PATH}/inventario.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- Retención de 30 días -->
+            <maxHistory>30</maxHistory>
+            <!-- Tamaño total máximo de logs -->
+            <totalSizeCap>500MB</totalSizeCap>
+        </rollingPolicy>
+        
+        <!-- Política de tamaño -->
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+    </appender>
+    
+    <!-- Appender para errores (errores.log) -->
+    <appender name="FILE_ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/errores.log</file>
+        <encoder>
+            <pattern>${LOG_PATTERN_ERROR}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        
+        <!-- Solo captura errores -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/errores.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- Retención de 90 días para errores -->
+            <maxHistory>90</maxHistory>
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
+        
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+    </appender>
+    
+    <!-- Appender para actividades (actividades.log) -->
+    <appender name="FILE_ACTIVIDADES" class="ch.qos.logback.core.FileAppender">
+        <file>${LOG_PATH}/actividades.log</file>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss, Europe/Madrid}] [%-5level] %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <!-- Append mode - no sobrescribe -->
+        <append>true</append>
+    </appender>
+    
+    <!-- Appender para reportes de operaciones (reportes_operaciones.log) -->
+    <appender name="FILE_REPORTES" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/reportes_operaciones.log</file>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss, Europe/Madrid}] %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/reportes_operaciones.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+    </appender>
+    
+    <!-- Logger específico para DatabaseConfig -->
+    <logger name="com.inventario.util.DatabaseConfig" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE_GENERAL" />
+    </logger>
+    
+    <!-- Logger para servicios (captura actividades) -->
+    <logger name="com.inventario.service" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE_GENERAL" />
+        <appender-ref ref="FILE_ACTIVIDADES" />
+        <appender-ref ref="FILE_ERROR" />
+    </logger>
+    
+    <!-- Logger para DAO -->
+    <logger name="com.inventario.dao" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE_GENERAL" />
+        <appender-ref ref="FILE_ERROR" />
+    </logger>
+    
+    <!-- Logger para utilidades -->
+    <logger name="com.inventario.util" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE_GENERAL" />
+        <appender-ref ref="FILE_ERROR" />
+    </logger>
+    
+    <!-- Logger para reportes de operaciones -->
+    <logger name="com.inventario.reportes" level="INFO" additivity="false">
+        <appender-ref ref="FILE_REPORTES" />
+    </logger>
+    
+    <!-- Logger raíz - nivel por defecto -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE_GENERAL" />
+        <appender-ref ref="FILE_ERROR" />
+    </root>
+    
+</configuration>
