@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inventario xmlns="http://inventario.dam.es" 
+            fechaExportacion="2025-10-20T14:30:00" 
+            version="2.0">
+    <categorias>
+        <categoria>
+            <idCategoria>1</idCategoria>
+            <nombre>Electronica</nombre>
+            <descripcion>Dispositivos electrónicos y accesorios</descripcion>
+            <fechaCreacion>2025-01-01T08:00:00</fechaCreacion>
+            <fechaModificacion>2025-01-01T08:00:00</fechaModificacion>
+        </categoria>
+        <categoria>
+            <idCategoria>2</idCategoria>
+            <nombre>Ropa</nombre>
+            <descripcion>Prendas de vestir y complementos</descripcion>
+            <fechaCreacion>2025-01-01T08:00:00</fechaCreacion>
+            <fechaModificacion>2025-01-01T08:00:00</fechaModificacion>
+        </categoria>
+        <categoria>
+            <idCategoria>3</idCategoria>
+            <nombre>Informatica</nombre>
+            <descripcion>Equipos y accesorios informáticos</descripcion>
+            <fechaCreacion>2025-01-01T08:00:00</fechaCreacion>
+            <fechaModificacion>2025-01-01T08:00:00</fechaModificacion>
+        </categoria>
+    </categorias>
+    <productos>
+        <producto>
+            <idProducto>1</idProducto>
+            <nombre>Laptop HP Pavilion</nombre>
+            <categoria>Informatica</categoria>
+            <precio>599.99</precio>
+            <stock>15</stock>
+            <fechaCreacion>2025-01-15T10:00:00</fechaCreacion>
+            <fechaModificacion>2025-02-10T15:45:00</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>2</idProducto>
+            <nombre>Mouse Logitech MX Master</nombre>
+            <categoria>Informatica</categoria>
+            <precio>89.99</precio>
+            <stock>45</stock>
+            <fechaCreacion>2025-01-20T11:30:00</fechaCreacion>
+            <fechaModificacion>2025-03-01T16:20:00</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>3</idProducto>
+            <nombre>Teclado Mecánico RGB</nombre>
+            <categoria>Informatica</categoria>
+            <precio>129.99</precio>
+            <stock>30</stock>
+            <fechaCreacion>2025-02-01T09:15:00</fechaCreacion>
+            <fechaModificacion>2025-02-01T09:15:00</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>4</idProducto>
+            <nombre>Smartphone Samsung Galaxy</nombre>
+            <categoria>Electronica</categoria>
+            <precio>699.99</precio>
+            <stock>25</stock>
+            <fechaCreacion>2025-02-10T14:00:00</fechaCreacion>
+            <fechaModificacion>2025-03-10T14:30:00</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>5</idProducto>
+            <nombre>Camiseta Deportiva Nike</nombre>
+            <categoria>Ropa</categoria>
+            <precio>34.99</precio>
+            <stock>100</stock>
+            <fechaCreacion>2025-02-15T10:00:00</fechaCreacion>
+            <fechaModificacion>2025-02-15T10:00:00</fechaModificacion>
+        </producto>
+    </productos>
+    <movimientos>
+        <movimiento>
+            <idMovimiento>1</idMovimiento>
+            <idProducto>1</idProducto>
+            <tipoMovimiento>ENTRADA</tipoMovimiento>
+            <cantidad>20</cantidad>
+            <stockAnterior>0</stockAnterior>
+            <stockNuevo>20</stockNuevo>
+            <motivo>Stock inicial</motivo>
+            <fechaMovimiento>2025-01-15T10:30:00</fechaMovimiento>
+            <usuario>admin</usuario>
+        </movimiento>
+        <movimiento>
+            <idMovimiento>2</idMovimiento>
+            <idProducto>1</idProducto>
+            <tipoMovimiento>SALIDA</tipoMovimiento>
+            <cantidad>5</cantidad>
+            <stockAnterior>20</stockAnterior>
+            <stockNuevo>15</stockNuevo>
+            <motivo>Venta al cliente corporativo XYZ</motivo>
+            <fechaMovimiento>2025-02-10T15:45:00</fechaMovimiento>
+            <usuario>vendedor1</usuario>
+        </movimiento>
+        <movimiento>
+            <idMovimiento>3</idMovimiento>
+            <idProducto>2</idProducto>
+            <tipoMovimiento>ENTRADA</tipoMovimiento>
+            <cantidad>50</cantidad>
+            <stockAnterior>0</stockAnterior>
+            <stockNuevo>50</stockNuevo>
+            <motivo>Compra a proveedor TechSupply</motivo>
+            <fechaMovimiento>2025-01-20T12:00:00</fechaMovimiento>
+            <usuario>admin</usuario>
+        </movimiento>
+        <movimiento>
+            <idMovimiento>4</idMovimiento>
+            <idProducto>2</idProducto>
+            <tipoMovimiento>SALIDA</tipoMovimiento>
+            <cantidad>5</cantidad>
+            <stockAnterior>50</stockAnterior>
+            <stockNuevo>45</stockNuevo>
+            <motivo>Venta minorista</motivo>
+            <fechaMovimiento>2025-03-01T16:20:00</fechaMovimiento>
+            <usuario>vendedor2</usuario>
+        </movimiento>
+        <movimiento>
+            <idMovimiento>5</idMovimiento>
+            <idProducto>3</idProducto>
+            <tipoMovimiento>ENTRADA</tipoMovimiento>
+            <cantidad>30</cantidad>
+            <stockAnterior>0</stockAnterior>
+            <stockNuevo>30</stockNuevo>
+            <motivo>Stock inicial</motivo>
+            <fechaMovimiento>2025-02-01T09:30:00</fechaMovimiento>
+            <usuario>admin</usuario>
+        </movimiento>
+        <movimiento>
+            <idMovimiento>6</idMovimiento>
+            <idProducto>4</idProducto>
+            <tipoMovimiento>ENTRADA</tipoMovimiento>
+            <cantidad>30</cantidad>
+            <stockAnterior>0</stockAnterior>
+            <stockNuevo>30</stockNuevo>
+            <motivo>Nuevo producto en catálogo</motivo>
+            <fechaMovimiento>2025-02-10T14:30:00</fechaMovimiento>
+            <usuario>admin</usuario>
+        </movimiento>
+        <movimiento>
+            <idMovimiento>7</idMovimiento>
+            <idProducto>4</idProducto>
+            <tipoMovimiento>SALIDA</tipoMovimiento>
+            <cantidad>5</cantidad>
+            <stockAnterior>30</stockAnterior>
+            <stockNuevo>25</stockNuevo>
+            <motivo>Venta corporativa</motivo>
+            <fechaMovimiento>2025-03-10T14:30:00</fechaMovimiento>
+            <usuario>vendedor1</usuario>
+        </movimiento>
+        <movimiento>
+            <idMovimiento>8</idMovimiento>
+            <idProducto>5</idProducto>
+            <tipoMovimiento>ENTRADA</tipoMovimiento>
+            <cantidad>100</cantidad>
+            <stockAnterior>0</stockAnterior>
+            <stockNuevo>100</stockNuevo>
+            <motivo>Temporada deportiva</motivo>
+            <fechaMovimiento>2025-02-15T10:30:00</fechaMovimiento>
+            <usuario>sistema</usuario>
+        </movimiento>
+    </movimientos>
+</inventario>

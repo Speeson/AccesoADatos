@@ -1,0 +1,15 @@
+com\inventario\util\DatabaseConfig.class
+com\inventario\dao\CategoriaDAO.class
+com\inventario\service\impl\InventarioServiceImpl.class
+com\inventario\model\Categoria.class
+com\inventario\util\CsvUtil.class
+com\inventario\util\JsonUtil.class
+com\inventario\xml\XMLManager.class
+com\inventario\xml\TestXMLManager.class
+com\inventario\dao\impl\CategoriaDAOImpl.class
+com\inventario\dao\ProductoDAO.class
+com\inventario\service\InventarioService.class
+com\inventario\dao\impl\ProductoDAOImpl.class
+com\inventario\model\Producto.class
+com\inventario\Main.class
+com\inventario\util\LogUtil.class

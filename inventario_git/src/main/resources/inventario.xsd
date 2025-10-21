@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://inventario.dam.es"
+           xmlns:inv="http://inventario.dam.es"
+           elementFormDefault="qualified">
+    
+    <!-- Elemento raíz -->
+    <xs:element name="inventario">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="categorias" type="inv:categoriasType" minOccurs="0"/>
+                <xs:element name="productos" type="inv:productosType"/>
+                <xs:element name="movimientos" type="inv:movimientosType" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute name="fechaExportacion" type="xs:dateTime" use="required"/>
+            <xs:attribute name="version" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <!-- Tipo para la lista de categorías -->
+    <xs:complexType name="categoriasType">
+        <xs:sequence>
+            <xs:element name="categoria" type="inv:categoriaType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- Tipo para una categoría -->
+    <xs:complexType name="categoriaType">
+        <xs:sequence>
+            <xs:element name="idCategoria" type="xs:int"/>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+            <xs:element name="fechaCreacion" type="xs:dateTime"/>
+            <xs:element name="fechaModificacion" type="xs:dateTime"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- Tipo para la lista de productos -->
+    <xs:complexType name="productosType">
+        <xs:sequence>
+            <xs:element name="producto" type="inv:productoType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- Tipo para un producto - ESTRUCTURA COMPLETA SEGÚN 01-init.sql -->
+    <xs:complexType name="productoType">
+        <xs:sequence>
+            <xs:element name="idProducto" type="xs:int"/>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="categoria" type="xs:string"/>
+            <xs:element name="precio" type="xs:decimal"/>
+            <xs:element name="stock" type="xs:int"/>
+            <xs:element name="fechaCreacion" type="xs:dateTime"/>
+            <xs:element name="fechaModificacion" type="xs:dateTime"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- Tipo para la lista de movimientos -->
+    <xs:complexType name="movimientosType">
+        <xs:sequence>
+            <xs:element name="movimiento" type="inv:movimientoType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- Tipo para un movimiento - ESTRUCTURA COMPLETA SEGÚN 01-init.sql -->
+    <xs:complexType name="movimientoType">
+        <xs:sequence>
+            <xs:element name="idMovimiento" type="xs:int"/>
+            <xs:element name="idProducto" type="xs:int"/>
+            <xs:element name="tipoMovimiento" type="inv:tipoMovimientoType"/>
+            <xs:element name="cantidad" type="xs:int"/>
+            <xs:element name="stockAnterior" type="xs:int"/>
+            <xs:element name="stockNuevo" type="xs:int"/>
+            <xs:element name="motivo" type="xs:string" minOccurs="0"/>
+            <xs:element name="fechaMovimiento" type="xs:dateTime"/>
+            <xs:element name="usuario" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- Tipo restringido para movimientos: solo ENTRADA o SALIDA -->
+    <xs:simpleType name="tipoMovimientoType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ENTRADA"/>
+            <xs:enumeration value="SALIDA"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+</xs:schema>
