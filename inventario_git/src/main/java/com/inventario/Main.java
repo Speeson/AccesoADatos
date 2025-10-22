@@ -11,19 +11,25 @@ import com.inventario.service.impl.InventarioServiceImpl;
 import com.inventario.util.DatabaseConfig;
 import com.inventario.util.JsonUtil;
 import com.inventario.util.LogUtil;
+import com.inventario.xml.XMLManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.sql.Connection;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
 /**
- * Clase principal del sistema de inventario
+ * Clase principal del sistema de inventario - Versión 2.0
+ * Incluye funcionalidades de backup y restauración XML
  */
 public class Main {
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
     private static final Scanner scanner = new Scanner(System.in);
     private static InventarioService inventarioService;
+    private static XMLManager xmlManager;
+    private static Connection connection;
     
     public static void main(String[] args) {
         logger.info("Iniciando Sistema de Inventario");
@@ -37,6 +43,9 @@ public class Main {
                 logger.error("No se pudo conectar a la base de datos. Saliendo...");
                 return;
             }
+            
+            // Inicializar XMLManager
+            inicializarXMLManager();
             
             // Cargar datos iniciales desde CSV
             cargarDatosIniciales();
@@ -64,6 +73,17 @@ public class Main {
         inventarioService = new InventarioServiceImpl(categoriaDAO, productoDAO);
         
         logger.info("Servicios inicializados correctamente");
+    }
+    
+    private static void inicializarXMLManager() {
+        try {
+            DatabaseConfig dbConfig = DatabaseConfig.getInstance();
+            connection = dbConfig.getConnection();
+            xmlManager = new XMLManager(connection);
+            logger.info("XMLManager inicializado correctamente");
+        } catch (Exception e) {
+            logger.error("Error al inicializar XMLManager", e);
+        }
     }
     
     private static boolean verificarConexionBD() {
@@ -121,6 +141,7 @@ public class Main {
                     case 4 -> generarReportes();
                     case 5 -> exportarDatos();
                     case 6 -> mostrarEstadisticas();
+                    case 7 -> gestionarBackupRestauracion();
                     case 0 -> {
                         continuar = false;
                         System.out.println("¡Gracias por usar el Sistema de Inventario!");
@@ -139,7 +160,7 @@ public class Main {
     
     private static void mostrarMenuPrincipal() {
         System.out.println("\n" + "=".repeat(50));
-        System.out.println("           SISTEMA DE INVENTARIO");
+        System.out.println("       SISTEMA DE INVENTARIO - v2.0");
         System.out.println("=".repeat(50));
         System.out.println("1. Gestionar Productos");
         System.out.println("2. Gestionar Categorías");
@@ -147,10 +168,168 @@ public class Main {
         System.out.println("4. Generar Reportes");
         System.out.println("5. Exportar Datos");
         System.out.println("6. Ver Estadísticas");
+        System.out.println("7. Backup y Restauración (XML)");
         System.out.println("0. Salir");
         System.out.println("=".repeat(50));
         System.out.print("Seleccione una opción: ");
     }
+    
+    // ========== NUEVA FUNCIONALIDAD: BACKUP Y RESTAURACIÓN XML ==========
+    
+    private static void gestionarBackupRestauracion() {
+        System.out.println("\n╔════════════════════════════════════════╗");
+        System.out.println("║   BACKUP Y RESTAURACIÓN XML            ║");
+        System.out.println("╚════════════════════════════════════════╝");
+        System.out.println("1. Crear backup completo (XML)");
+        System.out.println("2. Restaurar desde backup (XML)");
+        System.out.println("3. Validar archivo XML");
+        System.out.println("4. Backup automático con validación");
+        System.out.println("0. Volver al menú principal");
+        System.out.print("Seleccione una opción: ");
+        
+        try {
+            int opcion = Integer.parseInt(scanner.nextLine());
+            
+            switch (opcion) {
+                case 1 -> crearBackupXML();
+                case 2 -> restaurarDesdeBackupXML();
+                case 3 -> validarArchivoXML();
+                case 4 -> backupAutomaticoConValidacion();
+                case 0 -> System.out.println("Volviendo al menú principal...");
+                default -> System.out.println("Opción no válida.");
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            logger.error("Error en gestión de backup/restauración", e);
+        }
+    }
+    
+    private static void crearBackupXML() {
+        System.out.print("\nNombre del archivo (Enter para usar nombre automático): ");
+        String nombre = scanner.nextLine().trim();
+        
+        String ruta;
+        if (nombre.isEmpty()) {
+            String fecha = LocalDate.now().toString();
+            ruta = "backups/inventario_" + fecha + ".xml";
+        } else {
+            if (!nombre.endsWith(".xml")) {
+                nombre += ".xml";
+            }
+            ruta = "backups/" + nombre;
+        }
+        
+        System.out.println("\n→ Creando backup del inventario...");
+        
+        if (xmlManager.exportarInventarioXML(ruta)) {
+            System.out.println("✓ Backup creado exitosamente: " + ruta);
+            logger.info("Backup XML creado: {}", ruta);
+        } else {
+            System.out.println("✗ Error al crear el backup");
+            logger.error("Error al crear backup XML: {}", ruta);
+        }
+    }
+    
+    private static void restaurarDesdeBackupXML() {
+        System.out.print("\nNombre del archivo XML (en backups/) o ruta completa: ");
+        String input = scanner.nextLine().trim();
+        
+        String rutaXML;
+        if (input.isEmpty()) {
+            // Si no escribe nada, usar el último backup con fecha de hoy
+            String fecha = LocalDate.now().toString();
+            rutaXML = "backups/inventario_" + fecha + ".xml";
+            System.out.println("Usando backup de hoy: " + rutaXML);
+        } else if (input.contains("/") || input.contains("\\")) {
+            // Si contiene separadores de ruta, usar como ruta completa
+            rutaXML = input;
+        } else {
+            // Si solo es un nombre, buscar en backups/
+            if (!input.endsWith(".xml")) {
+                input += ".xml";
+            }
+            rutaXML = "backups/" + input;
+            System.out.println("Buscando en: " + rutaXML);
+        }
+        
+        System.out.print("\n⚠️  ¿Desea LIMPIAR todas las tablas antes de restaurar? (S/N): ");
+        String respuesta = scanner.nextLine().trim().toUpperCase();
+        boolean limpiar = respuesta.equals("S") || respuesta.equals("SI") || respuesta.equals("SÍ");
+        
+        if (limpiar) {
+            System.out.print("⚠️  ADVERTENCIA: Se eliminarán TODOS los datos actuales. ¿Confirma? (S/N): ");
+            String confirmacion = scanner.nextLine().trim().toUpperCase();
+            if (!confirmacion.equals("S") && !confirmacion.equals("SI") && !confirmacion.equals("SÍ")) {
+                System.out.println("Restauración cancelada");
+                return;
+            }
+        }
+        
+        System.out.println("\n→ Restaurando inventario desde XML...");
+        
+        if (xmlManager.importarInventarioXML(rutaXML, "src/main/resources/inventario.xsd", limpiar)) {
+            System.out.println("✓ Inventario restaurado exitosamente");
+            logger.info("Inventario restaurado desde: {}", rutaXML);
+        } else {
+            System.out.println("✗ Error al restaurar el inventario");
+            logger.error("Error al restaurar desde: {}", rutaXML);
+        }
+    }
+    
+    private static void validarArchivoXML() {
+        System.out.print("\nNombre del archivo XML (en backups/) o ruta completa: ");
+        String input = scanner.nextLine().trim();
+        
+        String rutaXML;
+        if (input.isEmpty()) {
+            String fecha = LocalDate.now().toString();
+            rutaXML = "backups/inventario_" + fecha + ".xml";
+            System.out.println("Usando backup de hoy: " + rutaXML);
+        } else if (input.contains("/") || input.contains("\\")) {
+            rutaXML = input;
+        } else {
+            if (!input.endsWith(".xml")) {
+                input += ".xml";
+            }
+            rutaXML = "backups/" + input;
+            System.out.println("Buscando en: " + rutaXML);
+        }
+        
+        System.out.println("\n→ Validando archivo XML...");
+        
+        if (xmlManager.validarXML(rutaXML, "src/main/resources/inventario.xsd")) {
+            System.out.println("✓ El archivo XML es válido");
+        } else {
+            System.out.println("✗ El archivo XML NO es válido");
+        }
+    }
+    
+    private static void backupAutomaticoConValidacion() {
+        String fecha = LocalDate.now().toString();
+        String ruta = "backups/inventario_" + fecha + ".xml";
+        
+        System.out.println("\n→ Proceso automático: Backup + Validación");
+        System.out.println("→ Creando backup...");
+        
+        if (xmlManager.exportarInventarioXML(ruta)) {
+            System.out.println("✓ Backup creado: " + ruta);
+            
+            System.out.println("\n→ Validando backup...");
+            if (xmlManager.validarXML(ruta, "src/main/resources/inventario.xsd")) {
+                System.out.println("✓ Backup validado correctamente");
+                System.out.println("\n✓ Proceso completado exitosamente");
+                logger.info("Backup automático creado y validado: {}", ruta);
+            } else {
+                System.out.println("✗ El backup generado no es válido");
+                logger.warn("Backup creado pero la validación falló: {}", ruta);
+            }
+        } else {
+            System.out.println("✗ Error al crear el backup");
+        }
+    }
+    
+    // ========== GESTIÓN DE PRODUCTOS ==========
     
     private static void gestionarProductos() {
         System.out.println("\n--- GESTIÓN DE PRODUCTOS ---");
@@ -353,6 +532,8 @@ public class Main {
         }
     }
     
+    // ========== GESTIÓN DE CATEGORÍAS ==========
+    
     private static void gestionarCategorias() {
         System.out.println("\n--- GESTIÓN DE CATEGORÍAS ---");
         System.out.println("1. Listar todas las categorías");
@@ -485,6 +666,8 @@ public class Main {
         }
     }
     
+    // ========== GESTIÓN DE STOCK ==========
+    
     private static void gestionarStock() {
         System.out.println("\n--- GESTIÓN DE STOCK ---");
         System.out.println("1. Ver productos con stock bajo");
@@ -605,6 +788,8 @@ public class Main {
         }
     }
     
+    // ========== GENERAR REPORTES ==========
+    
     private static void generarReportes() {
         System.out.println("\n--- GENERAR REPORTES ---");
         System.out.println("1. Reporte de productos con stock bajo (JSON)");
@@ -668,6 +853,8 @@ public class Main {
         }
     }
     
+    // ========== EXPORTAR DATOS ==========
+    
     private static void exportarDatos() {
         System.out.println("\n--- EXPORTAR DATOS ---");
         System.out.println("1. Exportar todos los productos a JSON");
@@ -722,6 +909,8 @@ public class Main {
         }
     }
     
+    // ========== ESTADÍSTICAS ==========
+    
     private static void mostrarEstadisticas() {
         try {
             System.out.println("\n--- ESTADÍSTICAS DEL INVENTARIO ---");
@@ -742,6 +931,8 @@ public class Main {
             System.out.println("Error al obtener estadísticas: " + e.getMessage());
         }
     }
+    
+    // ========== UTILIDADES ==========
     
     private static void mostrarDetalleProducto(Producto producto) {
         System.out.println("ID: " + producto.getIdProducto());

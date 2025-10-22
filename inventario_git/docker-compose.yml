@@ -47,6 +47,7 @@ services:
     volumes:
       - ./data:/app/data
       - ./logs:/app/logs
+      - ./backups:/app/backups
     networks:
       - inventario_network
     stdin_open: true

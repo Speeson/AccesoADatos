@@ -62,3 +62,72 @@ java.lang.NumberFormatException: For input string: "5,"Alimentacion""
 	at java.base/java.lang.Thread.run(Thread.java:833)
 [2025-10-20 22:49:27] ERROR com.inventario.Main - Error al conectar con la base de datos
 [2025-10-20 22:49:27] ERROR com.inventario.Main - No se pudo conectar a la base de datos. Saliendo...
+[2025-10-22 16:34:08] ERROR com.inventario.Main - Error al crear backup XML: backups/inventario_backup2.xml
+[2025-10-22 16:34:50] ERROR com.inventario.Main - Error al crear backup XML: backups/inventario_backup.xml
+[2025-10-22 16:35:47] ERROR com.inventario.Main - Error al crear backup XML: backups/inventario_backup.xml
+[2025-10-22 16:36:38] ERROR com.inventario.Main - Error al crear backup XML: backups/backups/inventario_backup.xml
+[2025-10-22 16:37:08] ERROR com.inventario.Main - Error al crear backup XML: backups/inventario_2025-10-22.xml
+[2025-10-22 16:37:20] ERROR com.inventario.Main - Error al crear backup XML: backups/inventario_backup.xml
+[2025-10-22 16:46:50] ERROR com.inventario.Main - Error al restaurar desde: inventario_backup.xml
+[2025-10-22 17:00:42] ERROR com.inventario.Main - Error al restaurar desde: inventario_backup.xml
+[2025-10-22 17:01:44] ERROR com.inventario.util.CsvUtil - Línea 2: Error al procesar - For input string: "1,"Electronica""
+java.lang.NumberFormatException: For input string: "1,"Electronica""
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:668)
+	at java.base/java.lang.Integer.parseInt(Integer.java:786)
+	at com.inventario.util.CsvUtil.parsearCategoria(CsvUtil.java:185)
+	at com.inventario.util.CsvUtil.leerCategoriasCSV(CsvUtil.java:102)
+	at com.inventario.service.impl.InventarioServiceImpl.cargarCategoriasDesdeCSV(InventarioServiceImpl.java:249)
+	at com.inventario.Main.cargarDatosIniciales(Main.java:114)
+	at com.inventario.Main.main(Main.java:51)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+[2025-10-22 17:01:44] ERROR com.inventario.util.CsvUtil - Línea 3: Error al procesar - For input string: "2,"Ropa""
+java.lang.NumberFormatException: For input string: "2,"Ropa""
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:668)
+	at java.base/java.lang.Integer.parseInt(Integer.java:786)
+	at com.inventario.util.CsvUtil.parsearCategoria(CsvUtil.java:185)
+	at com.inventario.util.CsvUtil.leerCategoriasCSV(CsvUtil.java:102)
+	at com.inventario.service.impl.InventarioServiceImpl.cargarCategoriasDesdeCSV(InventarioServiceImpl.java:249)
+	at com.inventario.Main.cargarDatosIniciales(Main.java:114)
+	at com.inventario.Main.main(Main.java:51)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+[2025-10-22 17:01:44] ERROR com.inventario.util.CsvUtil - Línea 4: Error al procesar - For input string: "3,"Informatica""
+java.lang.NumberFormatException: For input string: "3,"Informatica""
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:668)
+	at java.base/java.lang.Integer.parseInt(Integer.java:786)
+	at com.inventario.util.CsvUtil.parsearCategoria(CsvUtil.java:185)
+	at com.inventario.util.CsvUtil.leerCategoriasCSV(CsvUtil.java:102)
+	at com.inventario.service.impl.InventarioServiceImpl.cargarCategoriasDesdeCSV(InventarioServiceImpl.java:249)
+	at com.inventario.Main.cargarDatosIniciales(Main.java:114)
+	at com.inventario.Main.main(Main.java:51)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+[2025-10-22 17:01:44] ERROR com.inventario.util.CsvUtil - Línea 5: Error al procesar - For input string: "4,"Hogar""
+java.lang.NumberFormatException: For input string: "4,"Hogar""
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:668)
+	at java.base/java.lang.Integer.parseInt(Integer.java:786)
+	at com.inventario.util.CsvUtil.parsearCategoria(CsvUtil.java:185)
+	at com.inventario.util.CsvUtil.leerCategoriasCSV(CsvUtil.java:102)
+	at com.inventario.service.impl.InventarioServiceImpl.cargarCategoriasDesdeCSV(InventarioServiceImpl.java:249)
+	at com.inventario.Main.cargarDatosIniciales(Main.java:114)
+	at com.inventario.Main.main(Main.java:51)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+[2025-10-22 17:01:44] ERROR com.inventario.util.CsvUtil - Línea 6: Error al procesar - For input string: "5,"Alimentacion""
+java.lang.NumberFormatException: For input string: "5,"Alimentacion""
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:668)
+	at java.base/java.lang.Integer.parseInt(Integer.java:786)
+	at com.inventario.util.CsvUtil.parsearCategoria(CsvUtil.java:185)
+	at com.inventario.util.CsvUtil.leerCategoriasCSV(CsvUtil.java:102)
+	at com.inventario.service.impl.InventarioServiceImpl.cargarCategoriasDesdeCSV(InventarioServiceImpl.java:249)
+	at com.inventario.Main.cargarDatosIniciales(Main.java:114)
+	at com.inventario.Main.main(Main.java:51)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+[2025-10-22 17:02:07] ERROR com.inventario.Main - Error al restaurar desde: inventario_backup.xml

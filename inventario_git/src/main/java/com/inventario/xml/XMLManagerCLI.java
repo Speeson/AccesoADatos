@@ -8,7 +8,7 @@ import java.util.Scanner;
 /**
  * Clase de prueba para las funcionalidades de exportación/importación XML
  */
-public class TestXMLManager {
+public class XMLManagerCLI {
     
     // Configuración de la base de datos - AJUSTA SEGÚN TU CONFIGURACIÓN
     private static final String DB_URL = "jdbc:mysql://localhost:33061/inventario_db";

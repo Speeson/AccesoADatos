@@ -5,7 +5,7 @@ com\inventario\model\Categoria.class
 com\inventario\util\CsvUtil.class
 com\inventario\util\JsonUtil.class
 com\inventario\xml\XMLManager.class
-com\inventario\xml\TestXMLManager.class
+com\inventario\xml\XMLManagerCLI.class
 com\inventario\dao\impl\CategoriaDAOImpl.class
 com\inventario\dao\ProductoDAO.class
 com\inventario\service\InventarioService.class

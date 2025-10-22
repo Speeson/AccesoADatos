@@ -154,3 +154,15 @@ Línea 6: Error al procesar - For input string: "5,"Alimentacion""
 
 ==================================================
 
+=== ERRORES DE PROCESAMIENTO CSV ===
+Fecha: 2025-10-22 17:01:44
+Total errores: 5
+
+Línea 2: Error al procesar - For input string: "1,"Electronica""
+Línea 3: Error al procesar - For input string: "2,"Ropa""
+Línea 4: Error al procesar - For input string: "3,"Informatica""
+Línea 5: Error al procesar - For input string: "4,"Hogar""
+Línea 6: Error al procesar - For input string: "5,"Alimentacion""
+
+==================================================
+
