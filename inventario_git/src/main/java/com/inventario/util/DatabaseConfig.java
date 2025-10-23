@@ -16,7 +16,7 @@ public class DatabaseConfig {
     
     // Configuración por defecto (puede ser sobrescrita por variables de entorno)
     private static final String DEFAULT_HOST = "localhost";
-    private static final String DEFAULT_PORT = "3306";
+    private static final String DEFAULT_PORT = "33061";
     private static final String DEFAULT_DATABASE = "inventario_db";
     private static final String DEFAULT_USER = "inventario_user";
     private static final String DEFAULT_PASSWORD = "inventario_pass";
