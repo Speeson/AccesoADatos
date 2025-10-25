@@ -1,0 +1,5 @@
+TABLE_NAME	TOTAL_INDICES
+categorias	3
+logs_aplicacion	3
+movimientos_stock	6
+productos	10

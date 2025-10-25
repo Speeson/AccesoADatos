@@ -10,6 +10,8 @@ com\inventario\dao\impl\CategoriaDAOImpl.class
 com\inventario\dao\ProductoDAO.class
 com\inventario\service\InventarioService.class
 com\inventario\dao\impl\ProductoDAOImpl.class
+com\inventario\dao\impl\ConsultasAvanzadasDAOImpl.class
+com\inventario\dao\ConsultasAvanzadasDAO.class
 com\inventario\model\Producto.class
 com\inventario\Main.class
 com\inventario\util\LogUtil.class
