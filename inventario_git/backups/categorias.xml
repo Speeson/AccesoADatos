@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<inventario fechaExportacion="2025-10-26T20:38:24.2620574" version="2.0" xmlns="http://inventario.dam.es">
+    <categorias>
+        <categoria>
+            <idCategoria>1</idCategoria>
+            <nombre>Electronica</nombre>
+            <descripcion>Dispositivos electrÃ³nicos y accesorios</descripcion>
+            <fechaCreacion>2025-10-25T16:41:22</fechaCreacion>
+            <fechaModificacion>2025-10-25T16:41:22</fechaModificacion>
+        </categoria>
+        <categoria>
+            <idCategoria>2</idCategoria>
+            <nombre>Ropa</nombre>
+            <descripcion>Prendas de vestir y complementos</descripcion>
+            <fechaCreacion>2025-10-25T16:41:22</fechaCreacion>
+            <fechaModificacion>2025-10-25T16:41:22</fechaModificacion>
+        </categoria>
+        <categoria>
+            <idCategoria>3</idCategoria>
+            <nombre>Informatica</nombre>
+            <descripcion>Equipos y accesorios informÃ¡ticos</descripcion>
+            <fechaCreacion>2025-10-25T16:41:22</fechaCreacion>
+            <fechaModificacion>2025-10-25T16:41:22</fechaModificacion>
+        </categoria>
+        <categoria>
+            <idCategoria>4</idCategoria>
+            <nombre>Hogar</nombre>
+            <descripcion>ArtÃ­culos para el hogar</descripcion>
+            <fechaCreacion>2025-10-25T16:41:22</fechaCreacion>
+            <fechaModificacion>2025-10-25T16:41:22</fechaModificacion>
+        </categoria>
+        <categoria>
+            <idCategoria>5</idCategoria>
+            <nombre>Alimentacion</nombre>
+            <descripcion>Productos alimenticios</descripcion>
+            <fechaCreacion>2025-10-25T16:41:22</fechaCreacion>
+            <fechaModificacion>2025-10-25T16:41:22</fechaModificacion>
+        </categoria>
+        <categoria>
+            <idCategoria>6</idCategoria>
+            <nombre>Deportes</nombre>
+            <descripcion>Categoría creada automáticamente</descripcion>
+            <fechaCreacion>2025-10-25T16:42:01</fechaCreacion>
+            <fechaModificacion>2025-10-25T16:42:01</fechaModificacion>
+        </categoria>
+        <categoria>
+            <idCategoria>7</idCategoria>
+            <nombre>Juguetes</nombre>
+            <descripcion>Categoría creada automáticamente</descripcion>
+            <fechaCreacion>2025-10-25T16:42:01</fechaCreacion>
+            <fechaModificacion>2025-10-25T16:42:01</fechaModificacion>
+        </categoria>
+        <categoria>
+            <idCategoria>8</idCategoria>
+            <nombre>Libros</nombre>
+            <descripcion>Categoría creada automáticamente</descripcion>
+            <fechaCreacion>2025-10-25T16:42:01</fechaCreacion>
+            <fechaModificacion>2025-10-25T16:42:01</fechaModificacion>
+        </categoria>
+    </categorias>
+    <productos/>
+</inventario>

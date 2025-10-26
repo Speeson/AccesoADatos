@@ -1,0 +1,1143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<inventario fechaExportacion="2025-10-20T22:39:22.8311616" version="2.0" xmlns="http://inventario.dam.es">
+    <categorias>
+        <categoria>
+            <idCategoria>1</idCategoria>
+            <nombre>Electronica</nombre>
+            <descripcion>Dispositivos electrÃ³nicos y accesorios</descripcion>
+            <fechaCreacion>2025-10-20T18:47:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:47:38</fechaModificacion>
+        </categoria>
+        <categoria>
+            <idCategoria>2</idCategoria>
+            <nombre>Ropa</nombre>
+            <descripcion>Prendas de vestir y complementos</descripcion>
+            <fechaCreacion>2025-10-20T18:47:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:47:38</fechaModificacion>
+        </categoria>
+        <categoria>
+            <idCategoria>3</idCategoria>
+            <nombre>Informatica</nombre>
+            <descripcion>Equipos y accesorios informÃ¡ticos</descripcion>
+            <fechaCreacion>2025-10-20T18:47:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:47:38</fechaModificacion>
+        </categoria>
+        <categoria>
+            <idCategoria>4</idCategoria>
+            <nombre>Hogar</nombre>
+            <descripcion>ArtÃ­culos para el hogar</descripcion>
+            <fechaCreacion>2025-10-20T18:47:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:47:38</fechaModificacion>
+        </categoria>
+        <categoria>
+            <idCategoria>5</idCategoria>
+            <nombre>Alimentacion</nombre>
+            <descripcion>Productos alimenticios</descripcion>
+            <fechaCreacion>2025-10-20T18:47:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:47:38</fechaModificacion>
+        </categoria>
+        <categoria>
+            <idCategoria>6</idCategoria>
+            <nombre>Deportes</nombre>
+            <descripcion>Categoría creada automáticamente</descripcion>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </categoria>
+        <categoria>
+            <idCategoria>7</idCategoria>
+            <nombre>Juguetes</nombre>
+            <descripcion>Categoría creada automáticamente</descripcion>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </categoria>
+        <categoria>
+            <idCategoria>8</idCategoria>
+            <nombre>Libros</nombre>
+            <descripcion>Categoría creada automáticamente</descripcion>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </categoria>
+    </categorias>
+    <productos>
+        <producto>
+            <idProducto>1</idProducto>
+            <nombre>Auriculares 212</nombre>
+            <categoria>Electronica</categoria>
+            <precio>1322.25</precio>
+            <stock>423</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>2</idProducto>
+            <nombre>Gorra 629</nombre>
+            <categoria>Ropa</categoria>
+            <precio>745.71</precio>
+            <stock>116</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>3</idProducto>
+            <nombre>Portátil 670</nombre>
+            <categoria>Informatica</categoria>
+            <precio>1082.42</precio>
+            <stock>261</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>4</idProducto>
+            <nombre>Zapatos 881</nombre>
+            <categoria>Ropa</categoria>
+            <precio>1011.90</precio>
+            <stock>151</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>5</idProducto>
+            <nombre>Altavoz 997</nombre>
+            <categoria>Electronica</categoria>
+            <precio>1103.48</precio>
+            <stock>392</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>6</idProducto>
+            <nombre>Cojín 339</nombre>
+            <categoria>Hogar</categoria>
+            <precio>96.31</precio>
+            <stock>306</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>7</idProducto>
+            <nombre>Gorra 892</nombre>
+            <categoria>Ropa</categoria>
+            <precio>227.31</precio>
+            <stock>364</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>8</idProducto>
+            <nombre>Leche 929</nombre>
+            <categoria>Alimentacion</categoria>
+            <precio>1168.64</precio>
+            <stock>233</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>9</idProducto>
+            <nombre>Bufanda 573</nombre>
+            <categoria>Ropa</categoria>
+            <precio>1303.72</precio>
+            <stock>156</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>10</idProducto>
+            <nombre>Cereal 576</nombre>
+            <categoria>Alimentacion</categoria>
+            <precio>1489.93</precio>
+            <stock>461</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>11</idProducto>
+            <nombre>Ratón 873</nombre>
+            <categoria>Informatica</categoria>
+            <precio>747.53</precio>
+            <stock>347</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>12</idProducto>
+            <nombre>Café 278</nombre>
+            <categoria>Alimentacion</categoria>
+            <precio>602.67</precio>
+            <stock>113</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>13</idProducto>
+            <nombre>Arroz 879</nombre>
+            <categoria>Alimentacion</categoria>
+            <precio>409.27</precio>
+            <stock>224</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>14</idProducto>
+            <nombre>Portátil 733</nombre>
+            <categoria>Informatica</categoria>
+            <precio>691.92</precio>
+            <stock>487</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>15</idProducto>
+            <nombre>Bicicleta 367</nombre>
+            <categoria>Deportes</categoria>
+            <precio>1053.87</precio>
+            <stock>191</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>16</idProducto>
+            <nombre>Impresora 599</nombre>
+            <categoria>Informatica</categoria>
+            <precio>364.67</precio>
+            <stock>172</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>17</idProducto>
+            <nombre>Impresora 255</nombre>
+            <categoria>Informatica</categoria>
+            <precio>444.00</precio>
+            <stock>85</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>18</idProducto>
+            <nombre>Bufanda 578</nombre>
+            <categoria>Ropa</categoria>
+            <precio>248.34</precio>
+            <stock>11</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>19</idProducto>
+            <nombre>Café 443</nombre>
+            <categoria>Alimentacion</categoria>
+            <precio>755.43</precio>
+            <stock>234</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>20</idProducto>
+            <nombre>Bufanda 120</nombre>
+            <categoria>Ropa</categoria>
+            <precio>567.54</precio>
+            <stock>3</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>21</idProducto>
+            <nombre>Ratón 681</nombre>
+            <categoria>Informatica</categoria>
+            <precio>1470.86</precio>
+            <stock>424</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>22</idProducto>
+            <nombre>Camiseta 678</nombre>
+            <categoria>Ropa</categoria>
+            <precio>481.11</precio>
+            <stock>202</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>23</idProducto>
+            <nombre>Raqueta 173</nombre>
+            <categoria>Deportes</categoria>
+            <precio>1251.60</precio>
+            <stock>154</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>24</idProducto>
+            <nombre>Raqueta 621</nombre>
+            <categoria>Deportes</categoria>
+            <precio>724.75</precio>
+            <stock>272</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>25</idProducto>
+            <nombre>Smartphone 615</nombre>
+            <categoria>Electronica</categoria>
+            <precio>1158.70</precio>
+            <stock>219</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>26</idProducto>
+            <nombre>Lego 368</nombre>
+            <categoria>Juguetes</categoria>
+            <precio>1196.89</precio>
+            <stock>322</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>27</idProducto>
+            <nombre>Biografía 488</nombre>
+            <categoria>Libros</categoria>
+            <precio>224.56</precio>
+            <stock>26</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>28</idProducto>
+            <nombre>Pelota 599</nombre>
+            <categoria>Juguetes</categoria>
+            <precio>1001.27</precio>
+            <stock>258</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>29</idProducto>
+            <nombre>Lámpara 699</nombre>
+            <categoria>Hogar</categoria>
+            <precio>745.34</precio>
+            <stock>82</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>30</idProducto>
+            <nombre>Arroz 218</nombre>
+            <categoria>Alimentacion</categoria>
+            <precio>987.39</precio>
+            <stock>338</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>31</idProducto>
+            <nombre>Mesa 335</nombre>
+            <categoria>Hogar</categoria>
+            <precio>134.96</precio>
+            <stock>58</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>32</idProducto>
+            <nombre>Puzzle 667</nombre>
+            <categoria>Juguetes</categoria>
+            <precio>651.47</precio>
+            <stock>425</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>33</idProducto>
+            <nombre>Coche de juguete 745</nombre>
+            <categoria>Juguetes</categoria>
+            <precio>292.29</precio>
+            <stock>353</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>34</idProducto>
+            <nombre>Aceite 870</nombre>
+            <categoria>Alimentacion</categoria>
+            <precio>848.63</precio>
+            <stock>306</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>35</idProducto>
+            <nombre>Camiseta 464</nombre>
+            <categoria>Ropa</categoria>
+            <precio>532.56</precio>
+            <stock>38</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>36</idProducto>
+            <nombre>Gorra 727</nombre>
+            <categoria>Ropa</categoria>
+            <precio>403.64</precio>
+            <stock>263</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>37</idProducto>
+            <nombre>Leche 363</nombre>
+            <categoria>Alimentacion</categoria>
+            <precio>1257.21</precio>
+            <stock>470</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>38</idProducto>
+            <nombre>Teclado 218</nombre>
+            <categoria>Informatica</categoria>
+            <precio>389.44</precio>
+            <stock>185</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>39</idProducto>
+            <nombre>Portátil 116</nombre>
+            <categoria>Informatica</categoria>
+            <precio>1020.97</precio>
+            <stock>240</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>40</idProducto>
+            <nombre>Bicicleta 409</nombre>
+            <categoria>Deportes</categoria>
+            <precio>1495.10</precio>
+            <stock>230</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>41</idProducto>
+            <nombre>Cámara 430</nombre>
+            <categoria>Electronica</categoria>
+            <precio>551.66</precio>
+            <stock>347</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>42</idProducto>
+            <nombre>Disco Duro 523</nombre>
+            <categoria>Informatica</categoria>
+            <precio>986.72</precio>
+            <stock>286</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>43</idProducto>
+            <nombre>Teclado 680</nombre>
+            <categoria>Informatica</categoria>
+            <precio>1067.47</precio>
+            <stock>281</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>44</idProducto>
+            <nombre>Auriculares 810</nombre>
+            <categoria>Electronica</categoria>
+            <precio>1435.01</precio>
+            <stock>364</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>45</idProducto>
+            <nombre>Novela 832</nombre>
+            <categoria>Libros</categoria>
+            <precio>437.62</precio>
+            <stock>378</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>46</idProducto>
+            <nombre>Cojín 333</nombre>
+            <categoria>Hogar</categoria>
+            <precio>646.99</precio>
+            <stock>374</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>47</idProducto>
+            <nombre>Disco Duro 589</nombre>
+            <categoria>Informatica</categoria>
+            <precio>1148.90</precio>
+            <stock>184</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>48</idProducto>
+            <nombre>Lámpara 613</nombre>
+            <categoria>Hogar</categoria>
+            <precio>1285.56</precio>
+            <stock>283</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>49</idProducto>
+            <nombre>Camiseta 839</nombre>
+            <categoria>Ropa</categoria>
+            <precio>915.94</precio>
+            <stock>468</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>50</idProducto>
+            <nombre>Cojín 803</nombre>
+            <categoria>Hogar</categoria>
+            <precio>1370.14</precio>
+            <stock>193</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>51</idProducto>
+            <nombre>Monitor 417</nombre>
+            <categoria>Informatica</categoria>
+            <precio>637.32</precio>
+            <stock>342</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>52</idProducto>
+            <nombre>Teclado 330</nombre>
+            <categoria>Informatica</categoria>
+            <precio>1292.57</precio>
+            <stock>266</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>53</idProducto>
+            <nombre>Armario 176</nombre>
+            <categoria>Hogar</categoria>
+            <precio>891.25</precio>
+            <stock>423</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>54</idProducto>
+            <nombre>Disco Duro 759</nombre>
+            <categoria>Informatica</categoria>
+            <precio>583.88</precio>
+            <stock>26</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>55</idProducto>
+            <nombre>Cómic 516</nombre>
+            <categoria>Libros</categoria>
+            <precio>1248.26</precio>
+            <stock>466</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>56</idProducto>
+            <nombre>Monitor 565</nombre>
+            <categoria>Informatica</categoria>
+            <precio>1334.53</precio>
+            <stock>315</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>57</idProducto>
+            <nombre>Lámpara 269</nombre>
+            <categoria>Hogar</categoria>
+            <precio>1374.18</precio>
+            <stock>406</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>58</idProducto>
+            <nombre>Cinta de correr 812</nombre>
+            <categoria>Deportes</categoria>
+            <precio>436.58</precio>
+            <stock>371</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>59</idProducto>
+            <nombre>Portátil 113</nombre>
+            <categoria>Informatica</categoria>
+            <precio>210.12</precio>
+            <stock>431</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>60</idProducto>
+            <nombre>Cereal 599</nombre>
+            <categoria>Alimentacion</categoria>
+            <precio>1146.37</precio>
+            <stock>216</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>61</idProducto>
+            <nombre>Pesas 379</nombre>
+            <categoria>Deportes</categoria>
+            <precio>693.52</precio>
+            <stock>216</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>62</idProducto>
+            <nombre>Auriculares 792</nombre>
+            <categoria>Electronica</categoria>
+            <precio>1316.24</precio>
+            <stock>286</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>63</idProducto>
+            <nombre>Teclado 941</nombre>
+            <categoria>Informatica</categoria>
+            <precio>92.34</precio>
+            <stock>158</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>64</idProducto>
+            <nombre>Gorra 271</nombre>
+            <categoria>Ropa</categoria>
+            <precio>1186.80</precio>
+            <stock>469</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>65</idProducto>
+            <nombre>Monitor 383</nombre>
+            <categoria>Informatica</categoria>
+            <precio>650.59</precio>
+            <stock>40</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>66</idProducto>
+            <nombre>Pasta 605</nombre>
+            <categoria>Alimentacion</categoria>
+            <precio>322.80</precio>
+            <stock>232</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>67</idProducto>
+            <nombre>Cámara 906</nombre>
+            <categoria>Electronica</categoria>
+            <precio>44.28</precio>
+            <stock>359</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>68</idProducto>
+            <nombre>Cereal 238</nombre>
+            <categoria>Alimentacion</categoria>
+            <precio>187.25</precio>
+            <stock>47</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>69</idProducto>
+            <nombre>Raqueta 172</nombre>
+            <categoria>Deportes</categoria>
+            <precio>671.24</precio>
+            <stock>257</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>70</idProducto>
+            <nombre>Zapatos 998</nombre>
+            <categoria>Ropa</categoria>
+            <precio>1008.94</precio>
+            <stock>62</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>71</idProducto>
+            <nombre>Leche 223</nombre>
+            <categoria>Alimentacion</categoria>
+            <precio>521.61</precio>
+            <stock>267</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>72</idProducto>
+            <nombre>Drone infantil 906</nombre>
+            <categoria>Juguetes</categoria>
+            <precio>165.59</precio>
+            <stock>108</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>73</idProducto>
+            <nombre>Camiseta 968</nombre>
+            <categoria>Ropa</categoria>
+            <precio>241.86</precio>
+            <stock>43</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>74</idProducto>
+            <nombre>Tablet 691</nombre>
+            <categoria>Electronica</categoria>
+            <precio>599.56</precio>
+            <stock>238</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>75</idProducto>
+            <nombre>Diccionario 853</nombre>
+            <categoria>Libros</categoria>
+            <precio>1339.48</precio>
+            <stock>213</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>76</idProducto>
+            <nombre>Café 223</nombre>
+            <categoria>Alimentacion</categoria>
+            <precio>497.38</precio>
+            <stock>148</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>77</idProducto>
+            <nombre>Novela 492</nombre>
+            <categoria>Libros</categoria>
+            <precio>831.63</precio>
+            <stock>268</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>78</idProducto>
+            <nombre>Disco Duro 159</nombre>
+            <categoria>Informatica</categoria>
+            <precio>898.56</precio>
+            <stock>276</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>79</idProducto>
+            <nombre>Mesa 849</nombre>
+            <categoria>Hogar</categoria>
+            <precio>890.71</precio>
+            <stock>324</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>80</idProducto>
+            <nombre>Patines 680</nombre>
+            <categoria>Deportes</categoria>
+            <precio>904.29</precio>
+            <stock>17</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>81</idProducto>
+            <nombre>Gorra 683</nombre>
+            <categoria>Ropa</categoria>
+            <precio>924.65</precio>
+            <stock>321</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>82</idProducto>
+            <nombre>Café 601</nombre>
+            <categoria>Alimentacion</categoria>
+            <precio>1471.97</precio>
+            <stock>310</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>83</idProducto>
+            <nombre>Televisor 461</nombre>
+            <categoria>Electronica</categoria>
+            <precio>665.11</precio>
+            <stock>494</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>84</idProducto>
+            <nombre>Pasta 734</nombre>
+            <categoria>Alimentacion</categoria>
+            <precio>505.48</precio>
+            <stock>72</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>85</idProducto>
+            <nombre>Mesa 868</nombre>
+            <categoria>Hogar</categoria>
+            <precio>75.18</precio>
+            <stock>194</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>86</idProducto>
+            <nombre>Balón 616</nombre>
+            <categoria>Deportes</categoria>
+            <precio>1197.22</precio>
+            <stock>157</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>87</idProducto>
+            <nombre>Gorra 308</nombre>
+            <categoria>Ropa</categoria>
+            <precio>211.16</precio>
+            <stock>462</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>88</idProducto>
+            <nombre>Arroz 975</nombre>
+            <categoria>Alimentacion</categoria>
+            <precio>465.42</precio>
+            <stock>348</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>89</idProducto>
+            <nombre>Auriculares 788</nombre>
+            <categoria>Electronica</categoria>
+            <precio>219.95</precio>
+            <stock>99</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>90</idProducto>
+            <nombre>Disco Duro 351</nombre>
+            <categoria>Informatica</categoria>
+            <precio>1304.89</precio>
+            <stock>213</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>91</idProducto>
+            <nombre>Pesas 924</nombre>
+            <categoria>Deportes</categoria>
+            <precio>880.43</precio>
+            <stock>192</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>92</idProducto>
+            <nombre>Coche de juguete 285</nombre>
+            <categoria>Juguetes</categoria>
+            <precio>1497.36</precio>
+            <stock>92</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>93</idProducto>
+            <nombre>Novela 322</nombre>
+            <categoria>Libros</categoria>
+            <precio>1179.30</precio>
+            <stock>115</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>94</idProducto>
+            <nombre>Leche 342</nombre>
+            <categoria>Alimentacion</categoria>
+            <precio>507.57</precio>
+            <stock>96</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>95</idProducto>
+            <nombre>Pesas 465</nombre>
+            <categoria>Deportes</categoria>
+            <precio>1263.89</precio>
+            <stock>392</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>96</idProducto>
+            <nombre>Mesa 910</nombre>
+            <categoria>Hogar</categoria>
+            <precio>1091.40</precio>
+            <stock>375</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>97</idProducto>
+            <nombre>Ensayo 245</nombre>
+            <categoria>Libros</categoria>
+            <precio>725.51</precio>
+            <stock>254</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>98</idProducto>
+            <nombre>Lego 895</nombre>
+            <categoria>Juguetes</categoria>
+            <precio>190.69</precio>
+            <stock>242</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>99</idProducto>
+            <nombre>Lámpara 605</nombre>
+            <categoria>Hogar</categoria>
+            <precio>310.96</precio>
+            <stock>309</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>100</idProducto>
+            <nombre>Impresora 170</nombre>
+            <categoria>Informatica</categoria>
+            <precio>975.70</precio>
+            <stock>480</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>101</idProducto>
+            <nombre>Biografía 348</nombre>
+            <categoria>Libros</categoria>
+            <precio>597.91</precio>
+            <stock>300</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>102</idProducto>
+            <nombre>Cómic 770</nombre>
+            <categoria>Libros</categoria>
+            <precio>104.59</precio>
+            <stock>277</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>103</idProducto>
+            <nombre>Diccionario 356</nombre>
+            <categoria>Libros</categoria>
+            <precio>1062.24</precio>
+            <stock>142</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>104</idProducto>
+            <nombre>Auriculares 836</nombre>
+            <categoria>Electronica</categoria>
+            <precio>219.55</precio>
+            <stock>1</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>105</idProducto>
+            <nombre>Ratón 933</nombre>
+            <categoria>Informatica</categoria>
+            <precio>564.30</precio>
+            <stock>286</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>106</idProducto>
+            <nombre>Cereal 771</nombre>
+            <categoria>Alimentacion</categoria>
+            <precio>1119.47</precio>
+            <stock>94</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>107</idProducto>
+            <nombre>Lámpara 111</nombre>
+            <categoria>Hogar</categoria>
+            <precio>311.21</precio>
+            <stock>396</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>108</idProducto>
+            <nombre>Muñeca 211</nombre>
+            <categoria>Juguetes</categoria>
+            <precio>1299.13</precio>
+            <stock>226</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>109</idProducto>
+            <nombre>Pesas 670</nombre>
+            <categoria>Deportes</categoria>
+            <precio>1427.54</precio>
+            <stock>368</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>110</idProducto>
+            <nombre>Ratón 303</nombre>
+            <categoria>Informatica</categoria>
+            <precio>77.44</precio>
+            <stock>247</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>111</idProducto>
+            <nombre>Coche de juguete 648</nombre>
+            <categoria>Juguetes</categoria>
+            <precio>442.85</precio>
+            <stock>127</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>112</idProducto>
+            <nombre>Cama 664</nombre>
+            <categoria>Hogar</categoria>
+            <precio>1355.76</precio>
+            <stock>77</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>113</idProducto>
+            <nombre>Cinta de correr 523</nombre>
+            <categoria>Deportes</categoria>
+            <precio>405.96</precio>
+            <stock>267</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>114</idProducto>
+            <nombre>Raqueta 717</nombre>
+            <categoria>Deportes</categoria>
+            <precio>226.01</precio>
+            <stock>13</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>115</idProducto>
+            <nombre>Novela 207</nombre>
+            <categoria>Libros</categoria>
+            <precio>1161.21</precio>
+            <stock>475</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>116</idProducto>
+            <nombre>Monitor 896</nombre>
+            <categoria>Informatica</categoria>
+            <precio>992.42</precio>
+            <stock>199</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>117</idProducto>
+            <nombre>Bicicleta 748</nombre>
+            <categoria>Deportes</categoria>
+            <precio>1290.28</precio>
+            <stock>37</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>118</idProducto>
+            <nombre>Disco Duro 105</nombre>
+            <categoria>Informatica</categoria>
+            <precio>746.80</precio>
+            <stock>54</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>119</idProducto>
+            <nombre>Manual 858</nombre>
+            <categoria>Libros</categoria>
+            <precio>86.75</precio>
+            <stock>186</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+        <producto>
+            <idProducto>120</idProducto>
+            <nombre>Smartphone 983</nombre>
+            <categoria>Electronica</categoria>
+            <precio>172.26</precio>
+            <stock>200</stock>
+            <fechaCreacion>2025-10-20T18:50:38</fechaCreacion>
+            <fechaModificacion>2025-10-20T18:50:38</fechaModificacion>
+        </producto>
+    </productos>
+</inventario>

@@ -274,9 +274,13 @@ public class ConsultasAvanzadasDAOImpl implements ConsultasAvanzadasDAO {
                 p.categoria,
                 p.stock,
                 p.precio,
+                (p.stock * p.precio) as valor_stock,
                 p.fecha_creacion,
                 MAX(m.fecha_movimiento) as ultimo_movimiento,
-                DATEDIFF(NOW(), COALESCE(MAX(m.fecha_movimiento), p.fecha_creacion)) as dias_sin_actividad
+                CASE
+                    WHEN MAX(m.fecha_movimiento) IS NULL THEN DATEDIFF(NOW(), p.fecha_creacion)
+                    ELSE DATEDIFF(NOW(), MAX(m.fecha_movimiento))
+                END as dias_sin_actividad
             FROM productos p
             LEFT JOIN movimientos_stock m ON p.id_producto = m.id_producto
             GROUP BY p.id_producto, p.nombre, p.categoria, p.stock, p.precio, p.fecha_creacion
@@ -293,17 +297,18 @@ public class ConsultasAvanzadasDAOImpl implements ConsultasAvanzadasDAO {
 
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
-                    Object[] fila = new Object[8];
+                    Object[] fila = new Object[9];
                     fila[0] = rs.getInt("id_producto");
                     fila[1] = rs.getString("nombre");
                     fila[2] = rs.getString("categoria");
                     fila[3] = rs.getInt("stock");
                     fila[4] = rs.getBigDecimal("precio");
-                    fila[5] = rs.getTimestamp("fecha_creacion").toLocalDateTime();
+                    fila[5] = rs.getBigDecimal("valor_stock"); // stock * precio
+                    fila[6] = rs.getTimestamp("fecha_creacion").toLocalDateTime();
 
                     Timestamp ultimoMov = rs.getTimestamp("ultimo_movimiento");
-                    fila[6] = ultimoMov != null ? ultimoMov.toLocalDateTime() : null;
-                    fila[7] = rs.getInt("dias_sin_actividad");
+                    fila[7] = ultimoMov != null ? ultimoMov.toLocalDateTime() : null;
+                    fila[8] = rs.getInt("dias_sin_actividad");
 
                     resultados.add(fila);
                 }

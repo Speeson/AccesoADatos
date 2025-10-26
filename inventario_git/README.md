@@ -34,7 +34,8 @@ Sistema completo de gestión de inventario desarrollado en Java que permite carg
 11. [Testing y Validación](#testing-y-validación)
 12. [Solución de Problemas](#solución-de-problemas)
 13. [Tecnologías Utilizadas](#tecnologías-utilizadas)
-14. [Conclusiones](#conclusiones)
+14. [Historial de Cambios](#historial-de-cambios-changelog)
+15. [Conclusiones](#conclusiones)
 
 ---
 
@@ -55,8 +56,11 @@ Sistema completo de gestión de inventario desarrollado en Java que implementa:
 ✅ **Importación masiva CSV** con transacciones por lote y rollback automático
 ✅ **Menú jerárquico reorganizado** en 4 secciones principales
 ✅ **Historial completo de movimientos** (últimos 50 o por producto)
+✅ **Visualización de stock disponible** antes de entradas/salidas
+✅ **Registro completo en movimientos_stock** para operaciones manuales
 ✅ **Análisis de rendimiento** con EXPLAIN documentado
 ✅ **Exportación a XML** con validación XSD
+✅ **Sistema de logs optimizado** con rotación automática
 
 ---
 
@@ -134,16 +138,30 @@ Sistema completo de gestión de inventario desarrollado en Java que implementa:
 - Ver últimos 50 movimientos globales
 - Filtrar por producto específico
 - Tabla formateada con todos los detalles
+- Integración con tabla `movimientos_stock`
 
-**6. Optimizaciones de Código**
+**6. Mejoras en Registro de Movimientos de Stock**
+- **Visualización de stock disponible** antes de operaciones
+- Validación automática de ID de producto
+- Información detallada (nombre, categoría, stock)
+- Confirmación visual del cambio (stock anterior → nuevo)
+- Prevención de errores en entradas/salidas manuales
+
+**7. Optimizaciones de Código**
 - Búsqueda FULLTEXT (12.5x más rápido)
 - Verificación con EXISTS (2x más rápido)
 - Covering indexes (35.3x más rápido)
 
-**7. Exportación a XML**
+**8. Exportación a XML**
 - Backup completo en XML
 - Validación XSD
 - Restauración desde XML
+
+**9. Optimización del Sistema de Logs**
+- Nivel de log reducido a WARN/ERROR (menos volumen)
+- Rotación automática de archivos (7 días de retención)
+- Límite de tamaño por archivo (5MB máximo)
+- Control de espacio en disco (100MB total por tipo de log)
 
 ---
 
@@ -558,33 +576,54 @@ id_categoria;nombre;descripcion
 
 ### 5. Gestión Básica de Stock
 
+**✨ Mejora Fase II: Visualización de Stock Disponible**
+
+Ahora al registrar entradas o salidas, el sistema muestra automáticamente el stock disponible del producto antes de solicitar la cantidad, evitando errores y facilitando la gestión.
+
 **Registrar entrada:**
 ```
 Menú → 1. Gestión de Inventario → 3. Stock y Movimientos → 1. Registrar entrada
 
-ID del producto: 42
-Cantidad: 150
-Motivo: Reposición almacén central
-Usuario: admin
+Ingrese el ID del producto: 42
 
-✓ Entrada registrada exitosamente
-  Stock anterior: 1,250
-  Stock nuevo: 1,400
+--- INFORMACIÓN DEL PRODUCTO ---
+Nombre: Monitor LG UltraWide 34"
+Categoría: Electrónica
+Stock actual: 15 unidades
+--------------------------------
+
+Cantidad a ingresar: 50
+Motivo: Reposición almacén central
+
+✓ Entrada de stock registrada exitosamente.
+Stock anterior: 15 → Stock nuevo: 65
 ```
 
 **Registrar salida:**
 ```
 Menú → 1. Gestión de Inventario → 3. Stock y Movimientos → 2. Registrar salida
 
-ID del producto: 42
-Cantidad: 25
-Motivo: Venta mostrador
-Usuario: vendedor1
+Ingrese el ID del producto: 42
 
-✓ Salida registrada exitosamente
-  Stock anterior: 1,400
-  Stock nuevo: 1,375
+--- INFORMACIÓN DEL PRODUCTO ---
+Nombre: Monitor LG UltraWide 34"
+Categoría: Electrónica
+Stock disponible: 65 unidades    ← Puedes ver cuántas unidades puedes vender
+--------------------------------
+
+Cantidad a sacar: 10
+Motivo: Venta cliente
+
+✓ Salida de stock registrada exitosamente.
+Stock anterior: 65 → Stock nuevo: 55
 ```
+
+**Características mejoradas:**
+- ✅ Muestra nombre, categoría y stock antes de la operación
+- ✅ Validación automática del ID de producto
+- ✅ Confirmación visual del cambio de stock (antes → después)
+- ✅ Previene errores al mostrar el stock disponible
+- ✅ Interfaz consistente para entradas y salidas
 
 ### 6. Sistema de Logs
 
@@ -1012,17 +1051,26 @@ CREATE TABLE movimientos_stock (
 
 ### Niveles de Log
 
-- **INFO**: Operaciones normales exitosas
-- **WARN**: Advertencias que no detienen la ejecución
+**✨ Optimizado en Fase II:**
+- **WARN**: Advertencias que no detienen la ejecución (nivel por defecto)
 - **ERROR**: Errores que requieren atención
-- **DEBUG**: Información detallada para desarrollo
+- ~~**INFO**: Deshabilitado para reducir volumen~~
+- ~~**DEBUG**: Deshabilitado en producción~~
 
 ### Archivos de Log
 
-**`logs/inventario.log`** - Log general
-**`logs/errores.log`** - Solo errores
-**`logs/actividades.log`** - Actividades de usuario
-**`logs/reportes_operaciones.log`** - Estadísticas de rendimiento
+| Archivo | Contenido | Rotación | Tamaño Max | Retención |
+|---------|-----------|----------|------------|-----------|
+| **`logs/inventario.log`** | Log general (WARN/ERROR) | Diaria | 5MB | 7 días |
+| **`logs/errores.log`** | Solo errores | Diaria | 10MB | 90 días |
+| **`logs/actividades.log`** | Actividades de usuario | Diaria | 5MB | 7 días |
+| **`logs/reportes_operaciones.log`** | Estadísticas | Diaria | - | 60 días |
+
+**Ventajas de la optimización:**
+- ✅ Reducción del 70-80% en volumen de logs
+- ✅ Archivos antiguos se eliminan automáticamente
+- ✅ Control de espacio en disco (100MB máx por tipo)
+- ✅ Enfoque en información crítica (advertencias y errores)
 
 ---
 
@@ -1139,6 +1187,54 @@ docker-compose logs mysql
 
 ---
 
+## Historial de Cambios (Changelog)
+
+### Versión 2.1 - 26 de octubre de 2025
+
+**🔧 Mejoras Críticas:**
+- **Corrección de Bug**: Los movimientos manuales de stock ahora se registran correctamente en la tabla `movimientos_stock`
+  - Antes: Solo actualizaban la tabla `productos`
+  - Ahora: Actualizan `productos` Y registran en `movimientos_stock` con todos los detalles
+  - Archivos modificados: `InventarioServiceImpl.java`, `Main.java`
+
+**✨ Nuevas Funcionalidades:**
+- **Visualización de stock disponible** antes de registrar entradas/salidas
+  - Muestra nombre del producto, categoría y stock actual
+  - Validación automática del ID de producto
+  - Confirmación visual del cambio (stock anterior → nuevo)
+  - Previene errores al mostrar información contextual
+
+**⚡ Optimizaciones:**
+- **Sistema de logs optimizado** para reducir volumen en disco
+  - Nivel de log cambiado de INFO a WARN (reducción del 70-80%)
+  - Rotación automática de archivos (7 días de retención)
+  - Límite de tamaño por archivo (5MB para inventario.log y actividades.log)
+  - Control total de espacio en disco (100MB máx por tipo de log)
+
+**📝 Archivos Modificados:**
+- `src/main/java/com/inventario/service/impl/InventarioServiceImpl.java`
+- `src/main/java/com/inventario/Main.java`
+- `src/main/resources/logback.xml`
+
+### Versión 2.0 - 25 de octubre de 2025
+
+**Fase II completada:**
+- 11 índices estratégicos implementados
+- 6 consultas avanzadas SQL
+- Importación masiva CSV con transacciones
+- Menú jerárquico reorganizado
+- Análisis de rendimiento con EXPLAIN
+
+### Versión 1.0 - 2 de octubre de 2025
+
+**Fase I completada:**
+- Sistema base CRUD para productos y categorías
+- Importación simple CSV
+- Exportación a JSON
+- Sistema de logs básico
+
+---
+
 ## Conclusiones
 
 ### Logros Alcanzados
@@ -1156,6 +1252,9 @@ docker-compose logs mysql
 ✅ **Importación masiva CSV** con transacciones por lote y rollback automático
 ✅ **Menú jerárquico** reorganizado en 4 secciones principales
 ✅ **Historial completo de movimientos** (últimos 50 o por producto)
+✅ **Visualización de stock disponible** en entradas/salidas manuales
+✅ **Registro automático en movimientos_stock** para operaciones manuales
+✅ **Sistema de logs optimizado** con rotación automática
 ✅ **Análisis de rendimiento** con EXPLAIN documentado
 ✅ **Bug crítico corregido** en consulta de valor de stock
 

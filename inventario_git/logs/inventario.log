@@ -50,3 +50,62 @@
 [2025-10-26 03:39:13] INFO  com.inventario.Main - Verificando si es necesario cargar datos iniciales...
 [2025-10-26 03:39:13] INFO  com.inventario.Main - Los datos ya existen. Productos en BD: 1000. Saltando carga de CSV.
 [2025-10-26 03:39:56] INFO  com.inventario.Main - Sistema de Inventario finalizado
+[2025-10-26 14:58:12] INFO  com.inventario.Main - Iniciando Sistema de Inventario
+[2025-10-26 14:58:12] INFO  com.inventario.Main - Inicializando servicios...
+[2025-10-26 14:58:12] INFO  com.inventario.util.DatabaseConfig - Configuración de base de datos inicializada: mysql:3306/inventario_db
+[2025-10-26 14:58:12] INFO  com.inventario.Main - Servicios inicializados correctamente
+[2025-10-26 14:58:12] INFO  com.inventario.Main - Verificando conexión a la base de datos...
+[2025-10-26 14:58:17] ERROR com.inventario.util.DatabaseConfig - Error al conectar con la base de datos: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+[2025-10-26 14:58:17] ERROR com.inventario.util.DatabaseConfig - Test de conexión fallido: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+[2025-10-26 14:58:17] ERROR com.inventario.Main - Error al conectar con la base de datos
+[2025-10-26 14:58:17] ERROR com.inventario.Main - No se pudo conectar a la base de datos. Saliendo...
+[2025-10-26 14:58:17] INFO  com.inventario.Main - Sistema de Inventario finalizado
+[2025-10-26 14:59:34] INFO  com.inventario.Main - Iniciando Sistema de Inventario
+[2025-10-26 14:59:34] INFO  com.inventario.Main - Inicializando servicios...
+[2025-10-26 14:59:34] INFO  com.inventario.util.DatabaseConfig - Configuración de base de datos inicializada: mysql:3306/inventario_db
+[2025-10-26 14:59:34] INFO  com.inventario.Main - Servicios inicializados correctamente
+[2025-10-26 14:59:34] INFO  com.inventario.Main - Verificando conexión a la base de datos...
+[2025-10-26 14:59:36] INFO  com.inventario.Main - Conexión a la base de datos establecida correctamente
+[2025-10-26 14:59:36] INFO  com.inventario.Main - XMLManager inicializado correctamente
+[2025-10-26 14:59:36] INFO  com.inventario.Main - Verificando si es necesario cargar datos iniciales...
+[2025-10-26 14:59:36] INFO  com.inventario.Main - Cargando datos iniciales desde archivos CSV...
+[2025-10-26 14:59:36] INFO  c.i.s.impl.InventarioServiceImpl - Iniciando carga de categorías desde CSV: data/categorias.csv
+[2025-10-26 14:59:36] INFO  com.inventario.util.CsvUtil - Headers detectados en el archivo: [id_categoria, nombre, descripcion]
+[2025-10-26 14:59:36] INFO  com.inventario.util.CsvUtil - Buscando columnas requeridas: [nombre, descripcion]
+[2025-10-26 14:59:36] INFO  com.inventario.util.CsvUtil - Iniciando lectura de categorías desde: data/categorias.csv
+[2025-10-26 15:42:01] ERROR com.inventario.util.LogUtil - ERROR - IMPORTAR_CSV_FIN: Importación completada con errores
+[2025-10-26 15:42:01] ERROR com.inventario.util.LogUtil - ERROR - IMPORTAR_MOVIMIENTOS_MENU: Importación con errores: 0 fallos
+[2025-10-26 19:37:15] ERROR com.inventario.util.LogUtil - ERROR - SALIDA_STOCK: Error al registrar salida - Producto ID: 1, Cantidad: 600
+java.lang.Exception: Stock insuficiente. Disponible: 453, Solicitado: 600
+	at com.inventario.service.impl.InventarioServiceImpl.registrarSalidaStock(InventarioServiceImpl.java:472)
+	at com.inventario.Main.salidaStock(Main.java:863)
+	at com.inventario.Main.gestionarStock(Main.java:784)
+	at com.inventario.Main.gestionarInventario(Main.java:198)
+	at com.inventario.Main.ejecutarMenuPrincipal(Main.java:147)
+	at com.inventario.Main.main(Main.java:62)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+[2025-10-26 19:39:59] ERROR com.inventario.util.LogUtil - ERROR - SALIDA_STOCK: Error al registrar salida - Producto ID: 50, Cantidad: 100
+java.sql.SQLException: Stock insuficiente. Disponible: 93, Solicitado: 100
+	at com.inventario.dao.impl.MovimientoStockDAOImpl.registrarMovimiento(MovimientoStockDAOImpl.java:83)
+	at com.inventario.dao.impl.MovimientoStockDAOImpl.registrarMovimiento(MovimientoStockDAOImpl.java:34)
+	at com.inventario.service.impl.InventarioServiceImpl.registrarSalidaStock(InventarioServiceImpl.java:492)
+	at com.inventario.Main.salidaStock(Main.java:863)
+	at com.inventario.Main.gestionarStock(Main.java:784)
+	at com.inventario.Main.gestionarInventario(Main.java:198)
+	at com.inventario.Main.ejecutarMenuPrincipal(Main.java:147)
+	at com.inventario.Main.main(Main.java:62)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+[2025-10-26 19:43:28] ERROR com.inventario.util.LogUtil - ERROR - SALIDA_STOCK: Error al registrar salida - Producto ID: 0, Cantidad: 0
+java.lang.Exception: La cantidad debe ser mayor a cero
+	at com.inventario.service.impl.InventarioServiceImpl.registrarSalidaStock(InventarioServiceImpl.java:459)
+	at com.inventario.Main.salidaStock(Main.java:863)
+	at com.inventario.Main.gestionarStock(Main.java:784)
+	at com.inventario.Main.gestionarInventario(Main.java:198)
+	at com.inventario.Main.ejecutarMenuPrincipal(Main.java:147)
+	at com.inventario.Main.main(Main.java:62)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+[2025-10-26 20:39:11] ERROR com.inventario.Main - Error al restaurar desde: backups/productos.csv.xml
+[2025-10-26 20:39:48] ERROR com.inventario.Main - Error al restaurar desde: backups/productos.csv.xml

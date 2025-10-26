@@ -250,3 +250,105 @@ java.lang.NumberFormatException: For input string: "4,"Hogar""
 	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
 	at java.base/java.lang.Thread.run(Thread.java:1447)
 
+[2025-10-26 14:58:17] ERROR com.inventario.Main - Error al conectar con la base de datos
+[2025-10-26 14:58:17] ERROR com.inventario.Main - No se pudo conectar a la base de datos. Saliendo...
+[2025-10-26 14:59:36] ERROR com.inventario.util.CsvUtil - Línea 2: Error al procesar - For input string: "1,"Electronica""
+java.lang.NumberFormatException: For input string: "1,"Electronica""
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:668)
+	at java.base/java.lang.Integer.parseInt(Integer.java:786)
+	at com.inventario.util.CsvUtil.parsearCategoria(CsvUtil.java:185)
+	at com.inventario.util.CsvUtil.leerCategoriasCSV(CsvUtil.java:102)
+	at com.inventario.service.impl.InventarioServiceImpl.cargarCategoriasDesdeCSV(InventarioServiceImpl.java:249)
+	at com.inventario.Main.cargarDatosIniciales(Main.java:122)
+	at com.inventario.Main.main(Main.java:59)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+[2025-10-26 14:59:36] ERROR com.inventario.util.CsvUtil - Línea 3: Error al procesar - For input string: "2,"Ropa""
+java.lang.NumberFormatException: For input string: "2,"Ropa""
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:668)
+	at java.base/java.lang.Integer.parseInt(Integer.java:786)
+	at com.inventario.util.CsvUtil.parsearCategoria(CsvUtil.java:185)
+	at com.inventario.util.CsvUtil.leerCategoriasCSV(CsvUtil.java:102)
+	at com.inventario.service.impl.InventarioServiceImpl.cargarCategoriasDesdeCSV(InventarioServiceImpl.java:249)
+	at com.inventario.Main.cargarDatosIniciales(Main.java:122)
+	at com.inventario.Main.main(Main.java:59)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+[2025-10-26 14:59:36] ERROR com.inventario.util.CsvUtil - Línea 4: Error al procesar - For input string: "3,"Informatica""
+java.lang.NumberFormatException: For input string: "3,"Informatica""
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:668)
+	at java.base/java.lang.Integer.parseInt(Integer.java:786)
+	at com.inventario.util.CsvUtil.parsearCategoria(CsvUtil.java:185)
+	at com.inventario.util.CsvUtil.leerCategoriasCSV(CsvUtil.java:102)
+	at com.inventario.service.impl.InventarioServiceImpl.cargarCategoriasDesdeCSV(InventarioServiceImpl.java:249)
+	at com.inventario.Main.cargarDatosIniciales(Main.java:122)
+	at com.inventario.Main.main(Main.java:59)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+[2025-10-26 14:59:36] ERROR com.inventario.util.CsvUtil - Línea 5: Error al procesar - For input string: "4,"Hogar""
+java.lang.NumberFormatException: For input string: "4,"Hogar""
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:668)
+	at java.base/java.lang.Integer.parseInt(Integer.java:786)
+	at com.inventario.util.CsvUtil.parsearCategoria(CsvUtil.java:185)
+	at com.inventario.util.CsvUtil.leerCategoriasCSV(CsvUtil.java:102)
+	at com.inventario.service.impl.InventarioServiceImpl.cargarCategoriasDesdeCSV(InventarioServiceImpl.java:249)
+	at com.inventario.Main.cargarDatosIniciales(Main.java:122)
+	at com.inventario.Main.main(Main.java:59)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+[2025-10-26 14:59:36] ERROR com.inventario.util.CsvUtil - Línea 6: Error al procesar - For input string: "5,"Alimentacion""
+java.lang.NumberFormatException: For input string: "5,"Alimentacion""
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:668)
+	at java.base/java.lang.Integer.parseInt(Integer.java:786)
+	at com.inventario.util.CsvUtil.parsearCategoria(CsvUtil.java:185)
+	at com.inventario.util.CsvUtil.leerCategoriasCSV(CsvUtil.java:102)
+	at com.inventario.service.impl.InventarioServiceImpl.cargarCategoriasDesdeCSV(InventarioServiceImpl.java:249)
+	at com.inventario.Main.cargarDatosIniciales(Main.java:122)
+	at com.inventario.Main.main(Main.java:59)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+[2025-10-26 15:19:39] ERROR com.inventario.Main - Error al conectar con la base de datos
+[2025-10-26 15:19:39] ERROR com.inventario.Main - No se pudo conectar a la base de datos. Saliendo...
+[2025-10-26 15:20:07] ERROR com.inventario.Main - Error al conectar con la base de datos
+[2025-10-26 15:20:07] ERROR com.inventario.Main - No se pudo conectar a la base de datos. Saliendo...
+[2025-10-26 15:42:01] ERROR com.inventario.util.LogUtil - ERROR - IMPORTAR_CSV_FIN: Importación completada con errores
+[2025-10-26 15:42:01] ERROR com.inventario.util.LogUtil - ERROR - IMPORTAR_MOVIMIENTOS_MENU: Importación con errores: 0 fallos
+[2025-10-26 19:37:15] ERROR com.inventario.util.LogUtil - ERROR - SALIDA_STOCK: Error al registrar salida - Producto ID: 1, Cantidad: 600
+java.lang.Exception: Stock insuficiente. Disponible: 453, Solicitado: 600
+	at com.inventario.service.impl.InventarioServiceImpl.registrarSalidaStock(InventarioServiceImpl.java:472)
+	at com.inventario.Main.salidaStock(Main.java:863)
+	at com.inventario.Main.gestionarStock(Main.java:784)
+	at com.inventario.Main.gestionarInventario(Main.java:198)
+	at com.inventario.Main.ejecutarMenuPrincipal(Main.java:147)
+	at com.inventario.Main.main(Main.java:62)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+[2025-10-26 19:39:59] ERROR com.inventario.util.LogUtil - ERROR - SALIDA_STOCK: Error al registrar salida - Producto ID: 50, Cantidad: 100
+java.sql.SQLException: Stock insuficiente. Disponible: 93, Solicitado: 100
+	at com.inventario.dao.impl.MovimientoStockDAOImpl.registrarMovimiento(MovimientoStockDAOImpl.java:83)
+	at com.inventario.dao.impl.MovimientoStockDAOImpl.registrarMovimiento(MovimientoStockDAOImpl.java:34)
+	at com.inventario.service.impl.InventarioServiceImpl.registrarSalidaStock(InventarioServiceImpl.java:492)
+	at com.inventario.Main.salidaStock(Main.java:863)
+	at com.inventario.Main.gestionarStock(Main.java:784)
+	at com.inventario.Main.gestionarInventario(Main.java:198)
+	at com.inventario.Main.ejecutarMenuPrincipal(Main.java:147)
+	at com.inventario.Main.main(Main.java:62)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+[2025-10-26 19:43:28] ERROR com.inventario.util.LogUtil - ERROR - SALIDA_STOCK: Error al registrar salida - Producto ID: 0, Cantidad: 0
+java.lang.Exception: La cantidad debe ser mayor a cero
+	at com.inventario.service.impl.InventarioServiceImpl.registrarSalidaStock(InventarioServiceImpl.java:459)
+	at com.inventario.Main.salidaStock(Main.java:863)
+	at com.inventario.Main.gestionarStock(Main.java:784)
+	at com.inventario.Main.gestionarInventario(Main.java:198)
+	at com.inventario.Main.ejecutarMenuPrincipal(Main.java:147)
+	at com.inventario.Main.main(Main.java:62)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+[2025-10-26 20:39:11] ERROR com.inventario.Main - Error al restaurar desde: backups/productos.csv.xml
+[2025-10-26 20:39:48] ERROR com.inventario.Main - Error al restaurar desde: backups/productos.csv.xml

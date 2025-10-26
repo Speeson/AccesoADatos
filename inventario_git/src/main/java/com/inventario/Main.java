@@ -72,14 +72,15 @@ public class Main {
     
     private static void inicializarServicios() {
         logger.info("Inicializando servicios...");
-        
+
         // Crear instancias de DAOs
         CategoriaDAO categoriaDAO = new CategoriaDAOImpl();
         ProductoDAO productoDAO = new ProductoDAOImpl();
-        
+        MovimientoStockDAO movimientoStockDAO = new MovimientoStockDAOImpl();
+
         // Crear servicio principal
-        inventarioService = new InventarioServiceImpl(categoriaDAO, productoDAO);
-        
+        inventarioService = new InventarioServiceImpl(categoriaDAO, productoDAO, movimientoStockDAO);
+
         logger.info("Servicios inicializados correctamente");
     }
     
@@ -828,21 +829,39 @@ public class Main {
         System.out.print("Ingrese el ID del producto: ");
         try {
             int idProducto = Integer.parseInt(scanner.nextLine());
-            
+
+            // Buscar el producto para mostrar información de stock
+            Producto producto = inventarioService.buscarProductoPorId(idProducto);
+
+            if (producto == null) {
+                System.out.println("Error: No se encontró ningún producto con ID " + idProducto);
+                return;
+            }
+
+            // Mostrar información del producto y stock actual
+            System.out.println("\n--- INFORMACIÓN DEL PRODUCTO ---");
+            System.out.println("Nombre: " + producto.getNombre());
+            System.out.println("Categoría: " + producto.getCategoria());
+            System.out.println("Stock actual: " + producto.getStock() + " unidades");
+            System.out.println("--------------------------------\n");
+
             System.out.print("Cantidad a ingresar: ");
             int cantidad = Integer.parseInt(scanner.nextLine());
-            
+
             System.out.print("Motivo: ");
             String motivo = scanner.nextLine();
-            
+
             boolean resultado = inventarioService.registrarEntradaStock(idProducto, cantidad, motivo);
-            
+
             if (resultado) {
-                System.out.println("Entrada de stock registrada exitosamente.");
+                System.out.println("\n✓ Entrada de stock registrada exitosamente.");
+                System.out.println("Stock anterior: " + producto.getStock() + " → Stock nuevo: " + (producto.getStock() + cantidad));
             } else {
-                System.out.println("No se pudo registrar la entrada de stock.");
+                System.out.println("\n✗ No se pudo registrar la entrada de stock.");
             }
-            
+
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Debe ingresar un número válido.");
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -852,21 +871,39 @@ public class Main {
         System.out.print("Ingrese el ID del producto: ");
         try {
             int idProducto = Integer.parseInt(scanner.nextLine());
-            
+
+            // Buscar el producto para mostrar información de stock
+            Producto producto = inventarioService.buscarProductoPorId(idProducto);
+
+            if (producto == null) {
+                System.out.println("Error: No se encontró ningún producto con ID " + idProducto);
+                return;
+            }
+
+            // Mostrar información del producto y stock disponible
+            System.out.println("\n--- INFORMACIÓN DEL PRODUCTO ---");
+            System.out.println("Nombre: " + producto.getNombre());
+            System.out.println("Categoría: " + producto.getCategoria());
+            System.out.println("Stock disponible: " + producto.getStock() + " unidades");
+            System.out.println("--------------------------------\n");
+
             System.out.print("Cantidad a sacar: ");
             int cantidad = Integer.parseInt(scanner.nextLine());
-            
+
             System.out.print("Motivo: ");
             String motivo = scanner.nextLine();
-            
+
             boolean resultado = inventarioService.registrarSalidaStock(idProducto, cantidad, motivo);
-            
+
             if (resultado) {
-                System.out.println("Salida de stock registrada exitosamente.");
+                System.out.println("\n✓ Salida de stock registrada exitosamente.");
+                System.out.println("Stock anterior: " + producto.getStock() + " → Stock nuevo: " + (producto.getStock() - cantidad));
             } else {
-                System.out.println("No se pudo registrar la salida de stock (stock insuficiente).");
+                System.out.println("\n✗ No se pudo registrar la salida de stock.");
             }
-            
+
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Debe ingresar un número válido.");
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -1277,13 +1314,15 @@ public class Main {
             LocalDateTime fechaFin;
 
             if (fechaInicioStr.isEmpty()) {
-                fechaInicio = LocalDateTime.now().minusDays(7);
+                // Inicio: hace 7 días a las 00:00:00
+                fechaInicio = LocalDateTime.now().minusDays(7).withHour(0).withMinute(0).withSecond(0).withNano(0);
             } else {
                 fechaInicio = LocalDateTime.parse(fechaInicioStr, formatter);
             }
 
             if (fechaFinStr.isEmpty()) {
-                fechaFin = LocalDateTime.now();
+                // Fin: hoy a las 23:59:59 (final del día)
+                fechaFin = LocalDateTime.now().withHour(23).withMinute(59).withSecond(59).withNano(999999999);
             } else {
                 fechaFin = LocalDateTime.parse(fechaFinStr, formatter);
             }
@@ -1309,8 +1348,8 @@ public class Main {
             int totalSalidas = 0;
 
             for (Object[] row : resultados) {
-                String tipo = row[1].toString();
-                int cantidad = ((Number) row[2]).intValue();
+                String tipo = row[5].toString(); // tipo_movimiento está en índice 5
+                int cantidad = ((Number) row[6]).intValue(); // cantidad está en índice 6
 
                 if ("ENTRADA".equals(tipo)) {
                     totalEntradas += cantidad;
@@ -1318,12 +1357,16 @@ public class Main {
                     totalSalidas += cantidad;
                 }
 
+                // Formatear fecha
+                LocalDateTime fecha = (LocalDateTime) row[1];
+                String fechaStr = fecha.format(DateTimeFormatter.ofPattern("dd/MM HH:mm"));
+
                 System.out.printf("%-12s %-10s %-30s %-10s %-20s%n",
-                        row[0], // fecha
-                        row[1], // tipo
-                        row[3], // producto nombre
-                        row[2], // cantidad
-                        row[4]); // usuario
+                        fechaStr,      // fila[1] - fecha_movimiento
+                        row[5],        // fila[5] - tipo_movimiento
+                        row[3],        // fila[3] - producto nombre
+                        row[6],        // fila[6] - cantidad
+                        row[10]);      // fila[10] - usuario
             }
 
             System.out.println("-".repeat(90));
@@ -1394,7 +1437,7 @@ public class Main {
             List<Object[]> resultados = consultasDAO.obtenerProductosSinMovimientos(dias);
 
             if (resultados.isEmpty()) {
-                System.out.println("\n✓ Todos los productos tienen actividad reciente.");
+                System.out.println("\n✓ Todos los productos tienen actividad reciente (últimos " + dias + " días).");
                 return;
             }
 
@@ -1408,15 +1451,15 @@ public class Main {
             double valorTotalInactivo = 0;
 
             for (Object[] row : resultados) {
-                double valorStock = ((Number) row[5]).doubleValue();
+                double valorStock = ((Number) row[5]).doubleValue(); // fila[5] = valor_stock
                 valorTotalInactivo += valorStock;
 
                 System.out.printf("%-5s %-35s %-15s %-10s $%-14.2f%n",
-                        row[0], // id_producto
-                        row[1], // nombre
-                        row[2], // categoria
-                        row[4], // stock
-                        valorStock); // valor_stock
+                        row[0], // fila[0] - id_producto
+                        row[1], // fila[1] - nombre
+                        row[2], // fila[2] - categoria
+                        row[3], // fila[3] - stock (CORREGIDO de row[4])
+                        valorStock); // fila[5] - valor_stock
             }
 
             System.out.println("-".repeat(85));

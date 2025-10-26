@@ -1,9 +1,0 @@
-id_producto,tipo_movimiento,cantidad,motivo,usuario
-1,ENTRADA,50,Reposicion correcta,admin
-2,SALIDA,5,Venta correcta,vendedor1
-999,ENTRADA,100,ERROR: Producto no existe,admin
-3,VENTA,10,ERROR: Tipo invalido,vendedor1
-4,ENTRADA,0,ERROR: Cantidad cero,admin
-5,ENTRADA,-10,ERROR: Cantidad negativa,sistema
-1,SALIDA,10000,ERROR: Stock insuficiente,vendedor2
-6,ENTRADA,25,Reposicion correcta 2,admin

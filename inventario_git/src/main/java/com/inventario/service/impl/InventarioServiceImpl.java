@@ -2,8 +2,10 @@ package com.inventario.service.impl;
 
 import com.inventario.dao.CategoriaDAO;
 import com.inventario.dao.ProductoDAO;
+import com.inventario.dao.MovimientoStockDAO;
 import com.inventario.model.Categoria;
 import com.inventario.model.Producto;
+import com.inventario.model.MovimientoStock;
 import com.inventario.service.InventarioService;
 import com.inventario.util.CsvUtil;
 import com.inventario.util.LogUtil;
@@ -22,13 +24,15 @@ import java.util.stream.Collectors;
  */
 public class InventarioServiceImpl implements InventarioService {
     private static final Logger logger = LoggerFactory.getLogger(InventarioServiceImpl.class);
-    
+
     private final CategoriaDAO categoriaDAO;
     private final ProductoDAO productoDAO;
-    
-    public InventarioServiceImpl(CategoriaDAO categoriaDAO, ProductoDAO productoDAO) {
+    private final MovimientoStockDAO movimientoStockDAO;
+
+    public InventarioServiceImpl(CategoriaDAO categoriaDAO, ProductoDAO productoDAO, MovimientoStockDAO movimientoStockDAO) {
         this.categoriaDAO = categoriaDAO;
         this.productoDAO = productoDAO;
+        this.movimientoStockDAO = movimientoStockDAO;
     }
     
     // === GESTIÓN DE PRODUCTOS ===
@@ -407,30 +411,42 @@ public int cargarProductosDesdeCSV(String rutaArchivo) throws Exception {
             if (cantidad <= 0) {
                 throw new Exception("La cantidad debe ser mayor a cero");
             }
-            
+
             // Obtener producto actual
             Optional<Producto> productoOpt = productoDAO.buscarPorId(idProducto);
             if (productoOpt.isEmpty()) {
                 throw new Exception("Producto no encontrado ID: " + idProducto);
             }
-            
+
             Producto producto = productoOpt.get();
             int stockAnterior = producto.getStock();
             int stockNuevo = stockAnterior + cantidad;
-            
+
             // Actualizar stock
             boolean actualizado = productoDAO.actualizarStock(idProducto, stockNuevo);
-            
+
             if (actualizado) {
-                LogUtil.registrarOperacionExitosa("ENTRADA_STOCK", 
-                    String.format("Entrada registrada - Producto: %s, Cantidad: %d, Stock: %d → %d, Motivo: %s", 
+                // Registrar el movimiento en la tabla movimientos_stock
+                MovimientoStock movimiento = new MovimientoStock(
+                    idProducto,
+                    "ENTRADA",
+                    cantidad,
+                    stockAnterior,
+                    stockNuevo,
+                    motivo,
+                    "usuario_manual"
+                );
+                movimientoStockDAO.registrarMovimiento(movimiento);
+
+                LogUtil.registrarOperacionExitosa("ENTRADA_STOCK",
+                    String.format("Entrada registrada - Producto: %s, Cantidad: %d, Stock: %d → %d, Motivo: %s",
                         producto.getNombre(), cantidad, stockAnterior, stockNuevo, motivo));
             }
-            
+
             return actualizado;
-            
+
         } catch (Exception e) {
-            LogUtil.registrarError("ENTRADA_STOCK", 
+            LogUtil.registrarError("ENTRADA_STOCK",
                 String.format("Error al registrar entrada - Producto ID: %d, Cantidad: %d", idProducto, cantidad), e);
             throw e;
         }
@@ -442,36 +458,48 @@ public int cargarProductosDesdeCSV(String rutaArchivo) throws Exception {
             if (cantidad <= 0) {
                 throw new Exception("La cantidad debe ser mayor a cero");
             }
-            
+
             // Obtener producto actual
             Optional<Producto> productoOpt = productoDAO.buscarPorId(idProducto);
             if (productoOpt.isEmpty()) {
                 throw new Exception("Producto no encontrado ID: " + idProducto);
             }
-            
+
             Producto producto = productoOpt.get();
             int stockAnterior = producto.getStock();
-            
+
             if (stockAnterior < cantidad) {
-                throw new Exception(String.format("Stock insuficiente. Disponible: %d, Solicitado: %d", 
+                throw new Exception(String.format("Stock insuficiente. Disponible: %d, Solicitado: %d",
                     stockAnterior, cantidad));
             }
-            
+
             int stockNuevo = stockAnterior - cantidad;
-            
+
             // Actualizar stock
             boolean actualizado = productoDAO.actualizarStock(idProducto, stockNuevo);
-            
+
             if (actualizado) {
-                LogUtil.registrarOperacionExitosa("SALIDA_STOCK", 
-                    String.format("Salida registrada - Producto: %s, Cantidad: %d, Stock: %d → %d, Motivo: %s", 
+                // Registrar el movimiento en la tabla movimientos_stock
+                MovimientoStock movimiento = new MovimientoStock(
+                    idProducto,
+                    "SALIDA",
+                    cantidad,
+                    stockAnterior,
+                    stockNuevo,
+                    motivo,
+                    "usuario_manual"
+                );
+                movimientoStockDAO.registrarMovimiento(movimiento);
+
+                LogUtil.registrarOperacionExitosa("SALIDA_STOCK",
+                    String.format("Salida registrada - Producto: %s, Cantidad: %d, Stock: %d → %d, Motivo: %s",
                         producto.getNombre(), cantidad, stockAnterior, stockNuevo, motivo));
             }
-            
+
             return actualizado;
-            
+
         } catch (Exception e) {
-            LogUtil.registrarError("SALIDA_STOCK", 
+            LogUtil.registrarError("SALIDA_STOCK",
                 String.format("Error al registrar salida - Producto ID: %d, Cantidad: %d", idProducto, cantidad), e);
             throw e;
         }

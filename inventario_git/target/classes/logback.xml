@@ -25,15 +25,15 @@
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- Rotación diaria -->
             <fileNamePattern>${LOG_PATH}/inventario.%d{yyyy-MM-dd}.log</fileNamePattern>
-            <!-- Retención de 30 días -->
-            <maxHistory>30</maxHistory>
+            <!-- Retención de solo 7 días -->
+            <maxHistory>7</maxHistory>
             <!-- Tamaño total máximo de logs -->
-            <totalSizeCap>500MB</totalSizeCap>
+            <totalSizeCap>100MB</totalSizeCap>
         </rollingPolicy>
-        
+
         <!-- Política de tamaño -->
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-            <maxFileSize>10MB</maxFileSize>
+            <maxFileSize>5MB</maxFileSize>
         </triggeringPolicy>
     </appender>
     
@@ -64,15 +64,28 @@
         </triggeringPolicy>
     </appender>
     
-    <!-- Appender para actividades (actividades.log) -->
-    <appender name="FILE_ACTIVIDADES" class="ch.qos.logback.core.FileAppender">
+    <!-- Appender para actividades (actividades.log) - CON ROTACIÓN -->
+    <appender name="FILE_ACTIVIDADES" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_PATH}/actividades.log</file>
         <encoder>
             <pattern>[%d{yyyy-MM-dd HH:mm:ss, Europe/Madrid}] [%-5level] %msg%n</pattern>
             <charset>UTF-8</charset>
         </encoder>
-        <!-- Append mode - no sobrescribe -->
-        <append>true</append>
+
+        <!-- Política de rotación -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- Rotación diaria -->
+            <fileNamePattern>${LOG_PATH}/actividades.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- Retención de solo 7 días -->
+            <maxHistory>7</maxHistory>
+            <!-- Tamaño total máximo de logs de actividades -->
+            <totalSizeCap>100MB</totalSizeCap>
+        </rollingPolicy>
+
+        <!-- Política de tamaño - rotar cuando supere 5MB -->
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>5MB</maxFileSize>
+        </triggeringPolicy>
     </appender>
     
     <!-- Appender para reportes de operaciones (reportes_operaciones.log) -->
@@ -89,41 +102,41 @@
         </rollingPolicy>
     </appender>
     
-    <!-- Logger específico para DatabaseConfig -->
-    <logger name="com.inventario.util.DatabaseConfig" level="INFO" additivity="false">
+    <!-- Logger específico para DatabaseConfig - Solo errores -->
+    <logger name="com.inventario.util.DatabaseConfig" level="WARN" additivity="false">
         <appender-ref ref="CONSOLE" />
         <appender-ref ref="FILE_GENERAL" />
     </logger>
-    
-    <!-- Logger para servicios (captura actividades) -->
-    <logger name="com.inventario.service" level="INFO" additivity="false">
+
+    <!-- Logger para servicios - Solo WARN y ERROR -->
+    <logger name="com.inventario.service" level="WARN" additivity="false">
         <appender-ref ref="CONSOLE" />
         <appender-ref ref="FILE_GENERAL" />
         <appender-ref ref="FILE_ACTIVIDADES" />
         <appender-ref ref="FILE_ERROR" />
     </logger>
-    
-    <!-- Logger para DAO -->
-    <logger name="com.inventario.dao" level="INFO" additivity="false">
+
+    <!-- Logger para DAO - Solo WARN y ERROR -->
+    <logger name="com.inventario.dao" level="WARN" additivity="false">
         <appender-ref ref="CONSOLE" />
         <appender-ref ref="FILE_GENERAL" />
         <appender-ref ref="FILE_ERROR" />
     </logger>
-    
-    <!-- Logger para utilidades -->
-    <logger name="com.inventario.util" level="INFO" additivity="false">
+
+    <!-- Logger para utilidades - Solo WARN y ERROR -->
+    <logger name="com.inventario.util" level="WARN" additivity="false">
         <appender-ref ref="CONSOLE" />
         <appender-ref ref="FILE_GENERAL" />
         <appender-ref ref="FILE_ERROR" />
     </logger>
-    
+
     <!-- Logger para reportes de operaciones -->
     <logger name="com.inventario.reportes" level="INFO" additivity="false">
         <appender-ref ref="FILE_REPORTES" />
     </logger>
-    
-    <!-- Logger raíz - nivel por defecto -->
-    <root level="INFO">
+
+    <!-- Logger raíz - Solo WARN y ERROR por defecto -->
+    <root level="WARN">
         <appender-ref ref="CONSOLE" />
         <appender-ref ref="FILE_GENERAL" />
         <appender-ref ref="FILE_ERROR" />
