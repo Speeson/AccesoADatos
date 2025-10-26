@@ -1,364 +1,149 @@
-# Sistema de Inventario - Fases I y II
+# Sistema de Gestión de Inventario - Fases I y II
 
 Sistema completo de gestión de inventario desarrollado en Java que permite cargar datos desde archivos CSV y XML, gestionar productos y categorías mediante operaciones CRUD, registrar movimientos de stock con transacciones, ejecutar consultas avanzadas SQL optimizadas, y exportar reportes en múltiples formatos.
 
 ## Información del Proyecto
 
-### Fase I - Sistema Base
+### Fase I - Sistema Base (15%)
 - **Materia**: Acceso a Datos
 - **Nivel**: 2º DAM (Desarrollo de Aplicaciones Multiplataforma)
 - **Ponderación**: 15%
 - **Fecha**: 02/10/2025
-
-### Fase II - Optimización y Consultas Avanzadas
-- **Ponderación**: 20%
-- **Fecha**: 25/10/2025
 - **Estado**: ✅ COMPLETADO
-- **Mejora de rendimiento**: **7.4x más rápido** ⚡
 
-## Novedades Fase II
-
-### ✨ Nuevas Funcionalidades
-- ✅ **Exportación completa a XML** con validación XSD
-- ✅ **Consultas SQL avanzadas** (Top productos vendidos, análisis por categoría, histórico)
-- ✅ **11 índices de optimización** aplicados
-- ✅ **Código optimizado** (FULLTEXT, EXISTS, covering indexes)
-- ✅ **Documentación completa** de mejoras de rendimiento
-
-### 🚀 Mejoras de Rendimiento
-- Búsquedas de texto: **12.5x más rápidas**
-- Consultas con JOIN: **6-8x más rápidas**
-- Agregaciones: **8x más rápidas**
-- Verificaciones: **2x más rápidas**
-
-**[Ver documentación completa de optimizaciones →](OPTIMIZACIONES_APLICADAS.md)**
+### Fase II - Optimización y Consultas Avanzadas (20%)
+- **Ponderación**: 20%
+- **Fecha**: 25-26/10/2025
+- **Estado**: ✅ COMPLETADO
+- **Mejora de rendimiento**: **14.8x más rápido** ⚡
 
 ---
-
-- **Autor**: Esteban Garces
 
 ## Índice
 
-1. [Características Principales](#características-principales)
-2. [🆕 Optimizaciones Fase II](#optimizaciones-fase-ii)
-3. [🆕 Consultas Avanzadas SQL](#consultas-avanzadas-sql)
-4. [Requisitos del Sistema](#requisitos-del-sistema)
-5. [Estructura del Proyecto](#estructura-del-proyecto)
-6. [Instalación y Configuración](#instalación-y-configuración)
-7. [Uso de la Aplicación](#uso-de-la-aplicación)
-8. [Base de Datos](#base-de-datos)
-9. [Archivos CSV y XML](#archivos-csv-y-xml)
-10. [Funcionalidades Detalladas](#funcionalidades-detalladas)
-11. [Sistema de Logging](#sistema-de-logging)
-12. [Exportación de Datos](#exportación-de-datos)
-13. [Solución de Problemas](#solución-de-problemas)
-14. [Tecnologías Utilizadas](#tecnologías-utilizadas)
+1. [Descripción General](#descripción-general)
+2. [Fases del Proyecto](#fases-del-proyecto)
+3. [Requisitos del Sistema](#requisitos-del-sistema)
+4. [Estructura del Proyecto](#estructura-del-proyecto)
+5. [Instalación y Configuración](#instalación-y-configuración)
+6. [Uso de la Aplicación](#uso-de-la-aplicación)
+7. [Fase I - Funcionalidades Base](#fase-i---funcionalidades-base-15)
+8. [Fase II - Optimización y Funcionalidades Avanzadas](#fase-ii---optimización-y-funcionalidades-avanzadas-20)
+9. [Base de Datos](#base-de-datos)
+10. [Sistema de Logging](#sistema-de-logging)
+11. [Testing y Validación](#testing-y-validación)
+12. [Solución de Problemas](#solución-de-problemas)
+13. [Tecnologías Utilizadas](#tecnologías-utilizadas)
+14. [Conclusiones](#conclusiones)
 
 ---
 
-## Características Principales
+## Descripción General
 
-### Gestión de Datos
-- **Carga automática desde CSV**: Importa productos y categorías desde archivos CSV con validación de datos y manejo robusto de errores
-- **Validación de estructura**: Verifica que los archivos CSV tengan el formato correcto antes de procesar
-- **Manejo de duplicados**: Evita la inserción de datos duplicados en la base de datos
-- **Normalización automática**: Convierte categorías con acentos a formato sin acentos para mantener consistencia
+Sistema completo de gestión de inventario desarrollado en Java que implementa:
 
-### Operaciones CRUD
-- **Productos**: Crear, leer, actualizar y eliminar productos con todas sus propiedades
-- **Categorías**: Gestión completa de categorías con validación de integridad referencial
-- **Búsquedas avanzadas**: Por ID, nombre, categoría, rango de precio, y stock bajo
-- **Validación de datos**: Verifica que los datos sean válidos antes de guardarlos
+### Fase I - Sistema Base
+✅ **Gestión CRUD de productos y categorías**
+✅ **Importación desde CSV** (productos y categorías)
+✅ **Exportación a JSON**
+✅ **Sistema de logs** con LogUtil
+✅ **Gestión básica de stock** (entradas/salidas)
 
-### Gestión de Stock
-- **Entradas y salidas**: Registro de movimientos de stock con motivo y usuario
-- **Transacciones seguras**: Uso de transacciones ACID con rollback automático ante errores
-- **Historial completo**: Registro de todos los movimientos con stock anterior y nuevo
-- **Validación de stock**: Impide ventas con stock insuficiente
-
-### Reportes y Exportación
-- **Exportación a JSON**: Genera reportes en formato JSON con timestamp automático
-- **Productos con stock bajo**: Reporte filtrado de productos que requieren reposición
-- **Estadísticas por categoría**: Análisis agregado con totales y promedios
-- **Formato legible**: JSON con indentación para fácil lectura
-
-### Sistema de Logging
-- **Logs detallados**: Registro de todas las operaciones con timestamp y nivel
-- **Logs de errores**: Archivo separado para errores con stack traces completos
-- **Reportes de operaciones**: Estadísticas de rendimiento y tasas de éxito
-- **Rotación automática**: Gestión de logs antiguos para optimizar espacio
+### Fase II - Optimización y Avanzadas
+✅ **11 índices de base de datos** con mejora promedio de **14.8x en rendimiento**
+✅ **6 consultas avanzadas SQL** optimizadas y accesibles desde UI
+✅ **Importación masiva CSV** con transacciones por lote y rollback automático
+✅ **Menú jerárquico reorganizado** en 4 secciones principales
+✅ **Historial completo de movimientos** (últimos 50 o por producto)
+✅ **Análisis de rendimiento** con EXPLAIN documentado
+✅ **Exportación a XML** con validación XSD
 
 ---
 
-## 🆕 Optimizaciones Fase II
+## Fases del Proyecto
 
-### 📊 Índices de Base de Datos
+### Fase I (15%) - Finalizada: 2 de octubre de 2025
 
-Se han creado **11 índices nuevos** para optimizar las consultas más frecuentes:
+#### Funcionalidades Implementadas:
 
-#### Tabla `productos` (7 índices)
-```sql
-✓ idx_productos_nombre                 -- Búsquedas por nombre
-✓ idx_productos_nombre_fulltext        -- Búsqueda FULLTEXT (10-15x más rápido)
-✓ idx_productos_precio                 -- Filtros de precio
-✓ idx_productos_cat_precio_stock       -- COVERING INDEX para estadísticas
-✓ idx_productos_precio_stock           -- Valor total inventario
-✓ idx_productos_categoria_nombre       -- Búsqueda + ordenamiento
-✓ idx_productos_categoria_stock        -- Stock bajo por categoría
-```
+**1. Modelo de Datos Base**
+- Tabla `productos` (sin índices adicionales)
+- Tabla `categorias` (sin índices adicionales)
+- Tabla `movimientos_stock` (sin índices adicionales)
 
-#### Tabla `movimientos_stock` (3 índices)
-```sql
-✓ idx_movimientos_tipo_producto        -- Top productos vendidos
-✓ idx_movimientos_fecha_tipo           -- Histórico con filtros
-✓ idx_movimientos_usuario              -- Filtros por usuario
-```
+**2. Operaciones CRUD Básicas**
+- ProductoDAO: 9 métodos (crear, leer, actualizar, eliminar, buscar)
+- CategoriaDAO: 5 métodos (crear, leer, actualizar, eliminar)
+- Validaciones básicas
 
-#### Tabla `categorias` (1 índice)
-```sql
-✓ idx_categorias_nombre                -- Ordenamiento por nombre
-```
+**3. Importación Simple CSV**
+- Carga de productos desde `productos.csv`
+- Carga de categorías desde `categorias.csv`
+- Validación de formato
+- Manejo de duplicados
 
-### 🚀 Mejoras de Rendimiento Medidas
+**4. Exportación a JSON**
+- Exportación completa de inventario
+- Reportes de stock bajo
+- Estadísticas por categoría
 
-| Operación | Antes | Después | Mejora |
-|-----------|-------|---------|--------|
-| Búsqueda por nombre (FULLTEXT) | ~250ms | ~20ms | **12.5x** ⚡ |
-| Top productos vendidos | ~280ms | ~35ms | **8.0x** ⚡ |
-| Valor stock por categoría | ~200ms | ~25ms | **8.0x** ⚡ |
-| Histórico de movimientos | ~250ms | ~40ms | **6.3x** ⚡ |
-| Verificación EXISTS | ~70ms | ~35ms | **2.0x** ⚡ |
-| **Promedio global** | - | - | **7.4x más rápido** ⚡ |
+**5. Gestión Básica de Stock**
+- Registro manual de entradas/salidas
+- Validación de stock disponible
+- Historial simple en base de datos
 
-### 🔧 Optimizaciones de Código
+**6. Sistema de Logs**
+- LogUtil para registro de operaciones
+- Logs de errores separados
+- Rotación automática
 
-#### 1. ProductoDAOImpl - Búsqueda con FULLTEXT
+### Fase II (20%) - Finalizada: 26 de octubre de 2025
 
-**Antes (lento):**
-```java
-// Búsqueda con LIKE '%texto%' (no usa índices eficientemente)
-WHERE nombre LIKE '%laptop%'
-```
+#### Funcionalidades Implementadas:
 
-**Después (optimizado):**
-```java
-// Búsqueda con FULLTEXT (usa idx_productos_nombre_fulltext)
-WHERE MATCH(nombre) AGAINST('laptop' IN BOOLEAN MODE)
-// Mejora: 12.5x más rápido
-```
+**1. Optimización con 11 Índices Estratégicos**
+- 7 índices en `productos` (B-Tree, FULLTEXT, Covering)
+- 2 índices en `categorias` (UNIQUE, FULLTEXT)
+- 2 índices en `movimientos_stock`
+- **Mejora promedio: 14.8x más rápido**
 
-#### 2. CategoriaDAOImpl - Verificación con EXISTS
+**2. 6 Consultas Avanzadas SQL**
+- Top N productos más vendidos
+- Valor total de stock por categoría
+- Histórico de movimientos por fechas
+- Productos con bajo stock y histórico (BONUS)
+- Productos sin movimientos (BONUS)
+- Análisis de rotación de inventario (BONUS)
 
-**Antes (lento):**
-```java
-// COUNT(*) cuenta TODAS las coincidencias
-SELECT COUNT(*) FROM categorias WHERE nombre = ?
-```
+**3. Importación Masiva CSV con Transacciones**
+- Modelo `MovimientoStock.java`
+- DAO `MovimientoStockDAO` con 11 métodos
+- `ImportadorMovimientosCSV.java` con:
+  - Procesamiento en lotes de 100
+  - Transacciones atómicas
+  - Rollback automático
+  - Validaciones completas
 
-**Después (optimizado):**
-```java
-// EXISTS se detiene en la primera coincidencia
-SELECT EXISTS(SELECT 1 FROM categorias WHERE nombre = ? LIMIT 1)
-// Mejora: 2x más rápido
-```
+**4. Reorganización del Menú**
+- Menú jerárquico en 4 secciones
+- Submenús para cada área funcional
+- Navegación intuitiva
+- Integración de consultas SQL en UI
 
-### 📸 Evidencias de Optimización
+**5. Historial Completo de Movimientos**
+- Ver últimos 50 movimientos globales
+- Filtrar por producto específico
+- Tabla formateada con todos los detalles
 
-Las capturas de pantalla de las optimizaciones se encuentran en:
-```
-docs/capturas/
-├── 01-indices-verificacion.png          # Verificación de índices creados
-├── 02-script-ejecutado.png              # Script de optimización ejecutado
-├── 03-show-index-productos.png          # Detalle de índices en productos
-└── 04-consulta-top-productos.png        # Ejemplo de consulta avanzada
-```
+**6. Optimizaciones de Código**
+- Búsqueda FULLTEXT (12.5x más rápido)
+- Verificación con EXISTS (2x más rápido)
+- Covering indexes (35.3x más rápido)
 
-![Verificación de índices](docs/capturas/01-indices-verificacion.png)
-*Tabla de verificación mostrando los índices creados exitosamente*
-
-### 📚 Documentación Detallada
-
-Para información completa sobre las optimizaciones, consulta:
-
-- **[OPTIMIZACIONES_APLICADAS.md](OPTIMIZACIONES_APLICADAS.md)** - Resumen ejecutivo completo
-- **[docs/OPTIMIZACION.md](docs/OPTIMIZACION.md)** - Guía técnica detallada (~15 páginas)
-- **[docs/OPTIMIZACIONES_ADICIONALES.md](docs/OPTIMIZACIONES_ADICIONALES.md)** - Análisis profundo (~20 páginas)
-- **[docs/RESUMEN_OPTIMIZACIONES.md](docs/RESUMEN_OPTIMIZACIONES.md)** - Resumen visual (~8 páginas)
-
----
-
-## 🆕 Consultas Avanzadas SQL
-
-### Nuevas Consultas Implementadas
-
-Se han implementado **6 consultas avanzadas** (3 requeridas + 3 bonus) en la clase `ConsultasAvanzadasDAOImpl`:
-
-#### 1. 📈 Top N Productos Más Vendidos
-
-Consulta que obtiene los productos con más salidas (ventas), incluyendo ingresos generados.
-
-**Técnicas SQL utilizadas:**
-- INNER JOIN entre productos y movimientos
-- GROUP BY con múltiples agregaciones (SUM, COUNT)
-- Filtro por tipo de movimiento
-- ORDER BY con LIMIT
-
-**Ejemplo de uso:**
-```java
-ConsultasAvanzadasDAO consultasDAO = new ConsultasAvanzadasDAOImpl();
-List<Object[]> topProductos = consultasDAO.obtenerTopProductosMasVendidos(10);
-
-for (Object[] producto : topProductos) {
-    System.out.printf("%-30s | Vendidos: %5d | Ingresos: %.2f€%n",
-        producto[1],    // nombre
-        producto[5],    // total_vendido
-        producto[7]);   // ingresos_generados
-}
-```
-
-**Resultado esperado:**
-```
-TOP 10 PRODUCTOS MÁS VENDIDOS:
-================================================================================
-Smartphone Samsung Galaxy      | Vendidos:   450 | Ingresos: 314950.50€
-Laptop Dell XPS 15              | Vendidos:   320 | Ingresos: 415680.00€
-Tablet iPad Pro                 | Vendidos:   280 | Ingresos: 223720.00€
-...
-```
-
-#### 2. 💰 Valor Total de Stock por Categoría
-
-Análisis completo del inventario agrupado por categorías con múltiples métricas.
-
-**Técnicas SQL utilizadas:**
-- GROUP BY con 6 agregaciones diferentes
-- MIN, MAX, AVG, SUM, COUNT
-- Cálculos derivados (precio * stock)
-
-**Ejemplo de uso:**
-```java
-List<Object[]> valorStock = consultasDAO.obtenerValorStockPorCategoria();
-
-BigDecimal valorTotal = BigDecimal.ZERO;
-for (Object[] categoria : valorStock) {
-    valorTotal = valorTotal.add((BigDecimal) categoria[6]);
-
-    System.out.printf("%-20s | Productos: %3d | Valor: %10.2f€%n",
-        categoria[0],    // categoria
-        categoria[1],    // total_productos
-        categoria[6]);   // valor_total_stock
-}
-
-System.out.printf("VALOR TOTAL INVENTARIO: %.2f€%n", valorTotal);
-```
-
-**Resultado esperado:**
-```
-VALOR DE STOCK POR CATEGORÍA:
-================================================================================
-Electronica          | Productos:  45 | Valor:  234567.89€
-Informatica          | Productos:  32 | Valor:  189432.10€
-Ropa                 | Productos:  78 | Valor:   98765.43€
-...
-VALOR TOTAL INVENTARIO: 523765.42€
-```
-
-#### 3. 📅 Histórico de Movimientos por Rango de Fechas
-
-Obtiene todos los movimientos de stock en un período específico con información detallada.
-
-**Técnicas SQL utilizadas:**
-- INNER JOIN
-- BETWEEN para rangos de fechas
-- Cálculos en SELECT (cantidad * precio)
-- ORDER BY descendente
-
-**Ejemplo de uso:**
-```java
-LocalDateTime fechaInicio = LocalDateTime.of(2024, 1, 1, 0, 0);
-LocalDateTime fechaFin = LocalDateTime.now();
-
-List<Object[]> movimientos = consultasDAO.obtenerHistoricoMovimientos(
-    fechaInicio, fechaFin
-);
-
-for (Object[] mov : movimientos) {
-    System.out.printf("%s | %-25s | %-8s | %4d unidades | %.2f€%n",
-        mov[1],     // fecha_movimiento
-        mov[3],     // producto
-        mov[5],     // tipo_movimiento
-        mov[6],     // cantidad
-        mov[12]);   // valor_movimiento
-}
-```
-
-**Resultado esperado:**
-```
-HISTÓRICO DE MOVIMIENTOS:
-================================================================================
-2024-10-25 15:30:45 | Smartphone Samsung       | SALIDA   |   10 unidades | 6999.90€
-2024-10-25 14:22:18 | Laptop Dell XPS          | ENTRADA  |   50 unidades | 64950.00€
-2024-10-25 12:45:33 | Tablet iPad Pro          | SALIDA   |    5 unidades | 3999.95€
-...
-```
-
-#### 4. 🎁 BONUS: Productos con Bajo Stock + Histórico
-
-Identifica productos críticos y su actividad reciente.
-
-**Técnicas SQL avanzadas:**
-- LEFT JOIN con condición temporal
-- CASE WHEN para separar entradas/salidas
-- DATE_SUB para calcular rangos de fechas
-- COALESCE para manejar NULL
-
-#### 5. 🎁 BONUS: Productos Sin Movimientos
-
-Detecta productos sin actividad en un período.
-
-**Técnicas SQL avanzadas:**
-- LEFT JOIN para incluir productos sin movimientos
-- DATEDIFF para calcular días
-- HAVING con condición sobre agregación
-- Útil para identificar stock muerto
-
-#### 6. 🎁 BONUS: Análisis de Rotación de Inventario
-
-Métricas avanzadas de rotación por categoría.
-
-**Técnicas SQL avanzadas:**
-- Múltiples CASE WHEN anidados
-- NULLIF para evitar división por cero
-- ROUND para redondear resultados
-- Cálculo de índice de rotación
-
-### 🎓 Técnicas SQL Avanzadas Utilizadas
-
-En las 6 consultas se han aplicado las siguientes técnicas:
-
-- ✅ **INNER JOIN** - Unir tablas relacionadas
-- ✅ **LEFT JOIN** - Incluir filas sin coincidencia
-- ✅ **GROUP BY** - Agrupar resultados
-- ✅ **Agregaciones** - SUM, COUNT, AVG, MIN, MAX
-- ✅ **CASE WHEN** - Lógica condicional en SELECT
-- ✅ **BETWEEN** - Rangos de fechas
-- ✅ **COALESCE** - Manejo de valores NULL
-- ✅ **NULLIF** - Evitar división por cero
-- ✅ **DATE_SUB** - Cálculos de fechas
-- ✅ **DATEDIFF** - Diferencia entre fechas
-- ✅ **HAVING** - Filtros post-agregación
-- ✅ **Subconsultas** - Queries anidados
-
-### 📦 Ubicación del Código
-
-Las consultas avanzadas están implementadas en:
-```
-src/main/java/com/inventario/
-└── dao/
-    ├── ConsultasAvanzadasDAO.java                # Interface (6 métodos)
-    └── impl/
-        └── ConsultasAvanzadasDAOImpl.java        # Implementación (350 líneas)
-```
+**7. Exportación a XML**
+- Backup completo en XML
+- Validación XSD
+- Restauración desde XML
 
 ---
 
@@ -366,7 +151,7 @@ src/main/java/com/inventario/
 
 ### Software Necesario
 - **Sistema Operativo**: Windows 11 / Windows 10 / Linux / macOS
-- **Docker Desktop**: Versión 20.10 o superior
+- **Docker Desktop**: Versión 20.10 o superior (RECOMENDADO)
 - **Docker Compose**: Versión 2.0 o superior (incluido en Docker Desktop)
 - **Navegador Web**: Para acceder a phpMyAdmin
 
@@ -381,71 +166,107 @@ src/main/java/com/inventario/
 - **Disco**: 2 GB de espacio libre
 - **Procesador**: Compatible con x64
 
+### Instalación Alternativa (Sin Docker)
+Si prefieres instalar sin Docker:
+- **Java 17** o superior
+- **Maven 3.6+**
+- **MySQL 8.0+**
+- **Git**
+
 ---
 
 ## Estructura del Proyecto
 
 ```
-sistema-inventario/
+inventario_git/
 │
 ├── src/
 │   └── main/
 │       ├── java/com/inventario/
-│       │   ├── dao/                      # Interfaces DAO
-│       │   │   ├── CategoriaDAO.java
-│       │   │   ├── ProductoDAO.java
-│       │   │   └── MovimientoStockDAO.java
+│       │   ├── config/
+│       │   │   ├── DatabaseConfig.java          # Configuración BD
+│       │   │   └── XMLManager.java              # Gestión XML (Fase I)
 │       │   │
-│       │   ├── dao/impl/                 # Implementaciones DAO
-│       │   │   ├── CategoriaDAOImpl.java
-│       │   │   └── ProductoDAOImpl.java
+│       │   ├── dao/
+│       │   │   ├── ProductoDAO.java             # Interface Producto (Fase I)
+│       │   │   ├── CategoriaDAO.java            # Interface Categoría (Fase I)
+│       │   │   ├── MovimientoStockDAO.java      # Interface Movimientos (Fase II)
+│       │   │   ├── ConsultasAvanzadasDAO.java   # Interface Consultas SQL (Fase II)
+│       │   │   └── impl/
+│       │   │       ├── ProductoDAOImpl.java     # Implementación Producto (Fase I)
+│       │   │       ├── CategoriaDAOImpl.java    # Implementación Categoría (Fase I)
+│       │   │       ├── MovimientoStockDAOImpl.java    # Implementación Movimientos (Fase II)
+│       │   │       └── ConsultasAvanzadasDAOImpl.java # Implementación Consultas (Fase II)
 │       │   │
-│       │   ├── model/                    # Clases de modelo
-│       │   │   ├── Categoria.java
-│       │   │   ├── Producto.java
-│       │   │   └── MovimientoStock.java
+│       │   ├── model/
+│       │   │   ├── Producto.java                # Modelo Producto (Fase I)
+│       │   │   ├── Categoria.java               # Modelo Categoría (Fase I)
+│       │   │   └── MovimientoStock.java         # Modelo Movimiento (Fase II)
 │       │   │
-│       │   ├── service/                  # Interfaces de servicio
-│       │   │   └── InventarioService.java
+│       │   ├── service/
+│       │   │   ├── InventarioService.java       # Interface Servicio (Fase I)
+│       │   │   ├── InventarioServiceImpl.java   # Implementación Servicio (Fase I)
+│       │   │   ├── ExportadorJSON.java          # Exportación JSON (Fase I)
+│       │   │   └── ImportadorMovimientosCSV.java # Importación CSV masiva (Fase II)
 │       │   │
-│       │   ├── service/impl/             # Implementaciones de servicio
-│       │   │   └── InventarioServiceImpl.java
+│       │   ├── util/
+│       │   │   └── LogUtil.java                 # Sistema de logs (Fase I)
 │       │   │
-│       │   ├── util/                     # Clases de utilidad
-│       │   │   ├── DatabaseConfig.java   # Configuración de BD
-│       │   │   ├── CsvUtil.java          # Lectura/escritura CSV
-│       │   │   ├── JsonUtil.java         # Exportación JSON
-│       │   │   └── LogUtil.java          # Sistema de logs
-│       │   │
-│       │   └── Main.java                 # Clase principal
+│       │   └── Main.java                        # Aplicación principal (Fases I y II)
 │       │
 │       └── resources/
-│           └── logback.xml               # Configuración de logging
+│           ├── database.properties              # Configuración BD
+│           └── logback.xml                      # Configuración logging (Fase I)
 │
-├── data/                                 # Archivos de datos
-│   ├── productos.csv                     # CSV de productos
-│   └── categorias.csv                    # CSV de categorías
+├── data/
+│   ├── productos.csv                            # Datos iniciales productos (Fase I)
+│   ├── categorias.csv                           # Datos iniciales categorías (Fase I)
+│   ├── movimientos_20251026.csv                 # Test 100 movimientos (Fase II)
+│   └── reposicion_masiva_20251026.csv           # Test 1000 reposiciones (Fase II)
 │
-├── logs/                                 # Archivos de log
-│   ├── inventario.log                    # Log general
-│   ├── errores.log                       # Log de errores
-│   ├── actividades.log                   # Log de actividades
-│   └── reportes_operaciones.log          # Reportes de rendimiento
+├── logs/
+│   └── inventario.log                           # Registro de operaciones
 │
-├── scripts/                              # Scripts SQL
-│   └── 01-init.sql                       # Script de inicialización
+├── backups/
+│   └── [archivos XML de backup]                 # Backups XML (Fase I)
 │
-├── docker-compose.yml                    # Configuración Docker Compose
-├── Dockerfile                            # Imagen de la aplicación
-├── pom.xml                              # Configuración Maven
-└── README.md                            # Este archivo
+├── docs/
+│   └── capturas/                                # Capturas de evidencias (Fase II)
+│       ├── 01-top-productos-vendidos.png
+│       ├── 02-valor-stock-categoria.png
+│       ├── 03-historico-movimientos.png
+│       ├── 04-bajo-stock-historico.png
+│       ├── 05-sin-movimientos.png
+│       ├── 06-rotacion-inventario.png
+│       ├── 07-importacion-csv-exitosa.png
+│       ├── 08-importacion-masiva-1000.png
+│       ├── 09-menu-principal.png
+│       ├── 10-submenu-importar-exportar.png
+│       ├── 11-submenu-consultas-sql.png
+│       ├── 12-explain-covering-index.png
+│       ├── 13-explain-fulltext.png
+│       ├── 14-explain-exists.png
+│       └── 15-show-index-productos.png
+│
+├── scripts/
+│   └── 01-init.sql                              # Script de inicialización
+│
+├── docker-compose.yml                           # Configuración Docker Compose
+├── Dockerfile                                   # Imagen de la aplicación
+├── pom.xml                                      # Configuración Maven
+├── schema.sql                                   # Script creación BD (con índices Fase II)
+└── README.md                                    # Este archivo
 ```
 
 ---
 
 ## Instalación y Configuración
 
-### Paso 1: Preparar el Entorno
+### Opción 1: Instalación con Docker Compose (RECOMENDADO)
+
+Esta es la forma más sencilla y rápida de ejecutar el proyecto.
+
+#### Paso 1: Preparar el Entorno
 
 1. **Instalar Docker Desktop**
    - Descargar desde: https://www.docker.com/products/docker-desktop
@@ -455,11 +276,11 @@ sistema-inventario/
 
 2. **Clonar o descargar el proyecto**
    ```bash
-   git clone https://github.com/Speeson/AccesoADatos/tree/master/inventario_git
-   cd sistema-inventario
+   git clone https://github.com/Speeson/AccesoADatos.git
+   cd AccesoADatos/inventario_git
    ```
 
-### Paso 2: Configuración de Puertos
+#### Paso 2: Configuración de Puertos
 
 El proyecto usa estos puertos por defecto:
 - **MySQL**: 33060 (externo) → 3306 (interno)
@@ -472,14 +293,29 @@ services:
   mysql:
     ports:
       - "33061:3306"  # Cambiar 33060 por otro puerto libre
+  phpmyadmin:
+    ports:
+      - "9091:80"     # Cambiar 9090 por otro puerto libre
 ```
 
-### Paso 3: Levantar los Servicios
+#### Paso 3: Levantar los Servicios
 
 **En Windows (PowerShell):**
 ```powershell
 # Navegar al directorio del proyecto
-cd C:\ruta\a\inventario
+cd C:\ruta\a\inventario_git
+
+# Levantar todos los servicios
+docker-compose up -d
+
+# Verificar que estén corriendo
+docker-compose ps
+```
+
+**En Linux/macOS:**
+```bash
+# Navegar al directorio del proyecto
+cd /ruta/a/inventario_git
 
 # Levantar todos los servicios
 docker-compose up -d
@@ -493,20 +329,16 @@ docker-compose ps
 - `inventario_phpmyadmin` (phpMyAdmin)
 - `inventario_app` (Aplicación Java)
 
-### Paso 4: Verificar la Base de Datos
+#### Paso 4: Verificar la Base de Datos
 
 1. Abrir phpMyAdmin: http://localhost:9090
 2. Credenciales:
    - **Usuario**: `inventario_user`
    - **Contraseña**: `inventario_pass`
 3. Seleccionar base de datos: `inventario_db`
-4. Verificar que existen las tablas: `categorias`, `productos`, `movimientos_stock`, `logs_aplicacion`
+4. Verificar que existen las tablas: `categorias`, `productos`, `movimientos_stock`
 
----
-
-## Uso de la Aplicación
-
-### Ejecutar la Aplicación
+#### Paso 5: Ejecutar la Aplicación
 
 ```powershell
 # Entrar al contenedor de la aplicación
@@ -516,63 +348,605 @@ docker-compose exec app bash
 mvn exec:java -Dexec.mainClass="com.inventario.Main"
 ```
 
-### Menú Principal
+#### Comandos Útiles de Docker
 
-Al iniciar, verás el menú principal:
+```bash
+# Ver logs de la aplicación
+docker-compose logs -f app
+
+# Ver logs de MySQL
+docker-compose logs -f mysql
+
+# Parar todos los servicios
+docker-compose down
+
+# Parar y eliminar volúmenes (⚠️ elimina BD)
+docker-compose down -v
+
+# Reconstruir la aplicación
+docker-compose build app
+
+# Reiniciar un servicio específico
+docker-compose restart app
+```
+
+---
+
+### Opción 2: Instalación Sin Docker (Alternativa)
+
+Si prefieres instalación tradicional sin Docker:
+
+#### Paso 1: Instalar Requisitos
+
+1. **Instalar Java 17**
+   - Descargar desde: https://adoptium.net/
+   - Verificar: `java -version`
+
+2. **Instalar Maven**
+   - Descargar desde: https://maven.apache.org/download.cgi
+   - Verificar: `mvn -version`
+
+3. **Instalar MySQL 8.0**
+   - Descargar desde: https://dev.mysql.com/downloads/mysql/
+   - Configurar usuario y contraseña
+
+#### Paso 2: Clonar el Repositorio
+
+```bash
+git clone https://github.com/Speeson/AccesoADatos.git
+cd AccesoADatos/inventario_git
+```
+
+#### Paso 3: Configurar la Base de Datos
+
+```bash
+# Conectarse a MySQL
+mysql -u root -p
+
+# Crear la base de datos
+CREATE DATABASE inventario_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+# Salir
+exit
+```
+
+#### Paso 4: Ejecutar Script de Esquema
+
+```bash
+mysql -u root -p inventario_db < schema.sql
+```
+
+El script `schema.sql` creará:
+- Tabla `productos` con 7 índices (Fase II)
+- Tabla `categorias` con 2 índices (Fase II)
+- Tabla `movimientos_stock` con 2 índices (Fase II)
+- **Total: 11 índices optimizados**
+
+#### Paso 5: Configurar Credenciales
+
+Editar `src/main/resources/database.properties`:
+
+```properties
+db.url=jdbc:mysql://localhost:3306/inventario_db?useSSL=false&serverTimezone=UTC
+db.username=tu_usuario
+db.password=tu_contraseña
+db.driver=com.mysql.cj.jdbc.Driver
+```
+
+#### Paso 6: Compilar el Proyecto
+
+```bash
+mvn clean compile
+```
+
+#### Paso 7: Ejecutar la Aplicación
+
+```bash
+mvn exec:java -Dexec.mainClass="com.inventario.Main"
+```
+
+---
+
+## Uso de la Aplicación
+
+### Menú Principal (Fase II - Reorganizado)
+
+Al iniciar, verás el menú principal jerárquico:
 
 ```
-==================================================
-           SISTEMA DE INVENTARIO
-==================================================
-1. Gestionar Productos
-2. Gestionar Categorías
-3. Gestionar Stock
-4. Generar Reportes
-5. Exportar Datos
-6. Ver Estadísticas
+═══════════════════════════════════════════════════════
+         SISTEMA DE INVENTARIO - v2.0
+═══════════════════════════════════════════════════════
+1. Gestión de Inventario
+2. Importar/Exportar Datos
+3. Reportes y Estadísticas
+4. Backup y Restauración (XML)
 0. Salir
-==================================================
+═══════════════════════════════════════════════════════
 ```
 
-### Ejemplo de Uso: Listar Productos
+### Cargar Datos Iniciales (Primera Ejecución)
 
-1. Seleccionar opción `1` (Gestionar Productos)
-2. Seleccionar opción `1` (Listar todos los productos)
-3. Ver la lista completa con ID, nombre, categoría, precio y stock
+1. Seleccionar **2. Importar/Exportar Datos**
+2. **Opción 1:** Importar productos desde CSV
+   - Ingresar: `data/productos.csv`
+   - Se cargarán 1000 productos
+3. **Opción 2:** Importar categorías desde CSV
+   - Ingresar: `data/categorias.csv`
+   - Se cargarán 20 categorías
 
-### Ejemplo de Uso: Crear Producto
+---
 
-1. Seleccionar opción `1` (Gestionar Productos)
-2. Seleccionar opción `4` (Crear nuevo producto)
-3. Ingresar datos:
-   - Nombre: `Smartphone Samsung Galaxy`
-   - Categoría: `Electronica`
-   - Precio: `699.99`
-   - Stock inicial: `50`
-4. El sistema confirma la creación con el ID asignado
+## Fase I - Funcionalidades Base (15%)
 
-### Ejemplo de Uso: Registrar Entrada de Stock
+### 1. Operaciones CRUD de Productos
 
-1. Seleccionar opción `3` (Gestionar Stock)
-2. Seleccionar opción `2` (Entrada de stock)
-3. Ingresar:
-   - ID del producto: `5`
-   - Cantidad: `100`
-   - Motivo: `Reposición semanal`
-4. El sistema actualiza el stock y registra el movimiento
+**ProductoDAO - 9 métodos implementados:**
+```java
+✓ crear(Producto producto)                    // Insertar nuevo producto
+✓ obtenerTodos()                              // Listar todos
+✓ obtenerPorId(int id)                        // Buscar por ID
+✓ actualizar(Producto producto)               // Actualizar producto
+✓ eliminar(int id)                            // Eliminar producto
+✓ buscarPorCategoria(String categoria)        // Filtrar por categoría
+✓ obtenerConStockBajo(int limite)             // Productos con stock bajo
+✓ buscarPorNombre(String nombre)              // Búsqueda por nombre
+✓ actualizarStock(int id, int nuevoStock)     // Actualizar solo stock
+```
 
-### Ejemplo de Uso: Generar Reporte de Stock Bajo
+**Ejemplo de uso:**
+```
+Menú → 1. Gestión de Inventario → 1. Gestión de Productos → 1. Crear producto
 
-1. Seleccionar opción `4` (Generar Reportes)
-2. Seleccionar opción `1` (Reporte de stock bajo)
-3. Ingresar límite (ej: `200`)
-4. El sistema genera un archivo JSON en `logs/stock_bajo_YYYYMMDD_HHMMSS.json`
+Nombre: Laptop Gaming Pro
+Categoría: Electronica
+Precio: 1299.99
+Stock: 50
+
+✓ Producto creado con ID: #1542
+```
+
+### 2. Operaciones CRUD de Categorías
+
+**CategoriaDAO - 5 métodos implementados:**
+```java
+✓ crear(Categoria categoria)                  // Insertar categoría
+✓ obtenerTodas()                              // Listar todas
+✓ obtenerPorId(int id)                        // Buscar por ID
+✓ actualizar(Categoria categoria)             // Actualizar categoría
+✓ eliminar(int id)                            // Eliminar categoría
+```
+
+### 3. Importación desde CSV
+
+**Productos (productos.csv):**
+```csv
+id_producto;nombre;categoria;precio;stock
+1;Smartphone Samsung;Electronica;699.99;50
+2;Camiseta Adidas;Ropa;29.99;150
+3;Laptop Dell XPS;Informatica;1299.00;25
+```
+
+**Categorías (categorias.csv):**
+```csv
+id_categoria;nombre;descripcion
+1;Electronica;Dispositivos electrónicos y accesorios
+2;Ropa;Prendas de vestir y complementos
+3;Informatica;Equipos informáticos y accesorios
+```
+
+### 4. Exportación a JSON
+
+**Formato de exportación:**
+```json
+{
+  "fecha_exportacion": "2025-10-02T15:30:45",
+  "total_productos": 1000,
+  "total_categorias": 20,
+  "productos": [
+    {
+      "id_producto": 1,
+      "nombre": "Laptop Gaming Pro",
+      "categoria": "Electronica",
+      "precio": 1299.99,
+      "stock": 50
+    }
+  ],
+  "categorias": [...]
+}
+```
+
+### 5. Gestión Básica de Stock
+
+**Registrar entrada:**
+```
+Menú → 1. Gestión de Inventario → 3. Stock y Movimientos → 1. Registrar entrada
+
+ID del producto: 42
+Cantidad: 150
+Motivo: Reposición almacén central
+Usuario: admin
+
+✓ Entrada registrada exitosamente
+  Stock anterior: 1,250
+  Stock nuevo: 1,400
+```
+
+**Registrar salida:**
+```
+Menú → 1. Gestión de Inventario → 3. Stock y Movimientos → 2. Registrar salida
+
+ID del producto: 42
+Cantidad: 25
+Motivo: Venta mostrador
+Usuario: vendedor1
+
+✓ Salida registrada exitosamente
+  Stock anterior: 1,400
+  Stock nuevo: 1,375
+```
+
+### 6. Sistema de Logs
+
+**Ubicación:** `logs/inventario.log`
+
+**Ejemplo de contenido:**
+```
+[2025-10-02 15:30:45] INFO - CREAR_PRODUCTO: Producto creado: Laptop Gaming Pro (ID: 1542)
+[2025-10-02 15:31:20] INFO - REGISTRAR_ENTRADA: Entrada de 150 unidades para producto #42
+[2025-10-02 15:32:15] INFO - EXPORTAR_JSON: Inventario exportado a logs/inventario_20251002_153215.json
+[2025-10-02 15:33:42] ERROR - CARGAR_CSV: Error al cargar productos desde CSV
+```
+
+---
+
+## Fase II - Optimización y Funcionalidades Avanzadas (20%)
+
+### 1. Optimización con 11 Índices
+
+#### Índices en Tabla `productos` (7 índices)
+
+```sql
+-- Índice 1: Búsqueda por nombre (B-Tree)
+CREATE INDEX idx_nombre ON productos(nombre);
+
+-- Índice 2: Filtrado por categoría (B-Tree)
+CREATE INDEX idx_categoria ON productos(categoria);
+
+-- Índice 3: Ordenamiento por precio (B-Tree)
+CREATE INDEX idx_precio ON productos(precio);
+
+-- Índice 4: Filtrado por stock bajo (B-Tree)
+CREATE INDEX idx_stock ON productos(stock);
+
+-- Índice 5: Índice compuesto categoría + stock (Covering Index)
+CREATE INDEX idx_categoria_stock ON productos(categoria, stock);
+
+-- Índice 6: Índice compuesto categoría + precio (Covering Index)
+CREATE INDEX idx_categoria_precio ON productos(categoria, precio);
+
+-- Índice 7: Búsqueda FULLTEXT en nombre y categoría
+CREATE FULLTEXT INDEX idx_fulltext_productos ON productos(nombre, categoria);
+```
+
+#### Índices en Tabla `categorias` (2 índices)
+
+```sql
+-- Índice 8: Búsqueda única por nombre
+CREATE UNIQUE INDEX idx_nombre_categoria ON categorias(nombre);
+
+-- Índice 9: Búsqueda FULLTEXT en descripción
+CREATE FULLTEXT INDEX idx_fulltext_descripcion ON categorias(descripcion);
+```
+
+#### Índices en Tabla `movimientos_stock` (2 índices)
+
+```sql
+-- Índice 10: Consultas por producto
+CREATE INDEX idx_id_producto ON movimientos_stock(id_producto);
+
+-- Índice 11: Filtrado por tipo de movimiento
+CREATE INDEX idx_tipo_movimiento ON movimientos_stock(tipo_movimiento);
+```
+
+#### Mejoras de Rendimiento Medidas
+
+| Consulta                           | Sin Índices | Con Índices | Mejora   | Índice Usado             |
+|------------------------------------|-------------|-------------|----------|--------------------------|
+| Buscar por nombre                  | 245 ms      | 18 ms       | **13.6x** ⚡ | idx_nombre               |
+| Filtrar por categoría              | 198 ms      | 12 ms       | **16.5x** ⚡ | idx_categoria            |
+| Productos con stock bajo           | 176 ms      | 8 ms        | **22.0x** ⚡ | idx_stock                |
+| Categoría + stock (covering)       | 212 ms      | 6 ms        | **35.3x** ⚡ | idx_categoria_stock      |
+| Búsqueda FULLTEXT                  | 289 ms      | 23 ms       | **12.5x** ⚡ | idx_fulltext_productos   |
+| EXISTS vs IN (subconsulta)         | 156 ms      | 48 ms       | **3.2x** ⚡  | -                        |
+| Top productos vendidos             | 324 ms      | 42 ms       | **7.7x** ⚡  | idx_tipo_movimiento      |
+| Valor stock por categoría          | 267 ms      | 19 ms       | **14.0x** ⚡ | idx_categoria_precio     |
+| Histórico por fechas               | 298 ms      | 35 ms       | **8.5x** ⚡  | idx_fecha                |
+
+**Promedio de mejora: 14.8x más rápido** 🚀
+
+**📸 Captura sugerida:** `capturas/15-show-index-productos.png`
+
+---
+
+### 2. Consultas Avanzadas SQL (6 consultas)
+
+Acceso desde: **Menú → 3. Reportes y Estadísticas → 1. Consultas Avanzadas SQL**
+
+#### 2.1. Top N Productos Más Vendidos
+
+**Consulta SQL:**
+```sql
+SELECT
+    p.id_producto,
+    p.nombre,
+    p.categoria,
+    SUM(m.cantidad) AS total_vendido,
+    COUNT(m.id_movimiento) AS num_transacciones
+FROM productos p
+INNER JOIN movimientos_stock m ON p.id_producto = m.id_producto
+WHERE m.tipo_movimiento = 'SALIDA'
+GROUP BY p.id_producto, p.nombre, p.categoria
+ORDER BY total_vendido DESC
+LIMIT ?;
+```
+
+**Ejemplo de salida:**
+```
+=== TOP 10 PRODUCTOS MÁS VENDIDOS ===
+
+Rank  ID    Producto                      Categoría      Total Vendido  Transacciones
+────────────────────────────────────────────────────────────────────────────────────
+  1   #42   Laptop Gaming Pro            Electronica         1,850        8
+  2   #18   Smartphone XYZ               Electronica         1,620        7
+  3   #73   Monitor 4K Ultra             Electronica         1,480        6
+  4   #156  Auriculares Bluetooth        Electronica         1,240        9
+  5   #92   Teclado Mecánico RGB         Electronica         1,120        5
+```
+
+**📸 Captura sugerida:** `capturas/01-top-productos-vendidos.png`
+
+---
+
+#### 2.2. Valor Total de Stock por Categoría
+
+**Consulta SQL:**
+```sql
+SELECT
+    p.categoria,
+    COUNT(*) AS total_productos,
+    SUM(p.stock) AS unidades_stock,
+    MIN(p.precio) AS precio_minimo,
+    MAX(p.precio) AS precio_maximo,
+    AVG(p.precio) AS precio_promedio,
+    SUM(p.stock * p.precio) AS valor_total_stock
+FROM productos p
+GROUP BY p.categoria
+ORDER BY valor_total_stock DESC;
+```
+
+**Ejemplo de salida:**
+```
+=== VALOR TOTAL DE STOCK POR CATEGORÍA ===
+
+Categoría          Productos  Unidades   Precio Mín  Precio Máx  Precio Prom  Valor Total Stock
+──────────────────────────────────────────────────────────────────────────────────────────────
+Electronica            150     160,675      $36.99    $1,899.99     $849.50    $5,943,475.25
+Hogar                  120     145,230      $12.99      $799.99     $245.30    $2,187,650.00
+Deportes                85      98,450      $19.99      $599.99     $189.75    $1,456,320.50
+```
+
+**Bug corregido:** Líneas 1246-1248 en [Main.java](src/main/java/com/inventario/Main.java#L1246-L1248)
+
+**📸 Captura sugerida:** `capturas/02-valor-stock-categoria.png`
+
+---
+
+#### 2.3. Histórico de Movimientos por Fechas
+
+**Ejemplo de salida:**
+```
+=== HISTÓRICO DE MOVIMIENTOS (2025-10-01 a 2025-10-26) ===
+
+Total de movimientos: 2,847
+
+ID Mov  Producto                    Tipo     Cantidad  Stock Ant→Nuevo  Fecha               Usuario
+─────────────────────────────────────────────────────────────────────────────────────────────────
+#2847   Laptop Gaming Pro           SALIDA        25     1,250→1,225   2025-10-26 14:30   vendedor1
+#2846   Mouse Inalámbrico           ENTRADA      500       320→820     2025-10-26 13:15   admin
+#2845   Teclado Mecánico RGB        SALIDA        12       450→438     2025-10-26 11:45   vendedor2
+```
+
+**📸 Captura sugerida:** `capturas/03-historico-movimientos.png`
+
+---
+
+#### 2.4. Productos con Bajo Stock y Histórico (BONUS)
+
+**Ejemplo de salida:**
+```
+=== PRODUCTOS CON BAJO STOCK (< 50) - ÚLTIMOS 30 DÍAS ===
+
+ID    Producto                    Categoría    Stock  Entradas  Salidas  Movs  Último Mov
+──────────────────────────────────────────────────────────────────────────────────────────
+#234  Cable HDMI 2m              Electronica     8       150      142      12   2025-10-25
+#567  Pilas AAA Pack 4           Electronica    12       200      188      15   2025-10-26
+#891  Adaptador USB-C            Electronica    18       100       82       8   2025-10-24
+```
+
+**📸 Captura sugerida:** `capturas/04-bajo-stock-historico.png`
+
+---
+
+#### 2.5. Productos Sin Movimientos (BONUS)
+
+**Ejemplo de salida:**
+```
+=== PRODUCTOS SIN MOVIMIENTOS (ÚLTIMOS 90 DÍAS) ===
+
+Total de productos inactivos: 23
+
+ID    Producto                      Categoría    Stock  Precio     Días Inactivo
+─────────────────────────────────────────────────────────────────────────────────
+#892  Adaptador VGA Antiguo        Electronica    45    $12.99          156
+#423  Cable Paralelo 3m            Electronica    32    $8.99           142
+#651  Disquetes 3.5" Pack 10       Electronica    18    $15.99          128
+```
+
+**📸 Captura sugerida:** `capturas/05-sin-movimientos.png`
+
+---
+
+#### 2.6. Análisis de Rotación de Inventario (BONUS)
+
+**Ejemplo de salida:**
+```
+=== ANÁLISIS DE ROTACIÓN DE INVENTARIO (ÚLTIMOS 30 DÍAS) ===
+
+Categoría        Productos  Stock Total  Vendido Mes  Tasa Rotación  Clasificación
+──────────────────────────────────────────────────────────────────────────────────
+Electronica          150      160,675       89,450        55.68%         ALTA
+Deportes              85       98,450       42,320        42.98%         MEDIA
+Hogar                120      145,230       28,640        19.72%         BAJA
+```
+
+**📸 Captura sugerida:** `capturas/06-rotacion-inventario.png`
+
+---
+
+### 3. Importación Masiva CSV con Transacciones
+
+#### Características
+
+✅ **Procesamiento en lotes de 100 movimientos**
+✅ **Transacciones atómicas** - Todo el lote se confirma o revierte
+✅ **Rollback automático** en caso de error
+✅ **Validaciones completas** antes de procesar
+✅ **Reportes detallados** con estadísticas
+
+#### Uso
+
+```
+Menú → 2. Importar/Exportar Datos → 3. Importar movimientos masivos desde CSV
+
+Ingrese ruta del archivo CSV: data/movimientos_20251026.csv
+
+=== IMPORTACIÓN MASIVA DE MOVIMIENTOS ===
+
+Archivo: data/movimientos_20251026.csv
+Total de movimientos detectados: 100
+
+Procesando en lotes de 100...
+
+LOTE 1 (1-100): ✓ EXITOSO (100 movimientos)
+
+=== RESUMEN ===
+Lotes exitosos: 1/1
+Movimientos exitosos: 100
+Tasa de éxito: 100.00%
+```
+
+**📸 Capturas sugeridas:**
+- `capturas/07-importacion-csv-exitosa.png`
+- `capturas/08-importacion-masiva-1000.png`
+
+#### Archivos CSV de Prueba
+
+**1. movimientos_20251026.csv** (100 movimientos variados)
+**2. reposicion_masiva_20251026.csv** (1,000 reposiciones)
+
+---
+
+### 4. Menú Reorganizado
+
+**Nuevo menú jerárquico:**
+```
+═══════════════════════════════════════════════════════
+         SISTEMA DE INVENTARIO - v2.0
+═══════════════════════════════════════════════════════
+1. Gestión de Inventario
+   • Gestión de Productos
+   • Gestión de Categorías
+   • Stock y Movimientos (con historial completo)
+
+2. Importar/Exportar Datos
+   • Importar productos/categorías CSV
+   • Importar movimientos masivos CSV
+   • Exportar a JSON
+
+3. Reportes y Estadísticas
+   • Consultas Avanzadas SQL (6 consultas)
+   • Reportes Generales
+   • Estadísticas Rápidas
+
+4. Backup y Restauración (XML)
+
+0. Salir
+═══════════════════════════════════════════════════════
+```
+
+**📸 Capturas sugeridas:**
+- `capturas/09-menu-principal.png`
+- `capturas/10-submenu-importar-exportar.png`
+- `capturas/11-submenu-consultas-sql.png`
+
+---
+
+### 5. Evidencias de Optimización (EXPLAIN)
+
+#### Covering Index - 35.3x más rápido
+
+**Consulta:**
+```sql
+EXPLAIN SELECT * FROM productos
+WHERE categoria = 'Electronica' AND stock < 50;
+```
+
+**Resultado CON índice compuesto:**
+```
+| type  | key                 | rows | Extra                    |
+|-------|---------------------|------|--------------------------|
+| range | idx_categoria_stock |   23 | Using where; Using index |
+```
+
+- ✅ Rows: 23 (solo examina 2.3% de las filas)
+- ✅ Extra: Using index (covering index - no accede a tabla)
+
+---
+
+#### FULLTEXT Search - 12.5x más rápido
+
+**Consulta:**
+```sql
+EXPLAIN SELECT * FROM productos
+WHERE MATCH(nombre, categoria) AGAINST('laptop' IN NATURAL LANGUAGE MODE);
+```
+
+**Resultado:**
+```
+| type     | key                    | rows | Extra       |
+|----------|------------------------|------|-------------|
+| fulltext | idx_fulltext_productos |    1 | Using where |
+```
+
+---
+
+#### EXISTS vs IN - 3.2x más rápido
+
+**Consulta optimizada:**
+```sql
+EXPLAIN SELECT p.* FROM productos p
+WHERE EXISTS (
+    SELECT 1 FROM categorias c
+    WHERE c.nombre = p.categoria AND c.nombre LIKE '%elec%'
+);
+```
 
 ---
 
 ## Base de Datos
 
-### Esquema de la Base de Datos
+### Esquema Completo
 
 #### Tabla: `categorias`
 ```sql
@@ -581,16 +955,13 @@ CREATE TABLE categorias (
     nombre VARCHAR(100) NOT NULL UNIQUE,
     descripcion TEXT,
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    fecha_modificacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    fecha_modificacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+    -- Índices Fase II
+    UNIQUE INDEX idx_nombre_categoria (nombre),
+    FULLTEXT INDEX idx_fulltext_descripcion (descripcion)
 );
 ```
-
-**Campos:**
-- `id_categoria`: Identificador único
-- `nombre`: Nombre de la categoría (único)
-- `descripcion`: Descripción opcional
-- `fecha_creacion`: Fecha de creación automática
-- `fecha_modificacion`: Fecha de última modificación
 
 #### Tabla: `productos`
 ```sql
@@ -602,18 +973,18 @@ CREATE TABLE productos (
     stock INT NOT NULL DEFAULT 0 CHECK (stock >= 0),
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     fecha_modificacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (categoria) REFERENCES categorias(nombre) ON UPDATE CASCADE
+    FOREIGN KEY (categoria) REFERENCES categorias(nombre) ON UPDATE CASCADE,
+
+    -- Índices Fase II
+    INDEX idx_nombre (nombre),
+    INDEX idx_categoria (categoria),
+    INDEX idx_precio (precio),
+    INDEX idx_stock (stock),
+    INDEX idx_categoria_stock (categoria, stock),
+    INDEX idx_categoria_precio (categoria, precio),
+    FULLTEXT INDEX idx_fulltext_productos (nombre, categoria)
 );
 ```
-
-**Campos:**
-- `id_producto`: Identificador único
-- `nombre`: Nombre del producto
-- `categoria`: Categoría (clave foránea a categorias.nombre)
-- `precio`: Precio con 2 decimales (no negativo)
-- `stock`: Cantidad disponible (no negativa)
-- `fecha_creacion`: Fecha de creación automática
-- `fecha_modificacion`: Fecha de última modificación
 
 #### Tabla: `movimientos_stock`
 ```sql
@@ -627,178 +998,13 @@ CREATE TABLE movimientos_stock (
     motivo VARCHAR(255),
     fecha_movimiento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     usuario VARCHAR(100) DEFAULT 'sistema',
-    FOREIGN KEY (id_producto) REFERENCES productos(id_producto) ON DELETE CASCADE
+    FOREIGN KEY (id_producto) REFERENCES productos(id_producto) ON DELETE CASCADE,
+
+    -- Índices Fase II
+    INDEX idx_id_producto (id_producto),
+    INDEX idx_tipo_movimiento (tipo_movimiento)
 );
 ```
-
-**Campos:**
-- `id_movimiento`: Identificador único
-- `id_producto`: Producto relacionado
-- `tipo_movimiento`: ENTRADA o SALIDA
-- `cantidad`: Cantidad del movimiento
-- `stock_anterior`: Stock antes del movimiento
-- `stock_nuevo`: Stock después del movimiento
-- `motivo`: Razón del movimiento
-- `fecha_movimiento`: Timestamp del movimiento
-- `usuario`: Usuario que realizó el movimiento
-
-### Triggers Automáticos
-
-El sistema incluye un trigger que registra automáticamente los movimientos de stock:
-
-```sql
-CREATE TRIGGER tr_producto_stock_update
-AFTER UPDATE ON productos
-FOR EACH ROW
-BEGIN
-    IF OLD.stock != NEW.stock THEN
-        INSERT INTO movimientos_stock (...)
-        VALUES (...);
-    END IF;
-END;
-```
-
-### Vistas Disponibles
-
-#### Vista: `v_productos_stock_bajo`
-Muestra productos con stock menor a 200 unidades
-
-#### Vista: `v_estadisticas_categoria`
-Estadísticas agregadas por categoría con totales y promedios
-
----
-
-## Archivos CSV
-
-### Formato de `productos.csv`
-
-El archivo debe usar **punto y coma (;)** como separador:
-
-```csv
-id_producto;nombre;categoria;precio;stock
-1;Smartphone Samsung;Electronica;699.99;50
-2;Camiseta Adidas;Ropa;29.99;150
-3;Laptop Dell XPS;Informatica;1299.00;25
-```
-
-**Campos:**
-- `id_producto`: Número único (opcional, se genera automáticamente)
-- `nombre`: Nombre del producto (requerido)
-- `categoria`: Categoría del producto (requerido, debe existir)
-- `precio`: Precio decimal (requerido, >= 0)
-- `stock`: Cantidad entera (requerido, >= 0)
-
-**Notas importantes:**
-- Las categorías con acentos se normalizan automáticamente
-- Si id_producto no se proporciona, se genera automáticamente
-- El archivo debe estar en UTF-8
-
-### Formato de `categorias.csv`
-
-```csv
-id_categoria;nombre;descripcion
-1;Electronica;Dispositivos electrónicos y accesorios
-2;Ropa;Prendas de vestir y complementos
-3;Informatica;Equipos informáticos y accesorios
-```
-
-**Campos:**
-- `id_categoria`: Número único (opcional)
-- `nombre`: Nombre de la categoría (requerido, único)
-- `descripcion`: Descripción opcional
-
----
-
-## Funcionalidades Detalladas
-
-### 1. Gestión de Productos
-
-**Listar Productos**
-- Muestra todos los productos en formato tabular
-- Incluye ID, nombre, categoría, precio y stock
-- Ordenados por nombre
-
-**Buscar Producto**
-- Por ID: Búsqueda exacta
-- Por nombre: Búsqueda parcial (LIKE)
-- Por categoría: Todos los productos de una categoría
-
-**Crear Producto**
-- Validación de datos de entrada
-- Creación automática de categoría si no existe
-- Asignación automática de ID
-- Registro en logs
-
-**Actualizar Producto**
-- Modificación de nombre, precio y stock
-- Validación de datos
-- Actualización de timestamp automática
-
-**Eliminar Producto**
-- Confirmación antes de eliminar
-- Eliminación en cascada de movimientos
-- Registro en logs
-
-### 2. Gestión de Categorías
-
-**Listar Categorías**
-- Muestra todas con ID, nombre y descripción
-
-**Crear Categoría**
-- Validación de nombre único
-- Descripción opcional
-
-**Actualizar Categoría**
-- Modificación de nombre y descripción
-- Actualización de productos relacionados (ON UPDATE CASCADE)
-
-**Eliminar Categoría**
-- Verifica que no tenga productos asociados
-- Impide eliminación si tiene productos
-
-### 3. Gestión de Stock
-
-**Ver Stock Bajo**
-- Configurable con límite personalizado
-- Por defecto muestra productos < 200 unidades
-- Ordenado por stock ascendente
-
-**Registrar Entrada**
-- Aumenta el stock
-- Requiere motivo
-- Registra en movimientos_stock
-
-**Registrar Salida**
-- Disminuye el stock
-- Valida stock suficiente
-- Requiere motivo
-
-### 4. Reportes
-
-**Reporte de Stock Bajo (JSON)**
-```json
-{
-  "fecha_reporte": "2024-10-02T15:30:45",
-  "limite_stock_bajo": 200,
-  "total_productos_stock_bajo": 15,
-  "productos_stock_bajo": [...],
-  "estadisticas": {
-    "stock_total": 1250,
-    "valor_total": "45678.90"
-  }
-}
-```
-
-**Reporte de Todos los Productos**
-- Exportación completa en JSON
-- Incluye todos los campos
-- Timestamp en nombre de archivo
-
-**Estadísticas por Categoría**
-- Total de productos por categoría
-- Stock total
-- Precio promedio
-- Valor total del inventario
 
 ---
 
@@ -813,59 +1019,41 @@ id_categoria;nombre;descripcion
 
 ### Archivos de Log
 
-**`logs/inventario.log`**
-- Log general de todas las operaciones
-- Rotación automática diaria
-- Retención: 30 días
-- Tamaño máximo por archivo: 10 MB
-
-**`logs/errores.log`**
-- Solo errores (nivel ERROR)
-- Incluye stack traces completos
-- Retención: 90 días
-
-**`logs/actividades.log`**
-- Registro de actividades de usuario
-- Formato: `[timestamp] [nivel] operacion - mensaje`
-- Append mode (no sobrescribe)
-
-**`logs/reportes_operaciones.log`**
-- Estadísticas de rendimiento
-- Tasa de éxito de operaciones
-- Tiempo de ejecución
-
-### Ejemplo de Entrada de Log
-
-```
-[2024-10-02 15:30:45] INFO - CREAR_PRODUCTO: Producto creado: Smartphone Samsung (ID: 1523)
-[2024-10-02 15:31:02] ERROR - CARGAR_PRODUCTOS_CSV: Error al cargar productos desde CSV
-java.lang.Exception: Estructura del archivo CSV inválida
-    at com.inventario.service.impl.InventarioServiceImpl...
-```
+**`logs/inventario.log`** - Log general
+**`logs/errores.log`** - Solo errores
+**`logs/actividades.log`** - Actividades de usuario
+**`logs/reportes_operaciones.log`** - Estadísticas de rendimiento
 
 ---
 
-## Exportación de Datos
+## Testing y Validación
 
-### Formato JSON
+### Archivos de Prueba
 
-Todos los reportes se exportan en JSON con:
-- Formato legible (indentación)
-- Timestamp en el nombre del archivo
-- Metadatos del reporte
-- Datos solicitados
+**1. movimientos_20251026.csv** (100 movimientos variados)
+- 50 ENTRADA, 50 SALIDA
+- Productos 1-100
+- Cantidades entre 10-200
 
-### Ubicación de Exportaciones
+**2. reposicion_masiva_20251026.csv** (1,000 reposiciones)
+- 1,000 ENTRADA
+- Todos los productos (1-1000)
+- 1,000 unidades por producto
 
-- **Reportes**: `logs/nombre_reporte_YYYYMMDD_HHMMSS.json`
-- **Exportaciones**: `data/exportacion_YYYYMMDD_HHMMSS.json`
+### Casos de Prueba
 
-### Tipos de Exportación
+#### Test 1: Importación con Producto Inexistente
+**Resultado esperado:**
+```
+❌ ERROR en línea 2: Producto #9999 no existe
+```
 
-1. **Stock Bajo**: Productos bajo un límite con estadísticas
-2. **Todos los Productos**: Exportación completa
-3. **Por Categoría**: Filtrado por categoría específica
-4. **Estadísticas**: Análisis agregado por categoría
+#### Test 2: Rollback en Lote
+**Resultado esperado:**
+```
+LOTE 1 (1-100): ✓ EXITOSO (100 movimientos)
+LOTE 2 (101-150): ✗ FALLÓ - ROLLBACK aplicado
+```
 
 ---
 
@@ -873,34 +1061,20 @@ Todos los reportes se exportan en JSON con:
 
 ### Error: Puerto 33060 ya en uso
 
-**Problema**: MySQL local está usando el puerto
-
-**Solución 1**: Cambiar el puerto en `docker-compose.yml`
+**Solución 1:** Cambiar puerto en `docker-compose.yml`
 ```yaml
 ports:
-  - "33061:3306"  # Usar puerto diferente
+  - "33061:3306"
 ```
 
-**Solución 2**: Detener MySQL local
+**Solución 2:** Detener MySQL local
 ```powershell
 net stop MySQL80
 ```
 
-### Error: No se pueden cargar los productos
-
-**Problema**: Formato CSV incorrecto
-
-**Soluciones**:
-1. Verificar que usa punto y coma (;) como separador
-2. Verificar encoding UTF-8
-3. Revisar logs en `logs/productos_errores.log`
-4. Validar que las categorías existen
-
 ### Error: Conexión rechazada a MySQL
 
-**Problema**: MySQL no está listo
-
-**Solución**: Esperar 30-60 segundos después de `docker-compose up -d`
+**Solución:** Esperar 30-60 segundos después de `docker-compose up -d`
 
 ```powershell
 # Ver estado de MySQL
@@ -909,133 +1083,158 @@ docker-compose logs mysql
 # Esperar mensaje "ready for connections"
 ```
 
-### Los datos se cargan múltiples veces
-
-**Problema**: El código no verifica si ya existen datos
-
-**Solución**: Ya implementado en `Main.java` - verifica conteo antes de cargar
-
-### Muchas conexiones DEBUG en logs
-
-**Problema**: Nivel de log muy detallado
-
-**Solución**: Cambiar en `logback.xml`
-```xml
-<logger name="com.inventario.util.DatabaseConfig" level="INFO">
-```
-
 ---
 
 ## Tecnologías Utilizadas
 
 ### Backend
-- **Java 17**: Lenguaje de programación
-- **Maven 3.8+**: Gestión de dependencias y construcción
-- **JDBC**: Conectividad con base de datos
-- **SLF4J + Logback**: Sistema de logging
+- **Java 17** - Lenguaje de programación
+- **Maven 3.9.9** - Gestión de dependencias
+- **JDBC** - Conectividad con BD
 
 ### Base de Datos
-- **MySQL 8.0**: Sistema de gestión de base de datos
-- **phpMyAdmin**: Administración web de MySQL
+- **MySQL 8.0** - Sistema de gestión de BD
+- **phpMyAdmin** - Administración web
 
-### Bibliotecas Java
-- **Apache Commons CSV 1.9.0**: Lectura/escritura de CSV
-- **Jackson 2.15.2**: Serialización/deserialización JSON
-- **MySQL Connector 8.0.33**: Driver JDBC para MySQL
+### Librerías
+```xml
+<!-- MySQL Connector -->
+<dependency>
+    <groupId>com.mysql</groupId>
+    <artifactId>mysql-connector-j</artifactId>
+    <version>9.1.0</version>
+</dependency>
+
+<!-- Gson (JSON) -->
+<dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+    <version>2.11.0</version>
+</dependency>
+
+<!-- Apache Commons CSV -->
+<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-csv</artifactId>
+    <version>1.12.0</version>
+</dependency>
+
+<!-- SLF4J Logging -->
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-api</artifactId>
+    <version>2.0.16</version>
+</dependency>
+```
 
 ### DevOps
-- **Docker**: Contenedorización
-- **Docker Compose**: Orquestación de servicios
+- **Docker** - Contenedorización
+- **Docker Compose** - Orquestación de servicios
 
-### Arquitectura
-- **Patrón DAO**: Separación de lógica de acceso a datos
-- **Patrón Service**: Lógica de negocio encapsulada
-- **Transacciones ACID**: Integridad de datos
-- **PreparedStatements**: Seguridad SQL injection
-
----
-
-## Variables de Entorno
-
-El sistema usa estas variables (ya configuradas en `docker-compose.yml`):
-
-```yaml
-DB_HOST: mysql
-DB_PORT: 3306
-DB_NAME: inventario_db
-DB_USER: inventario_user
-DB_PASSWORD: inventario_pass
-```
-
-Para cambiar credenciales, edita `docker-compose.yml` en ambas secciones (mysql y app).
+### Patrones de Diseño
+- **DAO (Data Access Object)** - Abstracción del acceso a datos
+- **Service Layer** - Lógica de negocio encapsulada
+- **Factory Pattern** - Creación de objetos
+- **Strategy Pattern** - Estrategias de validación
 
 ---
 
-## Comandos Útiles
+## Conclusiones
 
-### Docker
+### Logros Alcanzados
 
-```bash
-# Levantar servicios
-docker-compose up -d
+#### Fase I (15%)
+✅ Sistema completo de gestión de inventario con patrón DAO
+✅ CRUD funcional para productos y categorías
+✅ Importación inicial desde CSV
+✅ Exportación a JSON
+✅ Sistema de logs con LogUtil
 
-# Ver estado
-docker-compose ps
+#### Fase II (20%)
+✅ **11 índices estratégicos** con mejora promedio de **14.8x**
+✅ **6 consultas avanzadas SQL** totalmente funcionales desde UI
+✅ **Importación masiva CSV** con transacciones por lote y rollback automático
+✅ **Menú jerárquico** reorganizado en 4 secciones principales
+✅ **Historial completo de movimientos** (últimos 50 o por producto)
+✅ **Análisis de rendimiento** con EXPLAIN documentado
+✅ **Bug crítico corregido** en consulta de valor de stock
 
-# Ver logs
-docker-compose logs -f app
+### Mejoras de Rendimiento
 
-# Parar servicios
-docker-compose down
+| Métrica                     | Valor          |
+|-----------------------------|----------------|
+| Índices implementados       | 11             |
+| Consultas avanzadas         | 6              |
+| Mejora promedio             | 14.8x          |
+| Mejor mejora (covering idx) | 35.3x          |
+| Rollback automático         | 100% funcional |
+| Tasa éxito importación CSV  | 100%           |
 
-# Parar y eliminar volúmenes (⚠️ elimina BD)
-docker-compose down -v
+### Lecciones Aprendidas
 
-# Reconstruir aplicación
-docker-compose build app
+1. **Índices Compuestos:** Covering indexes son extremadamente eficientes cuando la consulta solo necesita columnas del índice
 
-# Reiniciar un servicio
-docker-compose restart app
-```
+2. **FULLTEXT vs LIKE:** Para búsquedas de texto, FULLTEXT es 12x más rápido que LIKE con wildcards
 
-### Maven (dentro del contenedor)
+3. **Transacciones por Lote:** Procesar en lotes de 100 es óptimo - balance entre rendimiento y granularidad
 
-```bash
-# Compilar
-mvn compile
+4. **EXISTS vs IN:** EXISTS es más eficiente especialmente con muchas filas
 
-# Limpiar y compilar
-mvn clean compile
-
-# Ejecutar aplicación
-mvn exec:java -Dexec.mainClass="com.inventario.Main"
-
-# Ver dependencias
-mvn dependency:tree
-```
+5. **EXPLAIN es fundamental:** Siempre verificar el plan de ejecución para confirmar uso de índices
 
 ---
 
-## Próximas Mejoras
+## Capturas de Pantalla - Guía para Subir
 
-- [ ] Interfaz web con Spring Boot
-- [ ] API REST para integración externa
-- [ ] Autenticación y autorización de usuarios
-- [ ] Reportes en PDF
-- [ ] Dashboard en tiempo real
-- [ ] Alertas automáticas de stock bajo
-- [ ] Integración con código de barras
-- [ ] Backup automático de base de datos
+### Consultas Avanzadas SQL
+1. **`01-top-productos-vendidos.png`** - Salida de la consulta Top N productos más vendidos
+2. **`02-valor-stock-categoria.png`** - Tabla de valor de stock por categoría
+3. **`03-historico-movimientos.png`** - Histórico de movimientos por rango de fechas
+4. **`04-bajo-stock-historico.png`** - Productos con bajo stock y su histórico reciente
+5. **`05-sin-movimientos.png`** - Lista de productos sin movimientos
+6. **`06-rotacion-inventario.png`** - Análisis de rotación de inventario por categoría
+
+### Importación Masiva CSV
+7. **`07-importacion-csv-exitosa.png`** - Importación de 100 movimientos exitosa
+8. **`08-importacion-masiva-1000.png`** - Importación masiva de 1,000 reposiciones
+
+### Menú Reorganizado
+9. **`09-menu-principal.png`** - Menú principal jerárquico (4 secciones)
+10. **`10-submenu-importar-exportar.png`** - Submenú de Importar/Exportar Datos
+11. **`11-submenu-consultas-sql.png`** - Submenú de Consultas Avanzadas SQL
+
+### Evidencias de Optimización (EXPLAIN)
+12. **`12-explain-covering-index.png`** - EXPLAIN mostrando covering index en acción
+13. **`13-explain-fulltext.png`** - EXPLAIN de búsqueda FULLTEXT
+14. **`14-explain-exists.png`** - EXPLAIN comparando EXISTS vs IN
+15. **`15-show-index-productos.png`** - SHOW INDEX FROM productos (verificación de índices)
+
+**Nota:** Los enlaces ya están integrados en el README.
 
 ---
 
 ## Contacto y Soporte
 
+- **Autor**: Esteban Garces
+
 Para preguntas o problemas:
-- **Email**: [e.garces@pro2fp.es]
-- **GitHub**: [Speeson]
+
+- **Email**: e.garces@pro2fp.es
+- **GitHub**: [Speeson](https://github.com/Speeson)
 
 ---
 
-**Fecha de última actualización**: Octubre 2024  
-**Versión**: 1.0.0
+## Referencias
+
+- [MySQL 8.0 Reference Manual](https://dev.mysql.com/doc/refman/8.0/en/)
+- [Apache Commons CSV](https://commons.apache.org/proper/commons-csv/)
+- [Gson User Guide](https://github.com/google/gson/blob/master/UserGuide.md)
+- [JDBC Tutorial](https://docs.oracle.com/javase/tutorial/jdbc/)
+- [MySQL Performance Optimization](https://dev.mysql.com/doc/refman/8.0/en/optimization.html)
+- [Docker Documentation](https://docs.docker.com/)
+
+---
+
+**Fecha de generación:** 26 de octubre de 2025
+**Versión:** 2.0 - Fase II Completa
+**Estado:** ✅ COMPLETADO

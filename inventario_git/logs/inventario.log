@@ -40,3 +40,13 @@
 [2025-10-20 18:50:38] INFO  com.inventario.util.CsvUtil - Buscando columnas requeridas: [nombre, descripcion]
 [2025-10-20 18:50:38] INFO  com.inventario.util.CsvUtil - Iniciando lectura de categorías desde: data/categorias.csv
 [2025-10-20 18:50:38] ERROR com.inventario.util.CsvUtil - Línea 2: Error al procesar - For input string: "1,"Electronica""
+[2025-10-26 03:39:13] INFO  com.inventario.Main - Iniciando Sistema de Inventario
+[2025-10-26 03:39:13] INFO  com.inventario.Main - Inicializando servicios...
+[2025-10-26 03:39:13] INFO  com.inventario.util.DatabaseConfig - Configuración de base de datos inicializada: localhost:33061/inventario_db
+[2025-10-26 03:39:13] INFO  com.inventario.Main - Servicios inicializados correctamente
+[2025-10-26 03:39:13] INFO  com.inventario.Main - Verificando conexión a la base de datos...
+[2025-10-26 03:39:13] INFO  com.inventario.Main - Conexión a la base de datos establecida correctamente
+[2025-10-26 03:39:13] INFO  com.inventario.Main - XMLManager inicializado correctamente
+[2025-10-26 03:39:13] INFO  com.inventario.Main - Verificando si es necesario cargar datos iniciales...
+[2025-10-26 03:39:13] INFO  com.inventario.Main - Los datos ya existen. Productos en BD: 1000. Saltando carga de CSV.
+[2025-10-26 03:39:56] INFO  com.inventario.Main - Sistema de Inventario finalizado
