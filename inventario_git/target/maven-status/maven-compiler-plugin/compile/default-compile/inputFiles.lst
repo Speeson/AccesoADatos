@@ -11,7 +11,11 @@ C:\DAM2\AccesoDatos\GIT\inventario_git\src\main\java\com\inventario\service\Inve
 C:\DAM2\AccesoDatos\GIT\inventario_git\src\main\java\com\inventario\Main.java
 C:\DAM2\AccesoDatos\GIT\inventario_git\src\main\java\com\inventario\model\Categoria.java
 C:\DAM2\AccesoDatos\GIT\inventario_git\src\main\java\com\inventario\xml\XMLManager.java
+C:\DAM2\AccesoDatos\GIT\inventario_git\src\main\java\com\inventario\model\MovimientoStock.java
+C:\DAM2\AccesoDatos\GIT\inventario_git\src\main\java\com\inventario\dao\MovimientoStockDAO.java
+C:\DAM2\AccesoDatos\GIT\inventario_git\src\main\java\com\inventario\dao\impl\MovimientoStockDAOImpl.java
 C:\DAM2\AccesoDatos\GIT\inventario_git\src\main\java\com\inventario\dao\impl\ProductoDAOImpl.java
 C:\DAM2\AccesoDatos\GIT\inventario_git\src\main\java\com\inventario\dao\impl\CategoriaDAOImpl.java
 C:\DAM2\AccesoDatos\GIT\inventario_git\src\main\java\com\inventario\dao\ProductoDAO.java
 C:\DAM2\AccesoDatos\GIT\inventario_git\src\main\java\com\inventario\xml\XMLManagerCLI.java
+C:\DAM2\AccesoDatos\GIT\inventario_git\src\main\java\com\inventario\service\ImportadorMovimientosCSV.java

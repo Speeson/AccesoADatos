@@ -1,0 +1,101 @@
+id_producto,tipo_movimiento,cantidad,motivo,usuario
+1,ENTRADA,150,Reposicion almacen central,admin
+2,SALIDA,25,Venta mostrador,vendedor1
+3,ENTRADA,200,Compra proveedor ABC,admin
+4,SALIDA,30,Pedido online #1001,vendedor2
+5,ENTRADA,100,Stock nuevo producto,admin
+6,SALIDA,15,Venta corporativa,vendedor1
+7,ENTRADA,75,Reposicion semanal,admin
+8,SALIDA,40,Venta mayorista,vendedor2
+9,ENTRADA,120,Compra urgente,admin
+10,SALIDA,20,Venta cliente frecuente,vendedor1
+11,ENTRADA,90,Reposicion inventario,admin
+12,SALIDA,35,Pedido express,vendedor2
+13,ENTRADA,180,Compra proveedor XYZ,admin
+14,SALIDA,10,Venta mostrador,vendedor1
+15,ENTRADA,60,Stock temporada,admin
+16,SALIDA,45,Venta corporativa grande,vendedor2
+17,ENTRADA,110,Reposicion mensual,admin
+18,SALIDA,22,Pedido online #1002,vendedor1
+19,ENTRADA,95,Compra oportunidad,admin
+20,SALIDA,18,Venta minorista,vendedor2
+21,ENTRADA,140,Stock almacen norte,admin
+22,SALIDA,28,Venta cliente premium,vendedor1
+23,ENTRADA,85,Reposicion rapida,admin
+24,SALIDA,33,Pedido especial,vendedor2
+25,ENTRADA,125,Compra trimestral,admin
+26,SALIDA,12,Venta ocasional,vendedor1
+27,ENTRADA,70,Stock promocion,admin
+28,SALIDA,38,Venta mayorista grande,vendedor2
+29,ENTRADA,155,Reposicion completa,admin
+30,SALIDA,16,Pedido online #1003,vendedor1
+31,ENTRADA,88,Compra express,admin
+32,SALIDA,42,Venta corporativa,vendedor2
+33,ENTRADA,105,Stock nuevo almacen,admin
+34,SALIDA,24,Venta cliente VIP,vendedor1
+35,ENTRADA,130,Reposicion urgente,admin
+36,SALIDA,19,Pedido internacional,vendedor2
+37,ENTRADA,92,Compra planificada,admin
+38,SALIDA,31,Venta mostrador grande,vendedor1
+39,ENTRADA,165,Stock temporada alta,admin
+40,SALIDA,14,Venta minorista,vendedor2
+41,ENTRADA,78,Reposicion automatica,admin
+42,SALIDA,36,Pedido online #1004,vendedor1
+43,ENTRADA,145,Compra anual,admin
+44,SALIDA,21,Venta cliente regular,vendedor2
+45,ENTRADA,102,Stock distribucion,admin
+46,SALIDA,27,Venta corporativa mediana,vendedor1
+47,ENTRADA,82,Reposicion controlada,admin
+48,SALIDA,39,Pedido mayorista,vendedor2
+49,ENTRADA,118,Compra negociada,admin
+50,SALIDA,13,Venta ocasional,vendedor1
+51,ENTRADA,135,Stock campaña,admin
+52,SALIDA,44,Venta cliente gold,vendedor2
+53,ENTRADA,96,Reposicion standard,admin
+54,SALIDA,17,Pedido online #1005,vendedor1
+55,ENTRADA,170,Compra volumen,admin
+56,SALIDA,32,Venta directa,vendedor2
+57,ENTRADA,64,Stock temporada baja,admin
+58,SALIDA,26,Venta corporativa pequeña,vendedor1
+59,ENTRADA,112,Reposicion programada,admin
+60,SALIDA,41,Pedido especial grande,vendedor2
+61,ENTRADA,148,Compra estrategica,admin
+62,SALIDA,11,Venta mostrador,vendedor1
+63,ENTRADA,86,Stock rotacion,admin
+64,SALIDA,34,Venta mayorista mediana,vendedor2
+65,ENTRADA,122,Reposicion ciclo,admin
+66,SALIDA,23,Pedido online #1006,vendedor1
+67,ENTRADA,68,Compra reserva,admin
+68,SALIDA,37,Venta cliente platino,vendedor2
+69,ENTRADA,158,Stock ampliacion,admin
+70,SALIDA,29,Venta directa grande,vendedor1
+71,ENTRADA,94,Reposicion periodica,admin
+72,SALIDA,46,Pedido internacional grande,vendedor2
+73,ENTRADA,108,Compra preventiva,admin
+74,SALIDA,15,Venta ocasional pequeña,vendedor1
+75,ENTRADA,175,Stock refuerzo,admin
+76,SALIDA,43,Venta corporativa especial,vendedor2
+77,ENTRADA,72,Reposicion selectiva,admin
+78,SALIDA,20,Pedido online #1007,vendedor1
+79,ENTRADA,128,Compra consolidada,admin
+80,SALIDA,35,Venta mayorista estandar,vendedor2
+81,ENTRADA,98,Stock equilibrio,admin
+82,SALIDA,25,Venta cliente habitual,vendedor1
+83,ENTRADA,152,Reposicion completa mes,admin
+84,SALIDA,48,Pedido especial urgente,vendedor2
+85,ENTRADA,76,Compra oportunista,admin
+86,SALIDA,30,Venta mostrador mediana,vendedor1
+87,ENTRADA,142,Stock normalizacion,admin
+88,SALIDA,12,Venta minima,vendedor2
+89,ENTRADA,84,Reposicion ajuste,admin
+90,SALIDA,40,Pedido online #1008,vendedor1
+91,ENTRADA,162,Compra semestral,admin
+92,SALIDA,28,Venta corporativa trimestral,vendedor2
+93,ENTRADA,66,Stock mantenimiento,admin
+94,SALIDA,33,Venta cliente silver,vendedor1
+95,ENTRADA,115,Reposicion optima,admin
+96,SALIDA,22,Pedido mayorista pequeño,vendedor2
+97,ENTRADA,138,Compra final mes,admin
+98,SALIDA,47,Venta mostrador final,vendedor1
+99,ENTRADA,80,Stock cierre,admin
+100,SALIDA,19,Pedido online #1009,vendedor2

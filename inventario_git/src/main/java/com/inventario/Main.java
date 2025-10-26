@@ -2,12 +2,18 @@ package com.inventario;
 
 import com.inventario.dao.CategoriaDAO;
 import com.inventario.dao.ProductoDAO;
+import com.inventario.dao.MovimientoStockDAO;
+import com.inventario.dao.ConsultasAvanzadasDAO;
 import com.inventario.dao.impl.CategoriaDAOImpl;
 import com.inventario.dao.impl.ProductoDAOImpl;
+import com.inventario.dao.impl.MovimientoStockDAOImpl;
+import com.inventario.dao.impl.ConsultasAvanzadasDAOImpl;
 import com.inventario.model.Categoria;
 import com.inventario.model.Producto;
+import com.inventario.model.MovimientoStock;
 import com.inventario.service.InventarioService;
 import com.inventario.service.impl.InventarioServiceImpl;
+import com.inventario.service.ImportadorMovimientosCSV;
 import com.inventario.util.DatabaseConfig;
 import com.inventario.util.JsonUtil;
 import com.inventario.util.LogUtil;
@@ -17,6 +23,8 @@ import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
@@ -135,13 +143,10 @@ public class Main {
                 int opcion = Integer.parseInt(scanner.nextLine());
                 
                 switch (opcion) {
-                    case 1 -> gestionarProductos();
-                    case 2 -> gestionarCategorias();
-                    case 3 -> gestionarStock();
-                    case 4 -> generarReportes();
-                    case 5 -> exportarDatos();
-                    case 6 -> mostrarEstadisticas();
-                    case 7 -> gestionarBackupRestauracion();
+                    case 1 -> gestionarInventario();
+                    case 2 -> gestionarImportarExportar();
+                    case 3 -> gestionarReportesEstadisticas();
+                    case 4 -> gestionarBackupRestauracion();
                     case 0 -> {
                         continuar = false;
                         System.out.println("¡Gracias por usar el Sistema de Inventario!");
@@ -159,22 +164,112 @@ public class Main {
     }
     
     private static void mostrarMenuPrincipal() {
-        System.out.println("\n" + "=".repeat(50));
-        System.out.println("       SISTEMA DE INVENTARIO - v2.0");
-        System.out.println("=".repeat(50));
-        System.out.println("1. Gestionar Productos");
-        System.out.println("2. Gestionar Categorías");
-        System.out.println("3. Gestionar Stock");
-        System.out.println("4. Generar Reportes");
-        System.out.println("5. Exportar Datos");
-        System.out.println("6. Ver Estadísticas");
-        System.out.println("7. Backup y Restauración (XML)");
+        System.out.println("\n" + "=".repeat(55));
+        System.out.println("         SISTEMA DE INVENTARIO - v2.0");
+        System.out.println("=".repeat(55));
+        System.out.println("1. Gestión de Inventario");
+        System.out.println("2. Importar/Exportar Datos");
+        System.out.println("3. Reportes y Estadísticas");
+        System.out.println("4. Backup y Restauración (XML)");
         System.out.println("0. Salir");
-        System.out.println("=".repeat(50));
+        System.out.println("=".repeat(55));
         System.out.print("Seleccione una opción: ");
     }
-    
-    // ========== NUEVA FUNCIONALIDAD: BACKUP Y RESTAURACIÓN XML ==========
+
+    // ========== SUBMENÚ: GESTIÓN DE INVENTARIO ==========
+
+    private static void gestionarInventario() {
+        System.out.println("\n╔════════════════════════════════════════╗");
+        System.out.println("║      GESTIÓN DE INVENTARIO             ║");
+        System.out.println("╚════════════════════════════════════════╝");
+        System.out.println("1. Productos");
+        System.out.println("2. Categorías");
+        System.out.println("3. Stock y Movimientos");
+        System.out.println("0. Volver al menú principal");
+        System.out.print("Seleccione una opción: ");
+
+        try {
+            int opcion = Integer.parseInt(scanner.nextLine());
+
+            switch (opcion) {
+                case 1 -> gestionarProductos();
+                case 2 -> gestionarCategorias();
+                case 3 -> gestionarStock();
+                case 0 -> System.out.println("Volviendo al menú principal...");
+                default -> System.out.println("Opción no válida.");
+            }
+
+        } catch (NumberFormatException e) {
+            System.out.println("Por favor ingrese un número válido.");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            logger.error("Error en gestión de inventario", e);
+        }
+    }
+
+    // ========== SUBMENÚ: IMPORTAR/EXPORTAR DATOS ==========
+
+    private static void gestionarImportarExportar() {
+        System.out.println("\n╔════════════════════════════════════════╗");
+        System.out.println("║      IMPORTAR/EXPORTAR DATOS           ║");
+        System.out.println("╚════════════════════════════════════════╝");
+        System.out.println("1. Importar movimientos desde CSV");
+        System.out.println("2. Exportar productos a JSON");
+        System.out.println("3. Exportar productos por categoría");
+        System.out.println("0. Volver al menú principal");
+        System.out.print("Seleccione una opción: ");
+
+        try {
+            int opcion = Integer.parseInt(scanner.nextLine());
+
+            switch (opcion) {
+                case 1 -> importarMovimientosCSV();
+                case 2 -> exportarTodosProductos();
+                case 3 -> exportarProductosPorCategoria();
+                case 0 -> System.out.println("Volviendo al menú principal...");
+                default -> System.out.println("Opción no válida.");
+            }
+
+        } catch (NumberFormatException e) {
+            System.out.println("Por favor ingrese un número válido.");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            logger.error("Error en importar/exportar", e);
+        }
+    }
+
+    // ========== SUBMENÚ: REPORTES Y ESTADÍSTICAS ==========
+
+    private static void gestionarReportesEstadisticas() {
+        System.out.println("\n╔════════════════════════════════════════╗");
+        System.out.println("║    REPORTES Y ESTADÍSTICAS             ║");
+        System.out.println("╚════════════════════════════════════════╝");
+        System.out.println("1. Consultas Avanzadas (SQL Optimizadas)");
+        System.out.println("2. Generar Reportes (JSON)");
+        System.out.println("3. Ver Estadísticas Generales");
+        System.out.println("0. Volver al menú principal");
+        System.out.print("Seleccione una opción: ");
+
+        try {
+            int opcion = Integer.parseInt(scanner.nextLine());
+
+            switch (opcion) {
+                case 1 -> gestionarConsultasAvanzadas();
+                case 2 -> generarReportes();
+                case 3 -> mostrarEstadisticas();
+                case 0 -> System.out.println("Volviendo al menú principal...");
+                default -> System.out.println("Opción no válida.");
+            }
+
+        } catch (NumberFormatException e) {
+            System.out.println("Por favor ingrese un número válido.");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            logger.error("Error en reportes y estadísticas", e);
+        }
+    }
+
+    // ========== BACKUP Y RESTAURACIÓN XML ==========
     
     private static void gestionarBackupRestauracion() {
         System.out.println("\n╔════════════════════════════════════════╗");
@@ -669,26 +764,33 @@ public class Main {
     // ========== GESTIÓN DE STOCK ==========
     
     private static void gestionarStock() {
-        System.out.println("\n--- GESTIÓN DE STOCK ---");
+        System.out.println("\n╔════════════════════════════════════════╗");
+        System.out.println("║      STOCK Y MOVIMIENTOS               ║");
+        System.out.println("╚════════════════════════════════════════╝");
         System.out.println("1. Ver productos con stock bajo");
         System.out.println("2. Entrada de stock");
         System.out.println("3. Salida de stock");
         System.out.println("4. Ver historial de movimientos");
+        System.out.println("0. Volver al menú anterior");
         System.out.print("Seleccione una opción: ");
-        
+
         try {
             int opcion = Integer.parseInt(scanner.nextLine());
-            
+
             switch (opcion) {
                 case 1 -> verProductosStockBajo();
                 case 2 -> entradaStock();
                 case 3 -> salidaStock();
                 case 4 -> verHistorialMovimientos();
+                case 0 -> System.out.println("Volviendo al menú anterior...");
                 default -> System.out.println("Opción no válida.");
             }
-            
+
+        } catch (NumberFormatException e) {
+            System.out.println("Por favor ingrese un número válido.");
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
+            logger.error("Error en gestión de stock", e);
         }
     }
     
@@ -773,18 +875,64 @@ public class Main {
     private static void verHistorialMovimientos() {
         System.out.print("Ingrese el ID del producto (o Enter para ver todos): ");
         String idStr = scanner.nextLine();
-        
+
         try {
+            MovimientoStockDAO movimientoDAO = new MovimientoStockDAOImpl();
+            List<MovimientoStock> movimientos;
+
             if (idStr.trim().isEmpty()) {
-                // Mostrar todos los movimientos (últimos 20)
-                System.out.println("Función pendiente de implementar - historial completo");
+                // Mostrar todos los movimientos (últimos 50)
+                movimientos = movimientoDAO.obtenerUltimos(50);
+                System.out.println("\n--- ÚLTIMOS 50 MOVIMIENTOS DE STOCK ---");
             } else {
                 int idProducto = Integer.parseInt(idStr);
-                System.out.println("Función pendiente de implementar - historial por producto: " + idProducto);
+                movimientos = movimientoDAO.obtenerPorProducto(idProducto);
+
+                Producto producto = inventarioService.buscarProductoPorId(idProducto);
+                if (producto != null) {
+                    System.out.println("\n--- HISTORIAL DE MOVIMIENTOS: " + producto.getNombre() + " ---");
+                } else {
+                    System.out.println("\n--- HISTORIAL DE MOVIMIENTOS - PRODUCTO ID: " + idProducto + " ---");
+                }
             }
-            
+
+            if (movimientos.isEmpty()) {
+                System.out.println("No se encontraron movimientos.");
+                return;
+            }
+
+            // Mostrar tabla de movimientos
+            System.out.printf("%-5s %-12s %-10s %-10s %-10s %-10s %-25s %-20s %-15s%n",
+                    "ID", "Fecha", "Tipo", "Cantidad", "Stock Ant.", "Stock Nuevo", "Motivo", "Usuario", "ID Producto");
+            System.out.println("-".repeat(140));
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+
+            for (MovimientoStock mov : movimientos) {
+                String fecha = mov.getFechaMovimiento() != null ?
+                        mov.getFechaMovimiento().format(formatter) : "N/A";
+                String motivo = mov.getMotivo() != null ?
+                        (mov.getMotivo().length() > 25 ? mov.getMotivo().substring(0, 22) + "..." : mov.getMotivo()) : "";
+
+                System.out.printf("%-5d %-12s %-10s %-10d %-10d %-10d %-25s %-20s %-15d%n",
+                        mov.getIdMovimiento(),
+                        fecha,
+                        mov.getTipoMovimiento(),
+                        mov.getCantidad(),
+                        mov.getStockAnterior(),
+                        mov.getStockNuevo(),
+                        motivo,
+                        mov.getUsuario(),
+                        mov.getIdProducto());
+            }
+
+            System.out.println("\nTotal de movimientos: " + movimientos.size());
+
+        } catch (NumberFormatException e) {
+            System.out.println("ID inválido.");
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
+            logger.error("Error al obtener historial de movimientos", e);
         }
     }
     
@@ -932,8 +1080,401 @@ public class Main {
         }
     }
     
+    // ========== IMPORTACIÓN DE MOVIMIENTOS DESDE CSV ==========
+
+    private static void importarMovimientosCSV() {
+        System.out.println("\n╔════════════════════════════════════════╗");
+        System.out.println("║   IMPORTAR MOVIMIENTOS DESDE CSV      ║");
+        System.out.println("╚════════════════════════════════════════╝");
+        System.out.println();
+        System.out.println("Esta función permite importar movimientos de stock masivamente desde un archivo CSV.");
+        System.out.println("Formato esperado: id_producto,tipo_movimiento,cantidad,motivo,usuario");
+        System.out.println();
+
+        System.out.print("Ingrese la ruta del archivo CSV (o Enter para usar 'data/movimientos_ejemplo.csv'): ");
+        String rutaArchivo = scanner.nextLine().trim();
+
+        // Si no ingresa nada, usar el archivo de ejemplo
+        if (rutaArchivo.isEmpty()) {
+            rutaArchivo = "data/movimientos_ejemplo.csv";
+            System.out.println("Usando archivo por defecto: " + rutaArchivo);
+        }
+
+        // Confirmar antes de procesar
+        System.out.print("\n¿Desea proceder con la importación? (S/N): ");
+        String confirmacion = scanner.nextLine().trim().toUpperCase();
+
+        if (!confirmacion.equals("S") && !confirmacion.equals("SI") && !confirmacion.equals("SÍ")) {
+            System.out.println("Importación cancelada.");
+            return;
+        }
+
+        try {
+            // Crear importador y ejecutar
+            ImportadorMovimientosCSV importador = new ImportadorMovimientosCSV();
+            ImportadorMovimientosCSV.ResultadoImportacion resultado = importador.importarDesdeCSV(rutaArchivo);
+
+            // El importador ya muestra el resumen, aquí solo agregamos mensaje final
+            if (resultado.isExito()) {
+                if (resultado.getMovimientosExitosos() > 0) {
+                    System.out.println("\n✓ Importación completada exitosamente.");
+                    LogUtil.registrarOperacionExitosa("IMPORTAR_MOVIMIENTOS_MENU",
+                        "Importación exitosa: " + resultado.getMovimientosExitosos() + " movimientos");
+                } else {
+                    System.out.println("\n⚠ No se importaron movimientos.");
+                }
+            } else {
+                System.out.println("\n✗ La importación finalizó con errores.");
+                LogUtil.registrarError("IMPORTAR_MOVIMIENTOS_MENU",
+                    "Importación con errores: " + resultado.getMovimientosConError() + " fallos", null);
+            }
+
+            System.out.println("\nPresione Enter para continuar...");
+            scanner.nextLine();
+
+        } catch (Exception e) {
+            System.err.println("\n✗ Error durante la importación: " + e.getMessage());
+            logger.error("Error en importación de movimientos CSV", e);
+            LogUtil.registrarError("IMPORTAR_MOVIMIENTOS_MENU", "Error en importación: " + e.getMessage(), e);
+        }
+    }
+
+    // ========== CONSULTAS AVANZADAS ==========
+
+    private static void gestionarConsultasAvanzadas() {
+        System.out.println("\n╔════════════════════════════════════════╗");
+        System.out.println("║      CONSULTAS AVANZADAS SQL           ║");
+        System.out.println("╚════════════════════════════════════════╝");
+        System.out.println("1. Top N productos más vendidos");
+        System.out.println("2. Valor total de stock por categoría");
+        System.out.println("3. Histórico de movimientos por rango de fechas");
+        System.out.println("4. Productos con bajo stock y su histórico");
+        System.out.println("5. Productos sin movimientos");
+        System.out.println("6. Análisis de rotación de inventario");
+        System.out.println("0. Volver al menú anterior");
+        System.out.print("Seleccione una opción: ");
+
+        try {
+            int opcion = Integer.parseInt(scanner.nextLine());
+
+            switch (opcion) {
+                case 1 -> consultaTopProductosVendidos();
+                case 2 -> consultaValorStockPorCategoria();
+                case 3 -> consultaHistoricoPorFechas();
+                case 4 -> consultaProductosBajoStockConHistorico();
+                case 5 -> consultaProductosSinMovimientos();
+                case 6 -> consultaRotacionInventario();
+                case 0 -> System.out.println("Volviendo al menú anterior...");
+                default -> System.out.println("Opción no válida.");
+            }
+
+        } catch (NumberFormatException e) {
+            System.out.println("Por favor ingrese un número válido.");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            logger.error("Error en consultas avanzadas", e);
+        }
+    }
+
+    private static void consultaTopProductosVendidos() {
+        System.out.print("\n¿Cuántos productos desea ver? (Top N): ");
+        try {
+            int limite = Integer.parseInt(scanner.nextLine());
+
+            ConsultasAvanzadasDAO consultasDAO = new ConsultasAvanzadasDAOImpl();
+            List<Object[]> resultados = consultasDAO.obtenerTopProductosMasVendidos(limite);
+
+            if (resultados.isEmpty()) {
+                System.out.println("No se encontraron productos vendidos.");
+                return;
+            }
+
+            System.out.println("\n╔════════════════════════════════════════════════════════════════════════╗");
+            System.out.println("║           TOP " + limite + " PRODUCTOS MÁS VENDIDOS                                ║");
+            System.out.println("╚════════════════════════════════════════════════════════════════════════╝");
+            System.out.printf("%-5s %-30s %-15s %-12s %-10s %-12s%n",
+                    "ID", "Nombre", "Categoría", "Vendido", "Ventas", "Ingresos");
+            System.out.println("-".repeat(95));
+
+            for (Object[] row : resultados) {
+                System.out.printf("%-5s %-30s %-15s %-12s %-10s $%-11.2f%n",
+                        row[0], // id_producto
+                        row[1], // nombre
+                        row[2], // categoria
+                        row[5], // total_vendido
+                        row[6], // num_transacciones
+                        row[7]); // ingresos_generados
+            }
+
+            System.out.println("\nPresione Enter para continuar...");
+            scanner.nextLine();
+
+        } catch (NumberFormatException e) {
+            System.out.println("Número inválido.");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            logger.error("Error en consulta top productos", e);
+        }
+    }
+
+    private static void consultaValorStockPorCategoria() {
+        try {
+            ConsultasAvanzadasDAO consultasDAO = new ConsultasAvanzadasDAOImpl();
+            List<Object[]> resultados = consultasDAO.obtenerValorStockPorCategoria();
+
+            if (resultados.isEmpty()) {
+                System.out.println("No hay datos disponibles.");
+                return;
+            }
+
+            System.out.println("\n╔════════════════════════════════════════════════════════════════════════╗");
+            System.out.println("║              VALOR TOTAL DE STOCK POR CATEGORÍA                        ║");
+            System.out.println("╚════════════════════════════════════════════════════════════════════════╝");
+            System.out.printf("%-20s %-15s %-15s %-15s%n",
+                    "Categoría", "Total Productos", "Unidades Stock", "Valor Total");
+            System.out.println("-".repeat(70));
+
+            double valorTotalGeneral = 0;
+            int totalProductos = 0;
+            int totalUnidades = 0;
+
+            for (Object[] row : resultados) {
+                System.out.printf("%-20s %-15s %-15s $%-14.2f%n",
+                        row[0], // categoria
+                        row[1], // total_productos
+                        row[2], // total_unidades_stock
+                        row[6]); // valor_total_stock (CORREGIDO: era row[3])
+
+                valorTotalGeneral += ((Number) row[6]).doubleValue();
+                totalProductos += ((Number) row[1]).intValue();
+                totalUnidades += ((Number) row[2]).intValue();
+            }
+
+            System.out.println("-".repeat(70));
+            System.out.printf("%-20s %-15d %-15d $%-14.2f%n",
+                    "TOTAL GENERAL", totalProductos, totalUnidades, valorTotalGeneral);
+
+            System.out.println("\nPresione Enter para continuar...");
+            scanner.nextLine();
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            logger.error("Error en consulta valor stock por categoría", e);
+        }
+    }
+
+    private static void consultaHistoricoPorFechas() {
+        try {
+            System.out.println("\n--- HISTÓRICO DE MOVIMIENTOS POR RANGO DE FECHAS ---");
+            System.out.print("Fecha inicio (dd/MM/yyyy HH:mm) o Enter para últimos 7 días: ");
+            String fechaInicioStr = scanner.nextLine().trim();
+
+            System.out.print("Fecha fin (dd/MM/yyyy HH:mm) o Enter para hoy: ");
+            String fechaFinStr = scanner.nextLine().trim();
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+            LocalDateTime fechaInicio;
+            LocalDateTime fechaFin;
+
+            if (fechaInicioStr.isEmpty()) {
+                fechaInicio = LocalDateTime.now().minusDays(7);
+            } else {
+                fechaInicio = LocalDateTime.parse(fechaInicioStr, formatter);
+            }
+
+            if (fechaFinStr.isEmpty()) {
+                fechaFin = LocalDateTime.now();
+            } else {
+                fechaFin = LocalDateTime.parse(fechaFinStr, formatter);
+            }
+
+            ConsultasAvanzadasDAO consultasDAO = new ConsultasAvanzadasDAOImpl();
+            List<Object[]> resultados = consultasDAO.obtenerHistoricoMovimientos(fechaInicio, fechaFin);
+
+            if (resultados.isEmpty()) {
+                System.out.println("\nNo se encontraron movimientos en el rango especificado.");
+                return;
+            }
+
+            System.out.println("\n╔════════════════════════════════════════════════════════════════════════╗");
+            System.out.println("║                  HISTÓRICO DE MOVIMIENTOS                              ║");
+            System.out.println("╚════════════════════════════════════════════════════════════════════════╝");
+            System.out.println("Rango: " + fechaInicio.format(formatter) + " - " + fechaFin.format(formatter));
+            System.out.println();
+            System.out.printf("%-12s %-10s %-30s %-10s %-20s%n",
+                    "Fecha", "Tipo", "Producto", "Cantidad", "Usuario");
+            System.out.println("-".repeat(90));
+
+            int totalEntradas = 0;
+            int totalSalidas = 0;
+
+            for (Object[] row : resultados) {
+                String tipo = row[1].toString();
+                int cantidad = ((Number) row[2]).intValue();
+
+                if ("ENTRADA".equals(tipo)) {
+                    totalEntradas += cantidad;
+                } else {
+                    totalSalidas += cantidad;
+                }
+
+                System.out.printf("%-12s %-10s %-30s %-10s %-20s%n",
+                        row[0], // fecha
+                        row[1], // tipo
+                        row[3], // producto nombre
+                        row[2], // cantidad
+                        row[4]); // usuario
+            }
+
+            System.out.println("-".repeat(90));
+            System.out.println("Total movimientos: " + resultados.size());
+            System.out.println("Total entradas: " + totalEntradas + " unidades");
+            System.out.println("Total salidas: " + totalSalidas + " unidades");
+            System.out.println("Balance: " + (totalEntradas - totalSalidas) + " unidades");
+
+            System.out.println("\nPresione Enter para continuar...");
+            scanner.nextLine();
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            logger.error("Error en consulta histórico por fechas", e);
+        }
+    }
+
+    private static void consultaProductosBajoStockConHistorico() {
+        try {
+            System.out.print("\nUmbral de stock bajo (default: 200): ");
+            String limiteStr = scanner.nextLine().trim();
+            int limite = limiteStr.isEmpty() ? 200 : Integer.parseInt(limiteStr);
+
+            System.out.print("Días de histórico (default: 30): ");
+            String diasStr = scanner.nextLine().trim();
+            int dias = diasStr.isEmpty() ? 30 : Integer.parseInt(diasStr);
+
+            ConsultasAvanzadasDAO consultasDAO = new ConsultasAvanzadasDAOImpl();
+            List<Object[]> resultados = consultasDAO.obtenerProductosBajoStockConHistorico(limite, dias);
+
+            if (resultados.isEmpty()) {
+                System.out.println("\nNo hay productos con stock bajo.");
+                return;
+            }
+
+            System.out.println("\n╔════════════════════════════════════════════════════════════════════════╗");
+            System.out.println("║          PRODUCTOS CON BAJO STOCK Y SU ACTIVIDAD RECIENTE             ║");
+            System.out.println("╚════════════════════════════════════════════════════════════════════════╝");
+            System.out.printf("%-30s %-10s %-15s %-15s%n",
+                    "Producto", "Stock", "Movimientos", "Última Actividad");
+            System.out.println("-".repeat(75));
+
+            for (Object[] row : resultados) {
+                System.out.printf("%-30s %-10s %-15s %-15s%n",
+                        row[1], // nombre
+                        row[4], // stock_actual
+                        row[5], // total_movimientos
+                        row[6]); // ultima_actividad
+            }
+
+            System.out.println("\nTotal productos críticos: " + resultados.size());
+            System.out.println("\nPresione Enter para continuar...");
+            scanner.nextLine();
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            logger.error("Error en consulta productos bajo stock con histórico", e);
+        }
+    }
+
+    private static void consultaProductosSinMovimientos() {
+        try {
+            System.out.print("\nDías sin movimientos (default: 30): ");
+            String diasStr = scanner.nextLine().trim();
+            int dias = diasStr.isEmpty() ? 30 : Integer.parseInt(diasStr);
+
+            ConsultasAvanzadasDAO consultasDAO = new ConsultasAvanzadasDAOImpl();
+            List<Object[]> resultados = consultasDAO.obtenerProductosSinMovimientos(dias);
+
+            if (resultados.isEmpty()) {
+                System.out.println("\n✓ Todos los productos tienen actividad reciente.");
+                return;
+            }
+
+            System.out.println("\n╔════════════════════════════════════════════════════════════════════════╗");
+            System.out.println("║              PRODUCTOS SIN MOVIMIENTOS (últimos " + dias + " días)              ║");
+            System.out.println("╚════════════════════════════════════════════════════════════════════════╝");
+            System.out.printf("%-5s %-35s %-15s %-10s %-15s%n",
+                    "ID", "Nombre", "Categoría", "Stock", "Valor Stock");
+            System.out.println("-".repeat(85));
+
+            double valorTotalInactivo = 0;
+
+            for (Object[] row : resultados) {
+                double valorStock = ((Number) row[5]).doubleValue();
+                valorTotalInactivo += valorStock;
+
+                System.out.printf("%-5s %-35s %-15s %-10s $%-14.2f%n",
+                        row[0], // id_producto
+                        row[1], // nombre
+                        row[2], // categoria
+                        row[4], // stock
+                        valorStock); // valor_stock
+            }
+
+            System.out.println("-".repeat(85));
+            System.out.println("Total productos sin movimiento: " + resultados.size());
+            System.out.printf("Valor total inmovilizado: $%.2f%n", valorTotalInactivo);
+
+            System.out.println("\n⚠ Considere revisar estos productos para optimizar el inventario.");
+            System.out.println("\nPresione Enter para continuar...");
+            scanner.nextLine();
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            logger.error("Error en consulta productos sin movimientos", e);
+        }
+    }
+
+    private static void consultaRotacionInventario() {
+        try {
+            ConsultasAvanzadasDAO consultasDAO = new ConsultasAvanzadasDAOImpl();
+            List<Object[]> resultados = consultasDAO.obtenerAnalisisRotacionPorCategoria();
+
+            if (resultados.isEmpty()) {
+                System.out.println("\nNo hay datos suficientes para el análisis.");
+                return;
+            }
+
+            System.out.println("\n╔════════════════════════════════════════════════════════════════════════╗");
+            System.out.println("║              ANÁLISIS DE ROTACIÓN DE INVENTARIO                        ║");
+            System.out.println("╚════════════════════════════════════════════════════════════════════════╝");
+            System.out.printf("%-20s %-15s %-15s %-15s %-15s%n",
+                    "Categoría", "Stock Actual", "Total Salidas", "Rotación", "Días Prom.");
+            System.out.println("-".repeat(85));
+
+            for (Object[] row : resultados) {
+                System.out.printf("%-20s %-15s %-15s %-15.2f %-15s%n",
+                        row[0], // categoria
+                        row[1], // stock_actual
+                        row[2], // total_salidas
+                        row[3], // rotacion
+                        row[4]); // dias_promedio_venta
+            }
+
+            System.out.println("\nInterpretación:");
+            System.out.println("  - Rotación alta (>5): Productos de alta demanda");
+            System.out.println("  - Rotación media (2-5): Productos de demanda moderada");
+            System.out.println("  - Rotación baja (<2): Productos de baja demanda");
+
+            System.out.println("\nPresione Enter para continuar...");
+            scanner.nextLine();
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            logger.error("Error en consulta rotación inventario", e);
+        }
+    }
+
     // ========== UTILIDADES ==========
-    
+
     private static void mostrarDetalleProducto(Producto producto) {
         System.out.println("ID: " + producto.getIdProducto());
         System.out.println("Nombre: " + producto.getNombre());

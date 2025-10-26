@@ -1,0 +1,11 @@
+id_producto,tipo_movimiento,cantidad,motivo,usuario
+1,ENTRADA,50,Reposicion de almacen,admin
+1,SALIDA,10,Venta cliente,vendedor1
+2,ENTRADA,100,Compra proveedor ABC,admin
+2,SALIDA,25,Venta mayorista,vendedor2
+3,ENTRADA,200,Stock inicial,sistema
+3,SALIDA,15,Venta mostrador,vendedor1
+4,ENTRADA,75,Reposicion mensual,admin
+4,SALIDA,30,Pedido online,vendedor2
+5,ENTRADA,150,Compra proveedor XYZ,admin
+5,SALIDA,40,Venta corporativa,vendedor1
