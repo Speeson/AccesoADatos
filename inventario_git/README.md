@@ -266,23 +266,39 @@ inventario_git/
 │       ├── 14-explain-exists.png
 │       └── 15-show-index-productos.png
 │
-├── scripts/
-│   └── 01-init.sql                              # Script de inicialización
+├── dev/                                         # Carpeta de desarrollo
+│   ├── docker-compose.dev.yml                  # Docker Compose para desarrollo
+│   ├── dev-start.bat                           # Script: Iniciar servicios Docker
+│   ├── dev-stop.bat                            # Script: Detener servicios Docker
+│   └── dev-run.bat                             # Script: Compilar y ejecutar app
 │
-├── docker-compose.yml                           # Configuración Docker Compose
-├── Dockerfile                                   # Imagen de la aplicación
-├── pom.xml                                      # Configuración Maven
-├── schema.sql                                   # Script creación BD (con índices Fase II)
-└── README.md                                    # Este archivo
+├── scripts/
+│   ├── 01-init.sql                             # Script de inicialización (tablas)
+│   └── 06-optimizaciones-compatible.sql        # Script de índices (Fase II)
+│
+├── docker-compose.yml                          # Docker Compose producción
+├── Dockerfile                                  # Imagen de la aplicación
+├── pom.xml                                     # Configuración Maven
+├── schema.sql                                  # Script creación BD completo
+└── README.md                                   # Este archivo
 ```
 
 ---
 
 ## Instalación y Configuración
 
-### Opción 1: Instalación con Docker Compose (RECOMENDADO)
+El proyecto ofrece **dos modos de ejecución**:
 
-Esta es la forma más sencilla y rápida de ejecutar el proyecto.
+### 🔧 Opción 1: Modo Desarrollo (RECOMENDADO para desarrollo)
+
+**Ventajas:**
+- ✅ Recompilación rápida sin reconstruir Docker
+- ✅ Debugging más fácil
+- ✅ Logs directos en consola
+- ✅ Ciclo de desarrollo ágil
+
+**Servicios Docker:** MySQL + phpMyAdmin
+**Aplicación Java:** Se ejecuta directamente en tu máquina (Windows/Linux/macOS)
 
 #### Paso 1: Preparar el Entorno
 
@@ -292,31 +308,124 @@ Esta es la forma más sencilla y rápida de ejecutar el proyecto.
    - Reiniciar el ordenador si es necesario
    - Verificar instalación: `docker --version` y `docker-compose --version`
 
-2. **Clonar o descargar el proyecto**
+2. **Instalar Java 17 y Maven**
+   - **Java 17**: Descargar desde https://adoptium.net/
+   - **Maven 3.8+**: Descargar desde https://maven.apache.org/download.cgi
+   - Verificar: `java -version` y `mvn -version`
+
+3. **Clonar o descargar el proyecto**
    ```bash
    git clone https://github.com/Speeson/AccesoADatos.git
    cd AccesoADatos/inventario_git
    ```
 
-#### Paso 2: Configuración de Puertos
+#### Paso 2: Iniciar Servicios Docker (desde carpeta dev/)
 
-El proyecto usa estos puertos por defecto:
-- **MySQL**: 33060 (externo) → 3306 (interno)
-- **phpMyAdmin**: 9090 (externo) → 80 (interno)
+**En Windows:**
+```batch
+# Opción A: Usar el script automatizado
+dev\dev-start.bat
 
-Si algún puerto está ocupado, edita `docker-compose.yml`:
-
-```yaml
-services:
-  mysql:
-    ports:
-      - "33061:3306"  # Cambiar 33060 por otro puerto libre
-  phpmyadmin:
-    ports:
-      - "9091:80"     # Cambiar 9090 por otro puerto libre
+# Opción B: Comando manual
+cd dev
+docker-compose -f docker-compose.dev.yml up -d
+cd ..
 ```
 
-#### Paso 3: Levantar los Servicios
+**En Linux/macOS:**
+```bash
+cd dev
+docker-compose -f docker-compose.dev.yml up -d
+cd ..
+```
+
+**Servicios levantados:**
+- `inventario_mysql_dev` (MySQL en puerto 33061)
+- `inventario_phpmyadmin_dev` (phpMyAdmin en puerto 9090)
+
+**🔍 Verificación:**
+```bash
+docker ps
+```
+
+Deberías ver 2 contenedores corriendo.
+
+#### Paso 3: Verificar la Base de Datos
+
+1. Abrir phpMyAdmin: http://localhost:9090
+2. Credenciales:
+   - **Servidor**: `mysql`
+   - **Usuario**: `inventario_user`
+   - **Contraseña**: `inventario_pass`
+3. Seleccionar base de datos: `inventario_db`
+4. Verificar tablas creadas automáticamente:
+   - `categorias` (con 2 índices)
+   - `productos` (con 7 índices)
+   - `movimientos_stock` (con 2 índices)
+
+**💡 Nota:** Las tablas se crean automáticamente al iniciar MySQL gracias a los scripts:
+- `scripts/01-init.sql` - Crea las tablas
+- `scripts/06-optimizaciones-compatible.sql` - Crea los 11 índices
+
+#### Paso 4: Ejecutar la Aplicación
+
+**En Windows:**
+```batch
+# Opción A: Usar el script automatizado
+dev\dev-run.bat
+
+# Opción B: Comando manual
+mvn clean compile
+mvn exec:java -Dexec.mainClass="com.inventario.Main"
+```
+
+**En Linux/macOS:**
+```bash
+mvn clean compile
+mvn exec:java -Dexec.mainClass="com.inventario.Main"
+```
+
+La aplicación se conectará a MySQL en `localhost:33061`.
+
+#### Paso 5: Detener los Servicios
+
+**En Windows:**
+```batch
+dev\dev-stop.bat
+```
+
+**En Linux/macOS:**
+```bash
+cd dev
+docker-compose -f docker-compose.dev.yml down
+```
+
+#### Scripts Disponibles en dev/
+
+| Script | Descripción |
+|--------|-------------|
+| `dev-start.bat` | Inicia MySQL + phpMyAdmin en Docker |
+| `dev-stop.bat` | Detiene los servicios Docker |
+| `dev-run.bat` | Compila y ejecuta la aplicación Java |
+
+---
+
+### 🚀 Opción 2: Modo Producción (Entorno completo containerizado)
+
+**Ventajas:**
+- ✅ Entorno completamente aislado
+- ✅ Todo corre en Docker (MySQL + phpMyAdmin + App Java)
+- ✅ Reproducible en cualquier máquina
+- ✅ Ideal para deployment/producción
+
+**Servicios Docker:** MySQL + phpMyAdmin + Aplicación Java
+
+#### Paso 1: Preparar el Entorno
+
+1. **Instalar Docker Desktop** (igual que en modo desarrollo)
+2. **Clonar el proyecto** (igual que en modo desarrollo)
+
+#### Paso 2: Levantar Todos los Servicios
 
 **En Windows (PowerShell):**
 ```powershell
@@ -345,20 +454,15 @@ docker-compose ps
 **Deberías ver 3 servicios:**
 - `inventario_mysql` (MySQL)
 - `inventario_phpmyadmin` (phpMyAdmin)
-- `inventario_app` (Aplicación Java)
+- `inventario_app` (Aplicación Java containerizada)
 
-#### Paso 4: Verificar la Base de Datos
+#### Paso 3: Verificar la Base de Datos
 
-1. Abrir phpMyAdmin: http://localhost:9090
-2. Credenciales:
-   - **Usuario**: `inventario_user`
-   - **Contraseña**: `inventario_pass`
-3. Seleccionar base de datos: `inventario_db`
-4. Verificar que existen las tablas: `categorias`, `productos`, `movimientos_stock`
+Igual que en modo desarrollo - phpMyAdmin: http://localhost:9090
 
-#### Paso 5: Ejecutar la Aplicación
+#### Paso 4: Ejecutar la Aplicación
 
-```powershell
+```bash
 # Entrar al contenedor de la aplicación
 docker-compose exec app bash
 
@@ -366,7 +470,7 @@ docker-compose exec app bash
 mvn exec:java -Dexec.mainClass="com.inventario.Main"
 ```
 
-#### Comandos Útiles de Docker
+#### Comandos Útiles de Docker (Producción)
 
 ```bash
 # Ver logs de la aplicación
@@ -390,7 +494,71 @@ docker-compose restart app
 
 ---
 
-### Opción 2: Instalación Sin Docker (Alternativa)
+### 🔄 Comparación: Desarrollo vs Producción
+
+| Característica | Desarrollo (`dev/`) | Producción (raíz) |
+|----------------|---------------------|-------------------|
+| **MySQL** | ✅ Docker (puerto 33061) | ✅ Docker (puerto 33061) |
+| **phpMyAdmin** | ✅ Docker (puerto 9090) | ✅ Docker (puerto 9090) |
+| **App Java** | ❌ Local (Windows/Mac) | ✅ Docker (containerizada) |
+| **Compilación** | ⚡ Rápida (`mvn compile`) | 🐢 Rebuild imagen Docker |
+| **Debugging** | ✅ Fácil | ⚠️ Requiere configuración |
+| **Logs** | 📺 Consola directa | 📋 `docker logs` |
+| **Uso recomendado** | 🔧 Desarrollo activo | 🚀 Deploy/Producción |
+| **Configuración BD** | `DatabaseConfig.java` (puerto 33061) | Variables de entorno Docker |
+
+---
+
+### 📊 Puertos Utilizados
+
+| Puerto | Servicio | Descripción |
+|--------|----------|-------------|
+| **33061** | MySQL | Puerto externo para conexión desde host |
+| **3306** | MySQL | Puerto interno Docker (entre contenedores) |
+| **9090** | phpMyAdmin | Interfaz web de administración |
+
+**⚠️ Si el puerto 33061 está ocupado:**
+
+Editar `docker-compose.yml` o `dev/docker-compose.dev.yml`:
+```yaml
+ports:
+  - "33062:3306"  # Cambiar 33061 por otro puerto
+```
+
+Y actualizar `DatabaseConfig.java`:
+```java
+private static final String DEFAULT_PORT = "33062";
+```
+
+---
+
+### 🗄️ Inicialización Automática de Base de Datos
+
+Ambos modos (desarrollo y producción) **crean automáticamente** las tablas e índices al iniciar MySQL por primera vez:
+
+**Scripts ejecutados automáticamente:**
+1. `scripts/01-init.sql` - Crea las 3 tablas (categorias, productos, movimientos_stock)
+2. `scripts/06-optimizaciones-compatible.sql` - Crea los 11 índices optimizados
+
+**💡 Nota:** Los scripts solo se ejecutan si el volumen de MySQL está vacío (primera vez).
+
+**Para reiniciar la base de datos desde cero:**
+```bash
+# Modo desarrollo
+cd dev
+docker-compose -f docker-compose.dev.yml down -v
+docker-compose -f docker-compose.dev.yml up -d
+
+# Modo producción
+docker-compose down -v
+docker-compose up -d
+```
+
+El flag `-v` elimina los volúmenes, forzando la reinicialización.
+
+---
+
+### 🛠️ Opción 3: Instalación Sin Docker (Alternativa)
 
 Si prefieres instalación tradicional sin Docker:
 
@@ -813,8 +981,6 @@ ID    Producto                    Categoría    Stock  Entradas  Salidas  Movs  
 #891  Adaptador USB-C            Electronica    18       100       82       8   2025-10-24
 ```
 
-**📸 Captura sugerida:** `capturas/04-bajo-stock-historico.png`
-
 ---
 
 #### 2.5. Productos Sin Movimientos (BONUS)
@@ -831,8 +997,6 @@ ID    Producto                      Categoría    Stock  Precio     Días Inacti
 #423  Cable Paralelo 3m            Electronica    32    $8.99           142
 #651  Disquetes 3.5" Pack 10       Electronica    18    $15.99          128
 ```
-
-**📸 Captura sugerida:** `capturas/05-sin-movimientos.png`
 
 ---
 
@@ -887,12 +1051,12 @@ Tasa de éxito: 100.00%
 
 **📸 Capturas sugeridas:**
 - `capturas/07-importacion-csv-exitosa.png`
-- `capturas/08-importacion-masiva-1000.png`
 
 #### Archivos CSV de Prueba
 
 **1. movimientos_20251026.csv** (100 movimientos variados)
 **2. reposicion_masiva_20251026.csv** (1,000 reposiciones)
+**3. retirada_masiva_20251026.csv** (1,000 retiradas)
 
 ---
 
@@ -1189,6 +1353,35 @@ docker-compose logs mysql
 
 ## Historial de Cambios (Changelog)
 
+### Versión 2.2 - 27 de octubre de 2025
+
+**🗂️ Reorganización del Proyecto:**
+- **Separación de entornos de desarrollo y producción**
+  - Creada carpeta `dev/` con configuración específica para desarrollo
+  - Scripts automatizados: `dev-start.bat`, `dev-stop.bat`, `dev-run.bat`
+  - Docker Compose separado: `docker-compose.dev.yml`
+
+**🚀 Mejoras en Docker:**
+- **Modo desarrollo**: MySQL + phpMyAdmin en Docker, app Java local
+- **Modo producción**: Todo containerizado (MySQL + phpMyAdmin + App Java)
+- **Inicialización automática** de base de datos al levantar contenedores
+- Scripts SQL montados automáticamente en `/docker-entrypoint-initdb.d/`
+
+**📝 Documentación:**
+- **README completamente actualizado** con:
+  - Comparación detallada desarrollo vs producción
+  - Instrucciones paso a paso para ambos modos
+  - Tabla comparativa de características
+  - Explicación de puertos y configuración
+
+**📂 Archivos Nuevos/Modificados:**
+- `dev/docker-compose.dev.yml` - Configuración Docker desarrollo
+- `dev/dev-start.bat` - Iniciar servicios Docker
+- `dev/dev-stop.bat` - Detener servicios Docker
+- `dev/dev-run.bat` - Compilar y ejecutar aplicación
+- `docker-compose.yml` - Actualizado para auto-inicialización
+- `README.md` - Sección de instalación completamente reescrita
+
 ### Versión 2.1 - 26 de octubre de 2025
 
 **🔧 Mejoras Críticas:**
@@ -1196,6 +1389,11 @@ docker-compose logs mysql
   - Antes: Solo actualizaban la tabla `productos`
   - Ahora: Actualizan `productos` Y registran en `movimientos_stock` con todos los detalles
   - Archivos modificados: `InventarioServiceImpl.java`, `Main.java`
+
+**🐛 Corrección de Bugs:**
+- **Histórico de movimientos por fechas**: Ahora busca correctamente en todo el día (00:00:00 a 23:59:59)
+- **Productos sin movimientos**: Corregida consulta SQL para calcular días sin actividad
+- **Array indices**: Corregidos todos los accesos a índices en resultados de queries
 
 **✨ Nuevas Funcionalidades:**
 - **Visualización de stock disponible** antes de registrar entradas/salidas
@@ -1211,10 +1409,17 @@ docker-compose logs mysql
   - Límite de tamaño por archivo (5MB para inventario.log y actividades.log)
   - Control total de espacio en disco (100MB máx por tipo de log)
 
+**🔧 Mantenimiento:**
+- **Limpieza de contenedores Docker duplicados**
+- **Formato CSV corregido** en categorias.csv (delimitador consistente)
+- **Compatibilidad cross-platform** (Git Bash + CMD) en scripts
+
 **📝 Archivos Modificados:**
 - `src/main/java/com/inventario/service/impl/InventarioServiceImpl.java`
 - `src/main/java/com/inventario/Main.java`
+- `src/main/java/com/inventario/dao/impl/ConsultasAvanzadasDAOImpl.java`
 - `src/main/resources/logback.xml`
+- `data/categorias.csv`
 
 ### Versión 2.0 - 25 de octubre de 2025
 
@@ -1289,13 +1494,10 @@ docker-compose logs mysql
 1. **`01-top-productos-vendidos.png`** - Salida de la consulta Top N productos más vendidos
 2. **`02-valor-stock-categoria.png`** - Tabla de valor de stock por categoría
 3. **`03-historico-movimientos.png`** - Histórico de movimientos por rango de fechas
-4. **`04-bajo-stock-historico.png`** - Productos con bajo stock y su histórico reciente
-5. **`05-sin-movimientos.png`** - Lista de productos sin movimientos
 6. **`06-rotacion-inventario.png`** - Análisis de rotación de inventario por categoría
 
 ### Importación Masiva CSV
 7. **`07-importacion-csv-exitosa.png`** - Importación de 100 movimientos exitosa
-8. **`08-importacion-masiva-1000.png`** - Importación masiva de 1,000 reposiciones
 
 ### Menú Reorganizado
 9. **`09-menu-principal.png`** - Menú principal jerárquico (4 secciones)
@@ -1307,8 +1509,6 @@ docker-compose logs mysql
 13. **`13-explain-fulltext.png`** - EXPLAIN de búsqueda FULLTEXT
 14. **`14-explain-exists.png`** - EXPLAIN comparando EXISTS vs IN
 15. **`15-show-index-productos.png`** - SHOW INDEX FROM productos (verificación de índices)
-
-**Nota:** Los enlaces ya están integrados en el README.
 
 ---
 
@@ -1334,6 +1534,6 @@ Para preguntas o problemas:
 
 ---
 
-**Fecha de generación:** 26 de octubre de 2025
-**Versión:** 2.0 - Fase II Completa
+**Fecha de generación:** 27 de octubre de 2025
+**Versión:** 2.2 - Fase II Completa + Entornos Dev/Prod
 **Estado:** ✅ COMPLETADO

@@ -352,3 +352,125 @@ java.lang.Exception: La cantidad debe ser mayor a cero
 	at java.base/java.lang.Thread.run(Thread.java:1447)
 [2025-10-26 20:39:11] ERROR com.inventario.Main - Error al restaurar desde: backups/productos.csv.xml
 [2025-10-26 20:39:48] ERROR com.inventario.Main - Error al restaurar desde: backups/productos.csv.xml
+[2025-10-26 21:12:35] ERROR com.inventario.util.LogUtil - ERROR - CONTAR_PRODUCTOS: Error al contar productos
+java.sql.SQLSyntaxErrorException: Table 'inventario_db.productos' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:912)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:968)
+	at com.inventario.dao.impl.ProductoDAOImpl.contarTotal(ProductoDAOImpl.java:374)
+	at com.inventario.service.impl.InventarioServiceImpl.contarTotalProductos(InventarioServiceImpl.java:233)
+	at com.inventario.Main.cargarDatosIniciales(Main.java:118)
+	at com.inventario.Main.main(Main.java:59)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+[2025-10-26 21:12:35] ERROR com.inventario.util.LogUtil - ERROR - CONTAR_PRODUCTOS: Error al contar productos
+java.sql.SQLSyntaxErrorException: Table 'inventario_db.productos' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:912)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:968)
+	at com.inventario.dao.impl.ProductoDAOImpl.contarTotal(ProductoDAOImpl.java:374)
+	at com.inventario.service.impl.InventarioServiceImpl.contarTotalProductos(InventarioServiceImpl.java:233)
+	at com.inventario.Main.cargarDatosIniciales(Main.java:118)
+	at com.inventario.Main.main(Main.java:59)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+[2025-10-26 21:13:16] ERROR com.inventario.util.LogUtil - ERROR - OBTENER_TODOS_PRODUCTOS: Error al obtener todos los productos
+java.sql.SQLSyntaxErrorException: Table 'inventario_db.productos' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:912)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:968)
+	at com.inventario.dao.impl.ProductoDAOImpl.obtenerTodos(ProductoDAOImpl.java:195)
+	at com.inventario.service.impl.InventarioServiceImpl.obtenerTodosLosProductos(InventarioServiceImpl.java:99)
+	at com.inventario.Main.listarProductos(Main.java:461)
+	at com.inventario.Main.gestionarProductos(Main.java:444)
+	at com.inventario.Main.gestionarInventario(Main.java:196)
+	at com.inventario.Main.ejecutarMenuPrincipal(Main.java:147)
+	at com.inventario.Main.main(Main.java:62)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+[2025-10-26 21:13:16] ERROR com.inventario.util.LogUtil - ERROR - OBTENER_TODOS_PRODUCTOS: Error al obtener todos los productos
+java.sql.SQLSyntaxErrorException: Table 'inventario_db.productos' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:912)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:968)
+	at com.inventario.dao.impl.ProductoDAOImpl.obtenerTodos(ProductoDAOImpl.java:195)
+	at com.inventario.service.impl.InventarioServiceImpl.obtenerTodosLosProductos(InventarioServiceImpl.java:99)
+	at com.inventario.Main.listarProductos(Main.java:461)
+	at com.inventario.Main.gestionarProductos(Main.java:444)
+	at com.inventario.Main.gestionarInventario(Main.java:196)
+	at com.inventario.Main.ejecutarMenuPrincipal(Main.java:147)
+	at com.inventario.Main.main(Main.java:62)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+[2025-10-26 21:20:31] ERROR com.inventario.Main - Error al conectar con la base de datos
+[2025-10-26 21:20:31] ERROR com.inventario.Main - No se pudo conectar a la base de datos. Saliendo...
+[2025-10-26 21:21:28] ERROR com.inventario.util.CsvUtil - Línea 2: Error al procesar - For input string: "1,"Electronica""
+java.lang.NumberFormatException: For input string: "1,"Electronica""
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:564)
+	at java.base/java.lang.Integer.parseInt(Integer.java:661)
+	at com.inventario.util.CsvUtil.parsearCategoria(CsvUtil.java:185)
+	at com.inventario.util.CsvUtil.leerCategoriasCSV(CsvUtil.java:102)
+	at com.inventario.service.impl.InventarioServiceImpl.cargarCategoriasDesdeCSV(InventarioServiceImpl.java:253)
+	at com.inventario.Main.cargarDatosIniciales(Main.java:123)
+	at com.inventario.Main.main(Main.java:59)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+[2025-10-26 21:21:28] ERROR com.inventario.util.CsvUtil - Línea 3: Error al procesar - For input string: "2,"Ropa""
+java.lang.NumberFormatException: For input string: "2,"Ropa""
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:564)
+	at java.base/java.lang.Integer.parseInt(Integer.java:661)
+	at com.inventario.util.CsvUtil.parsearCategoria(CsvUtil.java:185)
+	at com.inventario.util.CsvUtil.leerCategoriasCSV(CsvUtil.java:102)
+	at com.inventario.service.impl.InventarioServiceImpl.cargarCategoriasDesdeCSV(InventarioServiceImpl.java:253)
+	at com.inventario.Main.cargarDatosIniciales(Main.java:123)
+	at com.inventario.Main.main(Main.java:59)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+[2025-10-26 21:21:28] ERROR com.inventario.util.CsvUtil - Línea 4: Error al procesar - For input string: "3,"Informatica""
+java.lang.NumberFormatException: For input string: "3,"Informatica""
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:564)
+	at java.base/java.lang.Integer.parseInt(Integer.java:661)
+	at com.inventario.util.CsvUtil.parsearCategoria(CsvUtil.java:185)
+	at com.inventario.util.CsvUtil.leerCategoriasCSV(CsvUtil.java:102)
+	at com.inventario.service.impl.InventarioServiceImpl.cargarCategoriasDesdeCSV(InventarioServiceImpl.java:253)
+	at com.inventario.Main.cargarDatosIniciales(Main.java:123)
+	at com.inventario.Main.main(Main.java:59)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+[2025-10-26 21:21:28] ERROR com.inventario.util.CsvUtil - Línea 5: Error al procesar - For input string: "4,"Hogar""
+java.lang.NumberFormatException: For input string: "4,"Hogar""
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:564)
+	at java.base/java.lang.Integer.parseInt(Integer.java:661)
+	at com.inventario.util.CsvUtil.parsearCategoria(CsvUtil.java:185)
+	at com.inventario.util.CsvUtil.leerCategoriasCSV(CsvUtil.java:102)
+	at com.inventario.service.impl.InventarioServiceImpl.cargarCategoriasDesdeCSV(InventarioServiceImpl.java:253)
+	at com.inventario.Main.cargarDatosIniciales(Main.java:123)
+	at com.inventario.Main.main(Main.java:59)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+[2025-10-26 21:21:28] ERROR com.inventario.util.CsvUtil - Línea 6: Error al procesar - For input string: "5,"Alimentacion""
+java.lang.NumberFormatException: For input string: "5,"Alimentacion""
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:564)
+	at java.base/java.lang.Integer.parseInt(Integer.java:661)
+	at com.inventario.util.CsvUtil.parsearCategoria(CsvUtil.java:185)
+	at com.inventario.util.CsvUtil.leerCategoriasCSV(CsvUtil.java:102)
+	at com.inventario.service.impl.InventarioServiceImpl.cargarCategoriasDesdeCSV(InventarioServiceImpl.java:253)
+	at com.inventario.Main.cargarDatosIniciales(Main.java:123)
+	at com.inventario.Main.main(Main.java:59)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+[2025-10-27 00:23:21] ERROR com.inventario.Main - Error al conectar con la base de datos
+[2025-10-27 00:23:21] ERROR com.inventario.Main - No se pudo conectar a la base de datos. Saliendo...
+[2025-10-27 00:24:29] ERROR com.inventario.Main - Error al conectar con la base de datos
+[2025-10-27 00:24:29] ERROR com.inventario.Main - No se pudo conectar a la base de datos. Saliendo...
+[2025-10-27 00:25:24] ERROR com.inventario.Main - Error al conectar con la base de datos
+[2025-10-27 00:25:24] ERROR com.inventario.Main - No se pudo conectar a la base de datos. Saliendo...

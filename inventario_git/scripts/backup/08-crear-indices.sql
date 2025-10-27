@@ -1,59 +1,58 @@
 -- ============================================
--- SCRIPT DE OPTIMIZACIONES (COMPATIBLE)
--- Fase II - Compatible con MySQL 8.0
+-- CREAR ÍNDICES OPTIMIZADOS (Sin DROP)
+-- Fase II - Solo creación de índices
 -- ============================================
 
 USE inventario_db;
 
 -- ============================================
--- CREAR ÍNDICES OPTIMIZADOS
--- Nota: Si el índice ya existe, se ignorará el error
+-- PRODUCTOS - 7 índices adicionales
 -- ============================================
 
 SELECT 'Creando índices para tabla PRODUCTOS...' as Estado;
 
--- Índice para búsquedas por nombre
-CREATE INDEX idx_productos_nombre ON productos(nombre);
+-- Índice 1: Búsquedas por nombre
+CREATE INDEX IF NOT EXISTS idx_productos_nombre ON productos(nombre);
 
--- Índice FULLTEXT para búsquedas de texto
+-- Índice 2: FULLTEXT para búsquedas de texto
 CREATE FULLTEXT INDEX idx_productos_nombre_fulltext ON productos(nombre);
 
--- Índice para filtros de precio
-CREATE INDEX idx_productos_precio ON productos(precio);
+-- Índice 3: Filtros de precio
+CREATE INDEX IF NOT EXISTS idx_productos_precio ON productos(precio);
 
--- Índice compuesto (COVERING INDEX)
-CREATE INDEX idx_productos_cat_precio_stock ON productos(categoria, precio, stock);
+-- Índice 4: COVERING INDEX (categoria, precio, stock)
+CREATE INDEX IF NOT EXISTS idx_productos_cat_precio_stock ON productos(categoria, precio, stock);
 
--- Índice para valor total inventario
-CREATE INDEX idx_productos_precio_stock ON productos(precio, stock);
+-- Índice 5: Valor total inventario (precio, stock)
+CREATE INDEX IF NOT EXISTS idx_productos_precio_stock ON productos(precio, stock);
 
--- Índice compuesto categoría+nombre
-CREATE INDEX idx_productos_categoria_nombre ON productos(categoria, nombre);
+-- Índice 6: Compuesto categoría+nombre
+CREATE INDEX IF NOT EXISTS idx_productos_categoria_nombre ON productos(categoria, nombre);
 
--- Índice categoría+stock
-CREATE INDEX idx_productos_categoria_stock ON productos(categoria, stock);
+-- Índice 7: Compuesto categoría+stock (COVERING INDEX para consultas específicas)
+CREATE INDEX IF NOT EXISTS idx_productos_categoria_stock ON productos(categoria, stock);
 
 SELECT 'Índices de PRODUCTOS creados ✓' as Estado;
 
 -- ============================================
--- MOVIMIENTOS_STOCK
+-- MOVIMIENTOS_STOCK - 3 índices adicionales
 -- ============================================
 
 SELECT 'Creando índices para tabla MOVIMIENTOS_STOCK...' as Estado;
 
-CREATE INDEX idx_movimientos_tipo_producto ON movimientos_stock(tipo_movimiento, id_producto);
-CREATE INDEX idx_movimientos_fecha_tipo ON movimientos_stock(fecha_movimiento, tipo_movimiento);
-CREATE INDEX idx_movimientos_usuario ON movimientos_stock(usuario);
+CREATE INDEX IF NOT EXISTS idx_movimientos_tipo_producto ON movimientos_stock(tipo_movimiento, id_producto);
+CREATE INDEX IF NOT EXISTS idx_movimientos_fecha_tipo ON movimientos_stock(fecha_movimiento, tipo_movimiento);
+CREATE INDEX IF NOT EXISTS idx_movimientos_usuario ON movimientos_stock(usuario);
 
 SELECT 'Índices de MOVIMIENTOS_STOCK creados ✓' as Estado;
 
 -- ============================================
--- CATEGORÍAS
+-- CATEGORÍAS - 1 índice adicional
 -- ============================================
 
 SELECT 'Creando índices para tabla CATEGORIAS...' as Estado;
 
-CREATE INDEX idx_categorias_nombre ON categorias(nombre);
+CREATE INDEX IF NOT EXISTS idx_categorias_nombre ON categorias(nombre);
 
 SELECT 'Índices de CATEGORIAS creados ✓' as Estado;
 

@@ -9,10 +9,11 @@ services:
       MYSQL_USER: inventario_user
       MYSQL_PASSWORD: inventario_pass
     ports:
-      - "33061:3306"  # Puerto muy diferente
+      - "33061:3306"
     volumes:
       - mysql_data:/var/lib/mysql
-      - ./scripts:/docker-entrypoint-initdb.d
+      - ./scripts/01-init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+      - ./scripts/06-optimizaciones-compatible.sql:/docker-entrypoint-initdb.d/02-optimizaciones.sql:ro
     command: --default-authentication-plugin=mysql_native_password
     networks:
       - inventario_network
